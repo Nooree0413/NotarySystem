@@ -27,7 +27,11 @@ $newSection->addText("TEXT_TO_DOCUMENT_DETAILS");
     }
 
     return response()->download(storage_path('TestWordFile.docx'));
+    
 }
 
+    // public function redirectToPage(){
+    //     return view('/generateWord');
+    // }
 
 }

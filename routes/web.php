@@ -21,5 +21,6 @@ Route::get('/dashboard', 'HomeController@index')->name('dashboard');
 //Route::get('/dashboard', 'HomeController@viewDashboard')->name('dashboard');
 
 Route::get('/logout', 'HomeController@logout');
+//Route::get('/generateWord', 'wordTest@redirectToPage');
 
-Route::get('/dashboard', ['as'=>'createWord','uses'=>'WordTest@createWordDocx']);
+Route::get('/generateWord', ['as'=>'createWord','uses'=>'WordTest@createWordDocx']);
