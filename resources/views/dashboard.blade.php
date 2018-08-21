@@ -11,5 +11,6 @@
     </p>
 
     <a href="/generateWord" class="btn btn-danger">Genrerate Word Document</a>
+<a href="{{ route('loginnew') }}" class="btn btn-success">Go to new login</a>
 </div>
 @endsection
