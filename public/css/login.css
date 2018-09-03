@@ -1,8 +1,9 @@
 body{
   margin: 0;
   padding: 0;
-  background: url("/images/lawBackgroundCover.jpg");
+  background: url("/images/law1.jpg");
   background-size: cover;
+  background-repeat:no-repeat;
   background-position: center;
   font-family: sans-serif;
 }
@@ -10,7 +11,7 @@ body{
 .loginbox{
   width: 320px;
   height: 420px;
-  background: #000;
+  background: #000000d6;
   color: #fff;
   top: 50%;
   left: 50%;
@@ -84,67 +85,5 @@ h1{
 {
   color: #ffc107;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 

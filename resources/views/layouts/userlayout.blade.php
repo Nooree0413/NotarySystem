@@ -60,6 +60,9 @@
                     </a>
                     <ul class="collapse list-unstyled" id="pageSubmenu">
                         <li>
+                                {{-- <b>Welcome, {{ ucfirst(strtolower(Auth::user()->firstname)) }}</b> --}}
+                        </li>
+                        <li>
                             <a href="#">Page 1</a>
                         </li>
                         <li>
