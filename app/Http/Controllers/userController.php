@@ -23,12 +23,12 @@ class userController extends Controller
         
         // $this->validate($request,
         // [
-        //     'inputFirstName' => 'required|string|max:255',
-        //     'inputLastName' => 'required|string|max:255',
+        //     'inputFirstName' => 'required|alpha|max:255',
+        //     'inputLastName' => 'required|alpha|max:255',
         //     'inputContactNumber' => 'required|digits:8|unique:users,contactnum',
         //     'inputEmail' => 'required|string|email|max:255|unique:users,email',
-        //     // 'inputDob' => 'required',
-        //     // 'inputGender' => 'required'
+        //     'inputDob' => 'required',
+        //     'inputGender' => 'required'
         //      ]       
         // );
 
