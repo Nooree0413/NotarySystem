@@ -37,9 +37,7 @@ class HomeController extends Controller
         return redirect('/login');
     }
 
-    public function newloginPage(){
-        return view('auth.loginnew');
-    }
+   
 
     public function newRegisterPage(){
         return view('auth.registernew');

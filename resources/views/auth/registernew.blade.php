@@ -103,7 +103,7 @@
             <input type="submit" name="btnSubmit" value="Register">
             {{-- <button class="button">Add User</button>   --}}
           </form>
-          <a class="centerLink" href="{{ route('loginnew') }}">Already have an account?Login here!</a>|  <a class="centerLink" href="">Your password will be automatically generated and send to you by mail</a>
+          <a class="nav-link" href="{{ route('login') }}">{{ __('Already have an account?Login here!') }}</a></a>|  <a class="centerLink" href="">Your password will be automatically generated and send to you by mail</a>
     </div>
 
 </body>

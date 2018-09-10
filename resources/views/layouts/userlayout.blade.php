@@ -32,6 +32,12 @@
             </div>
 
             <ul class="list-unstyled components">
+                <li>
+                        <a href="">Welcome, {{ ucfirst(strtolower(Auth::user()->firstname)) }}</a>
+                </li>
+                <li>
+                    <a href="{{ route('registernew') }}" ><i class="fas fa-user-plus"></i>Add User</a>
+                </li>
                 <li class="active">
                     <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
                         <i class="fas fa-home"></i>
@@ -59,9 +65,7 @@
                         Pages
                     </a>
                     <ul class="collapse list-unstyled" id="pageSubmenu">
-                        <li>
-                                <a href="">Welcome, {{ ucfirst(strtolower(Auth::user()->firstname)) }}</a>
-                        </li>
+                        
                         <li>
                             <a href="#">Page 1</a>
                         </li>
@@ -93,7 +97,7 @@
                 </li>
                 <li>
                     <a href="{{ route('logout') }}">
-                        <i class="fas fa-paper-plane"></i>
+                        <i class="fa fa-power-off"></i>
                         <b>Log out<b>
                     </a>
                 </li>

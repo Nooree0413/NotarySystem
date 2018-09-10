@@ -10,6 +10,7 @@ use App\user;
 use DB;
 use Illuminate\Support\Facades\Input;
 use Auth;
+
 use Illuminate\Support\Facades\Validator;
 use App\Mail\sendMail;
 use Mail;
@@ -56,7 +57,7 @@ class userController extends Controller
             
         );
 
-         DB::table('users')->insert($data);
+        //  DB::table('users')->insert($data);
          $user_id = DB::table('users')->insertGetId($data);
          $user=(DB::table('users')->where('id',$user_id)->get())[0];
          Mail::send('emails.email_invitation', $data, function($m) use ($user){

@@ -1,77 +1,119 @@
-@extends('layouts.app')
+<!DOCTYPE html>
+<html>
+<head>
+<title>Register</title>
+     {{-- <link rel="stylesheet" type="text/css" href="login.css"> --}}
+    <link rel="stylesheet" type="text/css" href="{{asset('/css/register.css')}}"> 
+    <link rel="stylesheet" type="text/css" href="{{asset('/css/bootstrap.min.css')}}">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" rel="stylesheet">
+    <script src="{{url('js/bootstrap.min.js')}}"></script>
+    <script  src="{{asset('js/jquery-3.3.1.js')}}"></script>
 
-@section('content')
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">{{ __('Register') }}</div>
+</head>
+   
 
-                <div class="card-body">
-                    <form method="POST" action="{{ route('register') }}" aria-label="{{ __('Register') }}">
-                        @csrf
-
-                        <div class="form-group row">
-                            <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Name') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="name" type="text" class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}" name="name" value="{{ old('name') }}" required autofocus>
-
-                                @if ($errors->has('name'))
+<body >
+    
+    
+    <div class="registerBox">
+    {{-- <img src="{{ asset('images/avatar.png') }}" class="avatar"> --}}
+    {{-- <a class="centerLink" href="{{ route('loginnew') }}">Already have an account?Login here!</a> --}}
+        <h1>Registration Form</h1>
+        <div class="loader2"></div>
+        <form method="POST" action="{{ route('register') }}" id="frmAddUser">
+            @csrf
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label for="inputFirstName">First Name</label>
+                    <input type="text" class="form-control{{ $errors->has('inputFirstName') ? ' is-invalid' : '' }}" name="inputFirstName" value="{{ old('inputFirstName') }}" required autofocus  placeholder="First Name">
+                    {{-- @if ($errors->has('inputFirstName'))
                                     <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $errors->first('name') }}</strong>
+                                        <strong>{{ $errors->first('inputFirstName') }}</strong>
                                     </span>
-                                @endif
-                            </div>
-                        </div>
-
-                        <div class="form-group row">
-                            <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('E-Mail Address') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="email" type="email" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" name="email" value="{{ old('email') }}" required>
-
-                                @if ($errors->has('email'))
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $errors->first('email') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
-                        </div>
-
-                        <div class="form-group row">
-                            <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Password') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="password" type="password" class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" name="password" required>
-
-                                @if ($errors->has('password'))
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $errors->first('password') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
-                        </div>
-
-                        <div class="form-group row">
-                            <label for="password-confirm" class="col-md-4 col-form-label text-md-right">{{ __('Confirm Password') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required>
-                            </div>
-                        </div>
-
-                        <div class="form-group row mb-0">
-                            <div class="col-md-6 offset-md-4">
-                                <button type="submit" class="btn btn-primary">
-                                    {{ __('Register') }}
-                                </button>
-                            </div>
-                        </div>
-                    </form>
+                                @endif --}}
+                  </div>
+                <div class="form-group col-md-6">
+                    <label for="inputLastName">Last Name</label>
+                    <input type="text" class="form-control {{ $errors->has('inputLastName') ? ' is-invalid' : '' }}" name="inputLastName" value="{{ old('inputLastName') }}" required autofocus placeholder="Last Name">
+                    {{-- @if ($errors->has('inputLastName'))
+                    <span class="invalid-feedback" role="alert">
+                        <strong>{{ $errors->first('inputLastName') }}</strong>
+                    </span>
+                @endif --}}
+                
+                  </div>
+                
+             </div>
+            <div class="form-row">
+              <div class="form-group col-md-6">
+                <label for="inputEmail4">Email</label>
+                <input type="email" class="form-control {{ $errors->has('inputEmail') ? ' is-invalid' : '' }}" name="inputEmail" value="{{ old('inputEmail') }}" required autofocus  placeholder="Email">
+                {{-- @if ($errors->has('inputEmail'))
+                <span class="invalid-feedback" role="alert">
+                    <strong>{{ $errors->first('inputEmail') }}</strong>
+                </span>
+            @endif --}}
+              </div>
+              {{-- <div class="form-group col-md-6">
+                <label for="inputPassword">Password</label>
+                <input type="password" class="form-control {{ $errors->has('inputPassword') ? ' is-invalid' : '' }}" name="inputPassword" value="{{ old('inputPassword') }}" required autofocus   placeholder="Password">
+                @if ($errors->has('inputPassword'))
+                <span class="invalid-feedback" role="alert">
+                    <strong>{{ $errors->first('inputPassword') }}</strong>
+                </span>
+                 @endif
+              </div>
+            </div>
+            <div class="form-row">
+            <div class="form-group col-md-6">
+              <label for="inputConfirmPassword">Confirm Password</label>
+              <input type="password"  class="form-control {{ $errors->has('inputConfirmPassword') ? ' is-invalid' : '' }}" name="inputConfirmPassword" value="{{ old('inputConfirmPassword') }}" required autofocus placeholder="Confirm Password">
+              @if ($errors->has('inputConfirmPassword'))
+              <span class="invalid-feedback" role="alert">
+                  <strong>{{ $errors->first('inputConfirmPassword') }}</strong>
+              </span>
+             @endif
+            </div> --}}
+            <div class="form-group col-md-6">
+              <label for="inputDob">Date of Birth</label>
+              <input type="date" class="form-control {{ $errors->has('inputDob') ? ' is-invalid' : '' }}" name="inputDob" value="{{ old('inputDob') }}" required autofocus  placeholder="Date of Birth">
+              {{-- @if ($errors->has('inputDob'))
+              <span class="invalid-feedback" role="alert">
+                  <strong>{{ $errors->first('inputDob') }}</strong>
+              </span>
+          @endif   --}}
+            </div>
+            </div>
+            <div class="form-row">
+                      <div class="form-group col-md-6">
+                        <label for="inputContactNum">Contact Number</label>
+                        <input type="tel" class="form-control{{ $errors->has('inputContactNum') ? ' is-invalid' : '' }}" name="inputContactNum" value="{{ old('inputContactNum') }}" required autofocus placeholder="Contact Number">
+                        {{-- @if ($errors->has('inputContactNum'))
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $errors->first('inputContactNum') }}</strong>
+                            </span>
+                         @endif --}}
+                      </div>
+                      <div class="form-group col-md-6">
+                        <label for="inputGender">Gender</label>
+                        <select  name="inputGender" style="background-color:#000000d6;" class="form-control">
+                        <option selected>Male</option>
+                        <option>Female</option>
+                        </select>
                 </div>
             </div>
-        </div>
+            
+           
+            <input type="submit" id=".btnRegister" name="btnSubmit" value="Register">
+           
+            {{-- <button class="button">Add User</button>   --}}
+          </form>
+          <a class="nav-link" href="{{ route('login') }}">{{ __('Already have an account?Login here!') }}</a></a>|  <a class="centerLink" href="">Your password will be automatically generated and send to you by mail</a>
     </div>
-</div>
-@endsection
+<script>
+    $('#btnRegister').on("click", function() {
+                $(".loader2").css("display", "block");
+            });
+            </script>
+</body>
+</html>

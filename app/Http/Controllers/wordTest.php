@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+use Auth;
 
 use Illuminate\Http\Request;
 
@@ -16,7 +17,7 @@ $newSection->addText("TEXT_TO_DOCUMENT_DETAILS");
 
 
 
-    $desc1 = "The Noore Portfolio details is a very useful feature of the web page. You can establish your archived details and the works to the entire web community. It was outlined to bring in extra clients, get you selected based on this details.";
+    $desc1 = ((Auth::user()->firstname))."The Noore Portfolio details is a very useful feature of the web page. You can establish your archived details and the works to the entire web community. It was outlined to bring in extra clients, get you selected based on this details.";
 
     $newSection->addText($desc1, array('name' => 'Tahoma', 'size' => 15, 'color' => 'red'));
 
