@@ -1,4 +1,5 @@
 @include('flashy::message')
+@extends('layouts.userlayout')
 <!DOCTYPE html>
 <html>
 <head>
@@ -11,15 +12,18 @@
 </head>
    
 
-<body >
+
     
-    
-    <div class="registerBox">
+@section('content')
+    {{-- <div class="registerBox"> --}}
     {{-- <img src="{{ asset('images/avatar.png') }}" class="avatar"> --}}
     {{-- <a class="centerLink" href="{{ route('loginnew') }}">Already have an account?Login here!</a> --}}
-        <h1>Registration Form</h1>
+        <h1>Client Registration</h1>
+
         <form method="POST" action="{{ route('add_user') }}" id="frmAddUser">
             @csrf
+            <fieldset class="addUserFieldset">
+                <legend class="addUserLegend">Registration</legend>
             <div class="form-row">
                 <div class="form-group col-md-6">
                     <label for="inputFirstName">First Name</label>
@@ -83,11 +87,12 @@
             </div>
             
            
-            <input type="submit" name="btnSubmit" value="Register">
+            <input type="submit" name="btnSubmit" class="btn btn-success btn-block" value="Register">
             {{-- <button class="button">Add User</button>   --}}
+            </fieldset>
           </form>
-          <a class="nav-link" href="{{ route('login') }}">{{ __('Already have an account?Login here!') }}</a></a>|  <a class="centerLink" href="">Your password will be automatically generated and send to you by mail</a>
-    </div>
+          {{-- <a class="nav-link" href="{{ route('login') }}">{{ __('Already have an account?Login here!') }}</a></a>|  <a class="centerLink" href="">Your password will be automatically generated and send to you by mail</a> --}}
+    
 
-</body>
+@endsection
 </html>

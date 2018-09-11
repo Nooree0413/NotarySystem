@@ -10,15 +10,15 @@
     <title>Notary System</title>
 
     <!-- Bootstrap CSS CDN -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+    {{-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous"> --}}
     <!-- Our Custom CSS -->
     {{-- <link rel="stylesheet" href="style4.css"> --}}
     <link rel="stylesheet" type="text/css" href="{{asset('css/style4.css')}}">
     <link rel="icon" href="{{asset('images/certificate.png')}}" />
  
-<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
    
-<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
+
 
 
     <!-- Font Awesome JS -->
@@ -39,10 +39,13 @@
 
             <ul class="list-unstyled components">
                 <li>
-                        <a href="">Welcome, {{ ucfirst(strtolower(Auth::user()->firstname)) }}</a>
+                        <a href="/dashboard">Welcome, {{ ucfirst(strtolower(Auth::user()->firstname)) }}</a>
                 </li>
                 <li>
-                    <a href="{{ route('registernew') }}" ><i class="fas fa-user-plus"></i>Add User</a>
+                    <a href="{{ route('viewUser') }}"><i class="fas fa-users"></i> View Users</a></li>
+            </li>
+                <li>
+                    <a href="{{ route('registernew') }}" ><i class="fas fa-user-plus"></i> Add User</a>
                 </li>
                 <li class="active">
                     <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
@@ -146,6 +149,9 @@
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="#">Page</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{route('dashboard')}}">Welcome, {{ ucfirst(strtolower(Auth::user()->firstname)) }}</a>
                             </li>
                         </ul>
                     </div>

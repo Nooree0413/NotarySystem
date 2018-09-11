@@ -1,3 +1,4 @@
+@include('flashy::message') 
 @extends('layouts.loginlayout')
 
 @section('content')

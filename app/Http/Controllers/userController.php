@@ -64,9 +64,6 @@ class userController extends Controller
             $m->to($user->email, 'Notary System')->from('hi@example.com', 'Notary System')->subject('Login Credentials');
             });
 
-            
-
-         
         flashy()->success($fname.' '.$lname. ' successfully added!.');
         return redirect('/dashboard');
         
@@ -75,5 +72,11 @@ class userController extends Controller
     public function sendEmail($genPass,$email,$fname,$lname)
     {
         \Mail::send(new sendMail($genPass,$email,$fname,$lname));
+    }
+
+    public function viewUsers()
+    {
+        $users = DB::table('users')->get();
+        return view('users.viewUser')->with('users',$users);
     }
 }
