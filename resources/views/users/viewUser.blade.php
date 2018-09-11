@@ -1,6 +1,7 @@
 @include('flashy::message')
 @extends('layouts.userlayout')
 <link rel="stylesheet" type="text/css" href="{{asset('/css/bootstrap.min.css')}}">
+<link rel="stylesheet" type="text/css" href="{{asset('/css/footer.css')}}">
 <script src="{{url('js/bootstrap.min.js')}}"></script>
 {{-- <script src="{{url('js/bootstrap.min.js')}}"></script> --}}
 @section('content')
@@ -113,4 +114,7 @@
         @endforeach
     </tbody>
 </table>
+<footer>
+    <img src="{{ asset('images/certificate.png') }}" class="footerlogo" alt="logo notary">  Copyright &copy; <script type="text/JavaScript"> var theDate=new Date(); document.write(theDate.getFullYear()); </script> NW Mauritius.
+ </footer>
 @endsection

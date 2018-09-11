@@ -15,6 +15,7 @@
     {{-- <link rel="stylesheet" href="style4.css"> --}}
     <link rel="stylesheet" type="text/css" href="{{asset('css/style4.css')}}">
     <link rel="icon" href="{{asset('images/certificate.png')}}" />
+    <link rel="stylesheet" type="text/css" href="{{asset('/css/footer.css')}}">
  
     <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
    
@@ -194,5 +195,7 @@
         });
     </script>
 </body>
-
+<footer>
+    <img src="{{ asset('images/certificate.png') }}" class="footerlogo" alt="logo notary">  Copyright &copy; <script type="text/JavaScript"> var theDate=new Date(); document.write(theDate.getFullYear()); </script> NW Mauritius.
+ </footer>
 </html>
