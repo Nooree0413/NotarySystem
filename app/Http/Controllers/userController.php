@@ -64,10 +64,12 @@ class userController extends Controller
             $m->to($user->email, 'Notary System')->from('hi@example.com', 'Notary System')->subject('Login Credentials');
             });
 
-        return view('/dashboard');
+            
 
-        // $user=(DB::table('users')->where('id',$user_id)->get())[0];
-
+         
+        flashy()->success($fname.' '.$lname. ' successfully added!.');
+        return redirect('/dashboard');
+        
     }
 
     public function sendEmail($genPass,$email,$fname,$lname)

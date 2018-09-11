@@ -22,7 +22,7 @@
         <div class="userEmail">
             <strong>Hello {{$fname}},</strong><br><br> 
 
-            Welcome to ALT. <br> 
+            Welcome to Notary System. <br> 
             
             Your generated password is: {{$genPass}}<br>
             Kindly click on the link below to proceed. <br><br> 

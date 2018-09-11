@@ -6,6 +6,7 @@
     <link rel="stylesheet" type="text/css" href="{{asset('/css/register.css')}}"> 
     <link rel="stylesheet" type="text/css" href="{{asset('/css/bootstrap.min.css')}}">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" rel="stylesheet">
+    
     <script src="{{url('js/bootstrap.min.js')}}"></script>
     <script  src="{{asset('js/jquery-3.3.1.js')}}"></script>
 
@@ -54,26 +55,7 @@
                 </span>
             @endif --}}
               </div>
-              {{-- <div class="form-group col-md-6">
-                <label for="inputPassword">Password</label>
-                <input type="password" class="form-control {{ $errors->has('inputPassword') ? ' is-invalid' : '' }}" name="inputPassword" value="{{ old('inputPassword') }}" required autofocus   placeholder="Password">
-                @if ($errors->has('inputPassword'))
-                <span class="invalid-feedback" role="alert">
-                    <strong>{{ $errors->first('inputPassword') }}</strong>
-                </span>
-                 @endif
-              </div>
-            </div>
-            <div class="form-row">
-            <div class="form-group col-md-6">
-              <label for="inputConfirmPassword">Confirm Password</label>
-              <input type="password"  class="form-control {{ $errors->has('inputConfirmPassword') ? ' is-invalid' : '' }}" name="inputConfirmPassword" value="{{ old('inputConfirmPassword') }}" required autofocus placeholder="Confirm Password">
-              @if ($errors->has('inputConfirmPassword'))
-              <span class="invalid-feedback" role="alert">
-                  <strong>{{ $errors->first('inputConfirmPassword') }}</strong>
-              </span>
-             @endif
-            </div> --}}
+              
             <div class="form-group col-md-6">
               <label for="inputDob">Date of Birth</label>
               <input type="date" class="form-control {{ $errors->has('inputDob') ? ' is-invalid' : '' }}" name="inputDob" value="{{ old('inputDob') }}" required autofocus  placeholder="Date of Birth">
