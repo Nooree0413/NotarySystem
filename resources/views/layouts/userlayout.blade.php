@@ -25,7 +25,9 @@
     <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/fontawesome.js" integrity="sha384-6OIrr52G08NpOFSZdxxz1xdNSndlD4vdcf/q2myIUVO0VsqaGHJsB0RaBE01VTOY" crossorigin="anonymous"></script>
     <script>
         $(document).ready(function() {
-        $('#tbluser').DataTable();
+        $('#tbluser').DataTable(
+            {'responsive':'true'}
+        );
     } );
     </script>
 </head>
@@ -41,9 +43,7 @@
             </div>
 
             <ul class="list-unstyled components">
-                <li>
-                        {{-- <a href="/dashboard">Welcome, {{ ucfirst(strtolower(Auth::user()->firstname)) }}</a> --}}
-                </li>
+                
                 <li>
                     <a href="{{ route('viewUser') }}"><i class="fas fa-users"></i> View Users</a></li>
             </li>
@@ -141,20 +141,9 @@
 
                     <div class="collapse navbar-collapse" id="navbarSupportedContent">
                         <ul class="nav navbar-nav ml-auto">
-                            <li class="nav-item active">
-                                <a class="nav-link" href="#">Page</a>
-                            </li>
+                            
                             <li class="nav-item">
-                                <a class="nav-link" href="#">Page</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#">Page</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#">Page</a>
-                            </li>
-                            <li class="nav-item">
-                                {{-- <a class="nav-link" href="{{route('dashboard')}}">Welcome, {{ ucfirst(strtolower(Auth::user()->firstname)) }}</a> --}}
+                                <a class="nav-link" style="color:aliceblue;" href="{{route('dashboard')}}">Welcome, {{ ucfirst(strtolower(Auth::user()->firstname)) }}</a>
                             </li>
                         </ul>
                     </div>

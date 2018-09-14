@@ -11,7 +11,10 @@
 <link rel="stylesheet" type="text/css" href="{{asset('css/footer.css')}}">
         
 @section('content')
-<h4 class="datatableTitleUsers">Users</h4>
+{{-- <button class="button" style="vertical-align:middle"><span>Back </span> --}}
+    <a class="back-btn hvr-icon-pulse" href="/dashboard"><i class="fa fa-home hvr-icon"></i> Back</a>
+    <h4 class="datatableTitleUsers" style="text-align:center;">Client List</h4>
+    <div class="spacor1"></div>
 <div class="container tableSpacor" style="border: 4mm ridge #212529;">
 <table id="tbluser" class="table table-hover " style="width:100%;">
     <thead>
@@ -63,7 +66,7 @@
             <td>
                 {{-- Show Event Button --}}
                     {{-- <a href="/usersfound/show/{{$user->id}}"> --}}
-                        <span data-tooltip tabindex="1" style="border-bottom:none" title="show">
+                        <span data-toggle="tooltip" data-placement="top" style="border-bottom:none" title="show">
                             <i class="fas fa-eye"></i>
                         </span>
                     </a> 
@@ -71,7 +74,7 @@
                |
                 {{-- Edit User Button --}}
                     {{-- <a class="editbtn" data-open="editusermod" data-mycontactnum="{{$user->contactnum}}" data-myfirstname="{{$user->firstname}}" data-mylastname="{{$user->lastname}}" data-myemail="{{$user->email}}" data-userid="{{$user->id}}" data-target="#editusermod"> --}}
-                        <span style="border-bottom:none" data-tooltip tabindex="1" title="Edit">
+                        <span style="border-bottom:none" data-toggle="tooltip" data-placement="top"  title="Edit">
                             <i class="fas fa-pencil-alt font-color"></i> 
                         </span>
                     </a>
@@ -81,13 +84,13 @@
                 {{-- Delete User Button --}}
                     @if ($user->id== Auth::id()) 
                         <a class="btndelevent not-active-link disabled" href="/usersfound/delete/{{$user->id}}">
-                            <span style="border-bottom:none" data-tooltip tabindex="1" title="Delete">
+                            <span style="border-bottom:none" data-toggle="tooltip" data-placement="top" tabindex="1" title="Delete">
                                 <i class="fas fa-trash-alt font-color"></i>
                             </span>
                         </a>
                     @else
                         <a class="btndelevent" href="/usersfound/delete/{{$user->id}}">
-                            <span style="border-bottom:none" data-tooltip tabindex="1" title="Delete">
+                            <span style="border-bottom:none" data-toggle="tooltip" data-placement="top"tabindex="1" title="Delete">
                                 <i class="fas fa-trash-alt font-color"></i>
                             </span>
                         </a>
@@ -96,7 +99,7 @@
               |
                 {{-- Show transactions Button --}}
                     {{-- <a href="/usersfound/show/{{$user->id}}"> --}}
-                        <span data-tooltip tabindex="1" style="border-bottom:none" title="">
+                        <span data-toggle="tooltip" data-placement="top" tabindex="1" style="border-bottom:none" title="Transactions">
                             <i class="fas fa-handshake"></i>
                         </span>
                     </a> 
@@ -107,7 +110,7 @@
     </tbody>
 </table>
 </div>
-<footer>
+{{-- <footer>
     <img src="{{ asset('images/certificate.png') }}" class="footerlogo" alt="logo notary">  Copyright &copy; <script type="text/JavaScript"> var theDate=new Date(); document.write(theDate.getFullYear()); </script> NW Mauritius.
- </footer>
+ </footer> --}}
 @endsection

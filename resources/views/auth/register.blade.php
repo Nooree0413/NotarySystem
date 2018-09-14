@@ -8,7 +8,7 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" rel="stylesheet">
     
     <script src="{{url('js/bootstrap.min.js')}}"></script>
-    <script  src="{{asset('js/jquery-3.3.1.js')}}"></script>
+    {{-- <script  src="{{asset('js/jquery-3.3.1.js')}}"></script> --}}
 
 </head>
    

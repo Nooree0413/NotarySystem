@@ -5,7 +5,7 @@
 @import "https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700";
 body {
     font-family: 'Poppins', sans-serif;
-    background: #fafafa;
+    background: #fafafafa;
 }
 
 p {
@@ -32,6 +32,7 @@ a:focus {
     border-radius: 0;
     margin-bottom: 40px;
     box-shadow: 1px 1px 3px rgba(240, 146, 146, 0.1);
+    color:white!important;
 }
 
 .navbar-btn {
