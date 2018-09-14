@@ -10,7 +10,7 @@ use App\user;
 use DB;
 use Illuminate\Support\Facades\Input;
 use Auth;
-
+use Datatables;
 use Illuminate\Support\Facades\Validator;
 use App\Mail\sendMail;
 use Mail;
@@ -77,6 +77,8 @@ class userController extends Controller
     public function viewUsers()
     {
         $users = DB::table('users')->get();
-        return view('users.viewUser')->with('users',$users);
+       return view('users.viewUser')->with('users',$users);
+
+        
     }
 }
