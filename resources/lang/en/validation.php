@@ -141,6 +141,22 @@ return [
     |
     */
 
-    'attributes' => [],
+    'attributes' => [
+
+            'inputFirstName' => 'First name',
+            'inputLastName' => 'Last name',
+            'inputContactNum' => 'Contact number',
+            'contactnum' => 'Contact Number',
+            'inputEmail' => 'Email-address',
+            'inputAddress' => 'address',
+            'inputGender' => 'Gender',
+            'inputDob' => 'Date of Birth',
+            'inputNIC1' => 'National Identity Card Number',
+            'inputNIC2' => ' Husband/Wife National Identity Card Number',
+            'inputMarriageStatus' => 'Marriage Status',
+            'inputPFirstName' => 'Husband/Wife First Name',
+            'inputPLastName' => 'Husband/Wife Last Name',
+            'inputPDob' => 'Husband/Wife Date of Birth',
+    ],
 
 ];
