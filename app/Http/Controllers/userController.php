@@ -22,16 +22,18 @@ class userController extends Controller
 {
     public function add_user(Request $request){
         
-        // $this->validate($request,
-        // [
-        //     'inputFirstName' => 'required|alpha|max:255',
-        //     'inputLastName' => 'required|alpha|max:255',
-        //     'inputContactNumber' => 'required|digits:8|unique:users,contactnum',
-        //     'inputEmail' => 'required|string|email|max:255|unique:users,email',
-        //     'inputDob' => 'required',
-        //     'inputGender' => 'required'
-        //      ]       
-        // );
+        $this->validate($request,
+        [
+            'inputFirstName' => 'required|alpha|max:255',
+            'inputLastName' => 'required|alpha|max:255',
+            'inputContactNum' => 'required|digits:8|unique:users,contactnum',
+            'inputEmail' => 'required|string|email|max:255|unique:users,email',
+            'inputDob' => 'required',
+            'inputGender' => 'required',
+            'inputAddress' => 'required',
+            'inputNIC1' => 'required'
+             ]       
+        );
 
         
 

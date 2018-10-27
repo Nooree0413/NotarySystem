@@ -43,21 +43,13 @@
             <div class="form-row">
                 <div class="form-group col-md-6">
                     <label for="inputFirstName">First Name</label>
-                    <input type="text" class="form-control{{ $errors->has('inputFirstName') ? ' is-invalid' : '' }}" name="inputFirstName" value="{{ old('inputFirstName') }}" required autofocus  placeholder="First Name">
-                    {{-- @if ($errors->has('inputFirstName'))
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $errors->first('inputFirstName') }}</strong>
-                                    </span>
-                                @endif --}}
+                    <input type="text" required class="form-control" name="inputFirstName" value="{{ old('inputFirstName') }}"  autofocus  placeholder="First Name">
+                   
                   </div>
                 <div class="form-group col-md-6">
                     <label for="inputLastName">Last Name</label>
-                    <input type="text" class="form-control {{ $errors->has('inputLastName') ? ' is-invalid' : '' }}" name="inputLastName" value="{{ old('inputLastName') }}" required autofocus placeholder="Last Name">
-                    {{-- @if ($errors->has('inputLastName'))
-                    <span class="invalid-feedback" role="alert">
-                        <strong>{{ $errors->first('inputLastName') }}</strong>
-                    </span>
-                @endif --}}
+                    <input type="text" required  class="form-control" name="inputLastName" value="{{ old('inputLastName') }}" autofocus placeholder="Last Name">
+                    
                 
                   </div>
                 
@@ -65,33 +57,21 @@
             <div class="form-row">
               <div class="form-group col-md-6">
                 <label for="inputEmail4">Email</label>
-                <input type="email" class="form-control {{ $errors->has('inputEmail') ? ' is-invalid' : '' }}" name="inputEmail" value="{{ old('inputEmail') }}" required autofocus  placeholder="Email">
-                {{-- @if ($errors->has('inputEmail'))
-                <span class="invalid-feedback" role="alert">
-                    <strong>{{ $errors->first('inputEmail') }}</strong>
-                </span>
-            @endif --}}
+                <input type="email" required class="form-control " name="inputEmail" value="{{ old('inputEmail') }}"  autofocus  placeholder="Email">
+                
               </div>
               
             <div class="form-group col-md-6">
               <label for="inputDob">Date of Birth</label>
-              <input type="date" class="form-control {{ $errors->has('inputDob') ? ' is-invalid' : '' }}" name="inputDob" value="{{ old('inputDob') }}" required autofocus  placeholder="Date of Birth">
-              {{-- @if ($errors->has('inputDob'))
-              <span class="invalid-feedback" role="alert">
-                  <strong>{{ $errors->first('inputDob') }}</strong>
-              </span> --}}
-          {{-- @endif   --}}
+              <input type="date"  required class="form-control " name="inputDob" value="{{ old('inputDob') }}"  autofocus  placeholder="Date of Birth">
+             
             </div>
             </div>
             <div class="form-row">
                       <div class="form-group col-md-6">
-                        <label for="inputContactNum">Contact Number</label>
-                        <input type="tel" min="8" maxlength="8"   title="8 digits code only and starting with number '5'." class="form-control{{ $errors->has('inputContactNum') ? ' is-invalid' : '' }}" name="inputContactNum" value="{{ old('inputContactNum') }}"  >
-                         {{-- @if ($errors->has('inputContactNum')) 
-                            <span class="invalid-feedback" role="alert">
-                                <strong>{{ $errors->first('inputContactNum') }}</strong>
-                            </span>
-                         @endif  --}}
+                        <label for="inputContactNum4">Contact Number</label>
+                        <input type="tel" required    title="8 digits code only and starting with number '5'." class="form-control" name="inputContactNum"  >
+                         
                       </div>
                       <div class="form-group col-md-6">
                         <label for="inputGender">Gender</label>
@@ -104,21 +84,13 @@
             <div class="form-row">
                 <div class="form-group col-md-6">
                   <label for="inputNIC1">NIC Number</label>
-                  <input type="text"  maxlength="14" class="form-control{{ $errors->has('inputNIC1') ? ' is-invalid' : '' }}" name="inputNIC1" value="{{ old('inputNIC1') }}" required >
-                  {{-- @if ($errors->has('inputNIC1'))
-                      <span class="invalid-feedback" role="alert">
-                          <strong>{{ $errors->first('inputNIC1') }}</strong>
-                      </span>
-                   @endif --}}
+                  <input type="text" required maxlength="14" class="form-control" name="inputNIC1" value="{{ old('inputNIC1') }}"  >
+                  
                 </div>
                 <div class="form-group col-md-6">
                     <label for="inputAddress">Address</label>
-                    <input type="text"  class="form-control{{ $errors->has('inputAddress') ? ' is-invalid' : '' }}" name="inputAddress" value="{{ old('inputAddress') }}"  >
-                    @if ($errors->has('inputAddress'))
-                        <span class="invalid-feedback" role="alert">
-                            <strong>{{ $errors->first('inputAddress') }}</strong>
-                        </span>
-                     @endif
+                    <input type="text" required  class="form-control" name="inputAddress" value="{{ old('inputAddress') }}"  >
+                   
                   </div>
       </div>
       <div class="form-row">
