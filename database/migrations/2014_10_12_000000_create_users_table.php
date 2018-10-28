@@ -23,6 +23,10 @@ class CreateUsersTable extends Migration
             $table->string('password');
             $table->date('dob');
             $table->string('gender');
+            $table->string('address');
+            $table->string('nic')->unique();
+            $table->string('marriageStatus');
+            $table->string('roles');
             $table->rememberToken();
             $table->timestamp('created_at')->default(\DB::raw('CURRENT_TIMESTAMP'));
             $table->timestamp('updated_at')->default(\DB::raw('CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP'));

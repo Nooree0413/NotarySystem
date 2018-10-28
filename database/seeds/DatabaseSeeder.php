@@ -20,7 +20,13 @@ class DatabaseSeeder extends Seeder
                 'email' => 'nooree@gmail.com',
                 'password' => bcrypt('123456'),
                 'dob' => '1997-11-13',
-                'gender' => 'Female'
+                'gender' => 'Female',
+                'address' => 'Royal Road Lavenir St Pierre',
+                'nic' => 'K1234567890987',
+                'marriageStatus' => 'Single',
+                'roles' => 'Admin'
+
+
             ],
             [
                 'firstname' => 'Wasiim',
@@ -29,7 +35,11 @@ class DatabaseSeeder extends Seeder
                 'email' => 'wasiim@gmail.com',
                 'password' => bcrypt('123456'),
                 'dob' => '1997-09-04',
-                'gender' => 'Male'
+                'gender' => 'Male',
+                'address' => 'Royal Road Castel',
+                'nic' => 'G1234567890987',
+                'marriageStatus' => 'Single',
+                'roles' => 'Admin'
             ]
            
         ]);

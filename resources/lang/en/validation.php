@@ -148,7 +148,7 @@ return [
             'inputContactNum' => 'Contact number',
             'contactnum' => 'Contact Number',
             'inputEmail' => 'Email-address',
-            'inputAddress' => 'address',
+            'inputAddress' => 'Address',
             'inputGender' => 'Gender',
             'inputDob' => 'Date of Birth',
             'inputNIC1' => 'National Identity Card Number',

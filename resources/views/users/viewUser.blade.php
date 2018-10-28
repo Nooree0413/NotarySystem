@@ -66,7 +66,7 @@
             <td>
                 {{-- Show Event Button --}}
                     {{-- <a href="/usersfound/show/{{$user->id}}"> --}}
-                        <span data-toggle="tooltip" data-placement="top" style="border-bottom:none" title="show">
+                        <span data-toggle="tooltip" data-placement="top" style="border-bottom:none" title="More details">
                             <i class="fas fa-eye"></i>
                         </span>
                     </a> 

@@ -43,4 +43,8 @@ class HomeController extends Controller
     public function newRegisterPage(){
         return view('auth.registernew');
     }
+
+    public function newRegisterSpousePage(){
+        return view('auth.registrationSpouse');
+    }
 }

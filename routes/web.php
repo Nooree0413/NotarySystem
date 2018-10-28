@@ -26,6 +26,7 @@ Route::get('/logout', 'HomeController@logout');
 Route::get('/generateWord', ['as'=>'createWord','uses'=>'WordTest@createWordDocx']);
 
 Route::get('/registernew', 'HomeController@newRegisterPage')->name('registernew');
+Route::get('/registerSpouse', 'HomeController@newRegisterSpousePage')->name('registerSpouse');
 Route::post('/registernew','userController@add_user')->name('add_user');
 Route::get('/viewuser','userController@viewUsers')->name('viewUser');
 Route::get('/test','userController@viewUsers')->name('test');

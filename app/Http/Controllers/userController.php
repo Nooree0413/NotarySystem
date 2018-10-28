@@ -28,10 +28,12 @@ class userController extends Controller
             'inputLastName' => 'required|alpha|max:255',
             'inputContactNum' => 'required|digits:8|unique:users,contactnum',
             'inputEmail' => 'required|string|email|max:255|unique:users,email',
-            'inputDob' => 'required',
-            'inputGender' => 'required',
-            'inputAddress' => 'required',
-            'inputNIC1' => 'required'
+            'inputDob' => 'required|date',
+            'inputGender' => 'required|alpha|max:255',
+            'inputAddress' => 'required|alpha|max:255',
+            'inputMarriageStatus' => 'required',
+            'inputRoles' =>'required',
+            'inputNIC1' => 'required|alpha_num|unique:users,nic',
              ]       
         );
 
@@ -43,6 +45,10 @@ class userController extends Controller
         $dob = Input::get('inputDob');
         $contactnum = Input::get('inputContactNum');
         $gender = Input::get('inputGender');
+        $address= Input::get('inputAddress');
+        $marriageStatus=Input::get('inputMarriageStatus');
+        $roles=Input::get('inputRoles');
+        $nic=Input::get('inputNIC1');
 
         $generatedPassword=str_random(8);
         self::sendEmail($generatedPassword,$email,$fname,$lname);
@@ -56,6 +62,11 @@ class userController extends Controller
             'dob' => $dob, 
             'contactnum' => $contactnum,
             'gender' => $gender,
+            'address' =>$address,
+            'nic' => $nic,
+            'roles' => $roles,
+            'marriageStatus' => $marriageStatus
+
             
         );
 
@@ -67,7 +78,15 @@ class userController extends Controller
             });
 
         flashy()->success($fname.' '.$lname. ' successfully added!.');
-        return redirect('/dashboard');
+        // return redirect('/dashboard');
+
+        if($marriageStatus=="Married" && $gender=="Male"){
+            return redirect('/registerSpouse');
+        }
+        else{
+            return redirect('/dashboard');
+
+        }
         
     }
 

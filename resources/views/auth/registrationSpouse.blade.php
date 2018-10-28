@@ -22,9 +22,9 @@
     {{-- <div class="registerBox"> --}}
     {{-- <img src="{{ asset('images/avatar.png') }}" class="avatar"> --}}
     {{-- <a class="centerLink" href="{{ route('loginnew') }}">Already have an account?Login here!</a> --}}
-        <h1 class="datatableTitleUsers">Client Registration</h1>
+        <h1 class="datatableTitleUsers">Spouse details</h1>
 
-        <form method="POST" action="{{ route('add_user') }}" id="frmAddUser">
+        <form method="POST" action="" id="frmAddUser">
             @csrf
             <fieldset class="addUserFieldset">
                 <legend class="addUserLegend">Registration</legend>
@@ -47,7 +47,7 @@
                    
                   </div>
                 <div class="form-group col-md-6">
-                    <label for="inputLastName">Last Name</label>
+                    <label for="inputMaidenName">Maiden Name</label>
                     <input type="text" required  class="form-control" name="inputLastName" value="{{ old('inputLastName') }}" autofocus placeholder="Last Name">
                     
                 
@@ -76,8 +76,8 @@
                       <div class="form-group col-md-6">
                         <label for="inputGender">Gender</label>
                         <select  name="inputGender" class="form-control">
-                        <option selected>Male</option>
-                        <option>Female</option>
+                        <option >Male</option>
+                        <option selected>Female</option>
                         </select>
                 </div>
             </div>
@@ -93,30 +93,10 @@
                    
                   </div>
       </div>
-
-      <div class="form-row">
-        <div class="form-group col-md-6">
-            <label for="inputRoles">Roles</label>
-            <select  name="inputRoles" class="form-control">
-            <option selected>Admin</option>
-            <option>Employee</option>
-            <option >Client</option>
-            <option>Bank</option>
-            </select>
-        </div>
-        <div class="form-group col-md-6">
-            <label for="inputMarriageStatus">Marriage Status</label>
-            <select  name="inputMarriageStatus" class="form-control">
-            <option selected>Married</option>
-            <option>Single</option>
-            <option >Divorced</option>
-            <option>Widowed</option>
-            </select>
-        </div>
-      </div>
+      
             
            
-            <input type="submit" name="btnSubmit" class="btn btn-success btn-block" value="Register">
+            <input type="submit" name="btnSubmit" class="btn btn-success btn-block" value="Add Spouse">
             {{-- <button class="button">Add User</button>   --}}
             </fieldset>
           </form>
