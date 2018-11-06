@@ -1,17 +1,21 @@
 body{
   margin: 0;
   padding: 0;
-  background: url("/images/law1.jpg");
-  background-size: cover;
+  background: url("/images/law3.jpg");
+  -webkit-background-size: cover;
+    -moz-background-size: initial;
+    -o-background-size: cover;
+    background-size: cover;
   background-repeat:no-repeat;
   background-position: center;
   font-family: sans-serif;
 }
-
+.btnSize{padding: 14px 40px;}
 .loginbox{
   width: 50%;
   height: auto;
-  background: #000000d6;
+  border-radius: 3%;
+  background: #0000004f;
   color: #fff;
   top: 50%;
   left: 50%;

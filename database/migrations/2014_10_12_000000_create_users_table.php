@@ -31,6 +31,23 @@ class CreateUsersTable extends Migration
             $table->timestamp('created_at')->default(\DB::raw('CURRENT_TIMESTAMP'));
             $table->timestamp('updated_at')->default(\DB::raw('CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP'));
         });
+
+        Schema::create('spouseDetails', function (Blueprint $table) {
+            
+            $table->increments('id');
+            $table->unsignedInteger('spouseId');
+            $table->string('firstname');
+            $table->string('lastname');
+            $table->string('contactnum')->unique();
+            $table->string('email');
+            $table->date('dob');
+            $table->string('gender');
+            $table->string('spouseNic')->unique();
+            $table->string('address');
+            $table->rememberToken();
+            $table->timestamp('created_at')->default(\DB::raw('CURRENT_TIMESTAMP'));
+            $table->timestamp('updated_at')->default(\DB::raw('CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP'));
+        });
     }
 
     /**

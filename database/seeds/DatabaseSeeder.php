@@ -43,6 +43,24 @@ class DatabaseSeeder extends Seeder
             ]
            
         ]);
+
+        DB::table('spouseDetails')->insert([
+            [
+                'spouseId' =>'2',
+                'firstname' => 'Mala',
+                'lastname' => 'Gukhool',  
+                'contactnum' => '57296461',
+                'email' => 'mala@gmail.com',
+                'dob' => '1997-11-13',
+                'gender' => 'Female',
+                'address' => 'Royal Road Castel',
+                'spouseNic' => 'K1334567890987'
+
+            ],
+           
+           
+        ]);
+        
         
     }
 }
