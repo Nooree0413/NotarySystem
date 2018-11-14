@@ -157,6 +157,11 @@ return [
             'inputPFirstName' => 'Husband/Wife First Name',
             'inputPLastName' => 'Husband/Wife Last Name',
             'inputPDob' => 'Husband/Wife Date of Birth',
+            'inputBcNum' => 'Birth Certificate Number',
+            'inputDistrict' =>'District in which the birth certificate was issued',
+            'inputPlaceOfBirth' =>'Place of Birth',
+            'inputProfession' =>'Profession',
+            'inputTitle' =>'Title',
     ],
 
 ];

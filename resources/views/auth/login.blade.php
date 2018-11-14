@@ -63,7 +63,6 @@
                                     {{ __('Forgot Your Password?') }}
                                 </a>
                                 <br><br>
-                               <marquee style="color:#a9a9a9; font-size:14px;">*** For security reasons, please Log Out and Exit your web browser when you are done accessing services that require authentication!***</marquee>
                             </div>
                         </div>
                     </form>

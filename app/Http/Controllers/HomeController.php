@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 use Auth;
 use Illuminate\Http\Request;
+use DB;
+use Datatables;
 
 class HomeController extends Controller
 {
@@ -45,6 +47,8 @@ class HomeController extends Controller
     }
 
     public function newRegisterSpousePage(){
-        return view('auth.registrationSpouse');
+        $users = DB::table('users')->get();
+        return view('auth.registrationSpouse')->with('users',$users);
+        
     }
 }
