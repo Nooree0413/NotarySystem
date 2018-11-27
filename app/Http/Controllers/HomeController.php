@@ -46,6 +46,16 @@ class HomeController extends Controller
         return view('auth.registernew');
     }
 
+    public function propertyRegistration(){
+        $users = DB::table('users')->get();
+        return view('auth.propertyRegistration')->with('users',$users);
+    }
+
+    public function generateContract(){
+        // $users = DB::table('users')->get();
+        return view('auth.generateContract');
+    }
+
     public function newRegisterSpousePage(){
         $users = DB::table('users')->get();
         return view('auth.registrationSpouse')->with('users',$users);

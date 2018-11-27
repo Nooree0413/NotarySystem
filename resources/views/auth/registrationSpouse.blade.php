@@ -28,7 +28,7 @@
         <form method="POST" action="{{ route('add_spouse') }}" id="frmAddUser">
             @csrf
             <fieldset class="addUserFieldset">
-                <legend class="addUserLegend">Registration</legend>
+                <legend class="addUserLegend">Spouse Registration</legend>
                 <div class="container">
                     @if ($errors->any())
                         <div class="alert alert-danger">
@@ -48,6 +48,9 @@
                                 <th>
                                     ID
                                  </th> 
+                                 <th>
+                                    NIC
+                                 </th>
                                 <th>
                                     First Name
                                 </th> 
@@ -58,8 +61,8 @@
                                    Gender
                                 </th> 
                                 <th>
-                                        Roles
-                                     </th> 
+                                    Roles
+                                </th> 
                                      
                             </tr>
                         </thead>
@@ -68,6 +71,9 @@
                             <tr >
                                 <td>    
                                     {{$user->id}} 
+                                </td>
+                                <td>    
+                                    {{$user->nic}} 
                                 </td>
                                 <td>    
                                     {{$user->firstname}} 
@@ -81,8 +87,8 @@
                                 </td>
 
                                 <td>
-                                        {{$user->roles}}
-                                    </td>
+                                    {{$user->roles}}
+                                </td>
                                 
                             </tr>
                             @endforeach
@@ -97,10 +103,15 @@
                    
                   </div>
                   <div class="form-group col-md-3">
+                    <label for="inputSpouseLastName">Last Name</label>
+                    <input type="text" required class="form-control" name="inputSpouseLastName" value="{{ old('inputSpouseLastName') }}"  autofocus  placeholder="First Name">
+                   
+                  </div>
+                  <div class="form-group col-md-1">
                     <label for="inputSpouseTitle">Title</label>
                     <select  name="inputSpouseTitle" class="form-control">
-                    <option selected>Mr</option>
-                    <option>Mrs</option>
+                    <option selected>Madame</option>
+                    <option>Monsieur</option>
                     </select>
                 </div>
                 <div class="form-group col-md-3">
@@ -108,11 +119,11 @@
                         <input type="text" required maxlength="14" class="form-control" name="inputSpouseNIC" value="{{ old('inputSpouseNIC') }}"  >
                         
                 </div>
-                <div class="form-group col-md-3">
-                        <label for="inputID">Buyer/Seller ID</label>
-                        <input type="number" required class="form-control" name="inputID" value="{{ old('inputID') }}"  autofocus>
+                <div class="form-group col-md-2">
+                    <label for="inputClientID">Buyer/Seller ID</label>
+                    <input type="number" required class="form-control" name="inputClientID" value="{{ old('inputClientID') }}"  autofocus>
                        
-                      </div>
+                </div>
           </div>
 
             <div class="form-row">
@@ -181,13 +192,7 @@
                     <input type="text" required  class="form-control" name="inputSpouseProfession" value="{{ old('inputSpouseProfession') }}"  >
             </div>
 
-            <div class="form-group col-md-3">
-                <label for="inputSpouseRoles">Roles</label>
-                <select  name="inputSpouseRoles" class="form-control">
-                    <option >Buyer_spouse</option>
-                    <option>Seller_spousse</option>
-                </select>
-            </div>
+            
             <div class="form-group col-md-3">
                     <label for="inputSpouseGender">Gender</label>
                     <select  name="inputSpouseGender" class="form-control">

@@ -23,10 +23,14 @@ Route::get('/dashboard', 'HomeController@index')->name('dashboard');
 Route::get('/logout', 'HomeController@logout');
 //Route::get('/generateWord', 'wordTest@redirectToPage');
 
-Route::get('/generateWord', ['as'=>'createWord','uses'=>'WordTest@createWordDocx']);
+//Route::get('/generateWord', ['as'=>'createWord','uses'=>'WordTest@createWordDocx']);
+Route::post('/generateWord', 'WordTest@createWordDocx')->name('createWord');
 
 Route::get('/registernew', 'HomeController@newRegisterPage')->name('registernew');
+Route::get('/propertyRegistration', 'HomeController@propertyRegistration')->name('propertyRegistration');
+Route::get('/generateContract', 'HomeController@generateContract')->name('generateContract');
 Route::get('/registerSpouse', 'HomeController@newRegisterSpousePage')->name('registerSpouse');
+Route::post('/propertyRegistration', 'userController@add_property')->name('add_property');
 Route::post('/registernew','userController@add_user')->name('add_user');
 Route::post('/registerSpouse','userController@add_spouse')->name('add_spouse');
 Route::get('/viewuser','userController@viewUsers')->name('viewUser');

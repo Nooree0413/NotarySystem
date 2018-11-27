@@ -126,10 +126,12 @@ class userController extends Controller
     public function add_spouse(Request $request){
         $this->validate($request,
         [
+            'inputClientID' => 'required',
             'inputSpouseFirstName'=> 'required|alpha|max:255',
+            'inputSpouseLastName'=> 'required',
             'inputSpouseTitle' =>'required',
-            'inputSpouseNIC' => 'required|alpha_num|unique:spouse,spouseNic',
-            'inputID' => 'required|numeric',
+            'inputSpouseNIC' => 'required|alpha_num|unique:users,spouseNic',
+           
             'inputSpouseDob' =>'required|date',
             'inputSpouseBcNum' => 'required|numeric',
             'inputSpouseDistrict' =>'required',
@@ -137,13 +139,15 @@ class userController extends Controller
             'inputMcNum' => 'required|numeric',
             'inputMcDistrict' =>'required',
             'inputSpouseProfession' =>'required',
-            'inputSpouseRoles' =>'required',
+           
             'inputSpouseGender' =>'required',
             'inputSpousePlaceOfBirth' =>'required',
              ]       
         );
 
+        $clientId=Input::get('inputClientID');
         $fname=Input::get('inputSpouseFirstName');
+        $lname=Input::get('inputSpouseLastName');
         $title=Input::get('inputSpouseTitle');
         $nic=Input::get('inputSpouseNIC');
         $spouseid=Input::get('inputID');
@@ -154,35 +158,92 @@ class userController extends Controller
         $mcNum=Input::get('inputMcNum');
         $mcDistrict=Input::get('inputMcDistrict');
         $profession=Input::get('inputSpouseProfession');
-        $roles=Input::get('inputSpouseRoles');
+     
         $gender=Input::get('inputSpouseGender');
         $placeOfBirth=Input::get('inputSpousePlaceOfBirth');
 
-        $data = array(
-            'spouseId' => $spouseid,
-            'title' =>$title,
-            'firstname' =>$fname,
-            'dob' =>$dob,
-            'birthCertificateNumber' =>$bcNum,
-            'BCdistrictIssued' =>$bcDistrict,
-            'placeOfBirth' =>$placeOfBirth,
-            'gender' => $gender,
-            'spouseNic' =>$nic,
-            'marriageDate' =>$marriageDate,
-            'MarriageCertificateNumber' => $mcNum,
-            'MCdistrictIssued' => $mcDistrict,
-            'profession' =>$profession,
-            'roles' => $roles
+       
+        
+       $query= DB::table('users')
+                    ->where("id", $clientId)
+                    ->update([
+                        'spouseTitle' =>$title,
+                        'spouseFirstname' =>$fname,
+                        'spouseLastname' =>$lname,
+                        'spouseDob' =>$dob,
+                        'spouseBCNum' =>$bcNum,
+                        'spouseBCdistrictIssued' =>$bcDistrict,
+                        'spousePlaceOfBirth' =>$placeOfBirth,
+                        'spouseGender' => $gender,
+                        'spouseNic' =>$nic,
+                        'marriageDate' =>$marriageDate,
+                        'MCNumber' => $mcNum,
+                        'MCdistrictIssued' => $mcDistrict,
+                        'spouseProfession' =>$profession
+                        
+                    ]); 
 
-            
+       
+
+        flashy()->success($fname.' '.$lname. ' successfully added!.');
+            return redirect('/registernew');
+
+    }
+
+    public function add_property(Request $request){
+
+        $propertyType=Input::get('inputPropertyType');
+        $clientId=Input::get('inputClientID');
+        $propertyAdd=Input::get('inputAddress');
+        $sizeMsFigures=Input::get('inputSizeMsF');
+        $sizeMsWords=Input::get('inputSizeMsW');
+        $sizeInPerch=Input::get('inputSizeInPerch');
+        $transcriptionVol=Input::get('inputTranscriptionVolume');
+        $pinNum=Input::get('inputPinNum');
+        $regNumInLsReport=Input::get('inputRegNum');
+        $surveyorFirstName=Input::get('inputLsFn');
+        $surveyorLastName=Input::get('inputLsLn');
+        $surveyingDate=Input::get('inputSurveyingDate');
+        $priceFigures=Input::get('inputPriceFigures');
+        $priceWords=Input::get('inputPriceWords');
+        $firstDeedReg=Input::get('inputFirstDeedReg');
+        $firstDeedGeneration=Input::get('inputFirstDeedGeneration');
+        $previousNotaryTitle=Input::get('inputPreviousNotaryTitle');
+        $previousNotaryFN=Input::get('inputPreviousNotaryFN');
+        $previousNotaryLN=Input::get('inputPreviousNotaryLN');
+        $districtSituated=Input::get('inputDistrict');
+        $taxduty=(0.05*$priceFigures);
+
+        $data = array(
+            'clientId' =>  $clientId, 
+            'address' => $propertyAdd, 
+            'priceInFigures' =>  $priceFigures, 
+            'priceInWords' =>  $priceWords,
+            'propertyType' => $propertyType, 
+            'sizeInMSFigures' =>   $sizeMsFigures,
+            'sizeInMSWords' => $sizeMsWords,
+            'sizeInPerchWords' => $sizeInPerch,
+            'taxDuty' => $taxduty,
+            'transcriptionVol' => $transcriptionVol,
+            'pinNum' =>  $pinNum,
+            'regNumLSReport' =>$regNumInLsReport,
+            'surveyorFN' => $surveyorFirstName,
+            'surveyorLN' =>$surveyorLastName,
+            'surveyorDate'=>$surveyingDate,
+            'firstDeedRegistration'=>$firstDeedReg,
+            'firstDeedGeneration'=>$firstDeedGeneration,
+            'previousNotaryFN'=>$previousNotaryFN,
+            'previousNotaryLN'=>$previousNotaryLN,
+            'previousNotaryTitle'=>$previousNotaryTitle,
+            'districtSituated'=>$districtSituated
+
+
+
+   
         );
 
-        //  DB::table('spouse')->insert($data);
-        $id = DB::table('spouse')->insertGetId($data);
-        // $user=(DB::table('spouse')->where('id',id)->get())[0];
-
-        flashy()->success($fname. ' successfully added!.');
-            return redirect('/registernew');
+        DB::table('immovableproperty')->insert($data);
+         return $taxduty;
 
     }
 }

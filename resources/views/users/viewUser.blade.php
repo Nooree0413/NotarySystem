@@ -37,6 +37,7 @@
             <th>
              Role
             </th> 
+            
             <th>
                 Actions
             </th>
@@ -63,6 +64,7 @@
             <td>
                 {{$user->roles}}
             </td>
+           
             <td>
                 {{-- Show Event Button --}}
                     {{-- <a href="/usersfound/show/{{$user->id}}"> --}}

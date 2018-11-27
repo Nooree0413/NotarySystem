@@ -5,7 +5,7 @@
 <body>
 <div>
     <h1 style="text-align:center;">Welcome to the notary system</h1>
-    <a href="/generateWord" class="btn btn-danger">Genrerate Word Document</a>
+    
 </div>
  @include('flashy::message') 
 </body>

@@ -15,9 +15,6 @@
     </script>
 </head>
    
-
-
-    
 @section('content')
     {{-- <div class="registerBox"> --}}
     {{-- <img src="{{ asset('images/avatar.png') }}" class="avatar"> --}}
@@ -54,9 +51,9 @@
                 <div class="form-group col-md-4">
                     <label for="inputTitle">Title</label>
                     <select  name="inputTitle" class="form-control">
-                    <option selected>Mr</option>
-                    <option>Mrs</option>
-                    <option>Miss</option>
+                    <option selected>Monsieur</option>
+                    <option>Madame</option>
+                    <option>Mademoiselle</option>
                     </select>
                 </div>
                 

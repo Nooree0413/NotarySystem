@@ -14,7 +14,7 @@ class DatabaseSeeder extends Seeder
         // $this->call(UsersTableSeeder::class);
         DB::table('users')->insert([
             [
-                'firstname' => 'Nooree',
+                'firstname' => 'Noor',
                 'lastname' => 'Khayrattee',  
                 'title'=> '1',
                 'contactnum' => '57896461',
@@ -24,8 +24,8 @@ class DatabaseSeeder extends Seeder
                 'birthCertificateNumber' =>'7',
                 'districtIssued' => '2',
                 'placeOfBirth' =>'Dr Jeetoo Hospital',
-                'gender' => '2',
-                'address' => 'hvgjh',
+                'gender' => '1',
+                'address' => 'Royal Road Lavenir St Pierre',
                 'nic' => 'K1234567890987',
                 'marriageStatus' => '1',
                 'roles' => '1',

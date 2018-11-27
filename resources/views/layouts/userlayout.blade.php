@@ -47,28 +47,49 @@
             <ul class="list-unstyled components">
                 
                 <li>
-                    <a href="{{ route('viewUser') }}"><i class="fas fa-users"></i> View Users</a></li>
+                    <a href="{{ route('viewUser') }}"><i class="fas fa-users"></i> View Clients</a></li>
             </li>
                 <li>
-                    <a href="{{ route('registernew') }}" ><i class="fas fa-user-plus"></i> Add User</a>
+                    <a href="{{ route('registernew') }}" ><i class="fas fa-user-plus"></i> Add Client</a>
                 </li>
                 <li>
-                    <a href="{{ route('registernew') }}" ><i class="fas fa-key"></i> Change Password</a>
+                    <a href="{{ route('registerSpouse') }}" ><i class="fas fa-user-plus"></i> Add Spouse</a>
                 </li>
+               
+                <li>
+                    <a href="{{ route('propertyRegistration') }}" ><i class="fas fa-key"></i> Property Registration</a>
+                </li>
+                
+                
                 <li class="active">
                     <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
                         <i class="fas fa-home"></i>
-                        Home
+                        Generate Contract
                     </a>
                     <ul class="collapse list-unstyled" id="homeSubmenu">
+                            <li>
+                                <a href="{{ route('generateContract') }}" ><i class="fas fa-key"></i> SOIP01</a>
+                            </li>
                         <li>
-                            <a href="#">Home 1</a>
+                            <a href="#">SOIP02</a>
                         </li>
                         <li>
-                            <a href="#">Home 2</a>
+                            <a href="#">SOIP03 </a>
                         </li>
                         <li>
-                            <a href="#">Home 3</a>
+                             <a href="#">SOIP04 </a>
+                        </li>
+                         <li>
+                             <a href="#">SOIP05 </a>
+                        </li>
+                        <li>
+                            <a href="#">SOIP06 </a>
+                        </li>
+                        <li>
+                            <a href="#">SOIP07 </a>
+                        </li>
+                        <li>
+                            <a href="#">SOIP08 </a>
                         </li>
                     </ul>
                 </li>
