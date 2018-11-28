@@ -15,6 +15,7 @@ use Illuminate\Support\Facades\Validator;
 class wordTest extends Controller
 {
 public function createWordDocx(Request $request){
+
 //retrieving user inputs
 $buyerId=Input::get('inputBuyerId');
 $sellerId=Input::get('inputSellerId');
@@ -39,9 +40,12 @@ $propertyDetails=(DB::table('immovableproperty')->where('propertyId',$propertyId
 //creating word document
 $wordTest = new \PhpOffice\PhpWord\PhpWord();
 $alignment= new \PhpOffice\PhpWord\SimpleType\Jc();
+
+//retrieving current year
 $currentYear = date('Y');
 $newSection = $wordTest->addSection();
 
+//setting different paragraph styles
 $alignment=$wordTest->addParagraphStyle('centerTitles', array( 'size' => 12,'align'=>'center', 'name' => 'Times New Roman'));
 $alignment2=$wordTest->addParagraphStyle('Indent', array( 'tabPos'=>720));
 $alignment3=$wordTest->addParagraphStyle('rightAlignUnderline', array( 'size' => 12,'align'=>'right', 'underline'=> 'single','name' => 'Times New Roman','bold'=>true));
@@ -97,28 +101,32 @@ foreach ($sellers as $seller ) {
         $newSection->addText("Le bien dont suit la désignation (ci-apres designe: ‘Bien Vendu').
         ",array('name' => 'Times New Roman','align'=>'left','size' => 12,'tabPos' => 720),'Indent');
 
-        $newSection->addText("DESIGNATION",array('name' => 'Times New Roman','align'=>'center','size' => 12,'bold' => true,'underline'=> 'single'),'centerTitles');
+        $newSection->addText("DESIGNATION",
+        array('name' => 'Times New Roman','align'=>'center','size' => 12,'bold' => true,'underline'=> 'single'),'centerTitles');
 
         $newSection->addText("Une portion de terrain vague située au quartier de ".$propertyDetail->districtSituated.",lieu dit ".$propertyDetail->address." de la contenance de ".$propertyDetail->sizeInPerchWords." perches soit ".strtoupper($propertyDetail->sizeInMSWords)." METRES CARRES (".$propertyDetail->sizeInMSFigures." m2) - PIN No ".$propertyDetail->pinNum."
         ] et bornée d'après le titre de propriété ci-après relate, d'après un rapport avec plan figuratif y joint,dresse par "
         .$propertyDetail->surveyorTitle." ".$propertyDetail->surveyorFN." ".$propertyDetail->surveyorLN.", arpenteur, le".$propertyDetail->surveyorDate.", enregistrée au Reg ".$propertyDetail->regNumLSReport.", comme suit:",
         array('name' => 'Times New Roman','align'=>'left','size' => 12,'tabPos' => 720),'Indent');
 
-        $newSection->addText($descriptionBySurveyor,array('name' => 'Times New Roman','align'=>'left','size' => 12,'tabPos' => 720),'Indent');
+        $newSection->addText($descriptionBySurveyor,
+        array('name' => 'Times New Roman','align'=>'left','size' => 12,'tabPos' => 720),'Indent');
         
         $newSection->addText("Ensemble tout ce qui peut en dépendre ou en faire partie sans aucune exception
         ni réserve et sans une plus ample désignation, l'acquéreur déclarant bien connaître
         l'objet de son acquisition pour l'avoir vu et visité et en être satisfait.
         ",array('name' => 'Times New Roman','align'=>'left','size' => 12,'tabPos' => 720),'Indent');
 
-       $newSection->addText("JOUISSANCE",array('name' => 'Times New Roman','align'=>'center','size' => 12,'bold' => true,'underline'=> 'single'),'centerTitles');
+       $newSection->addText("JOUISSANCE",
+       array('name' => 'Times New Roman','align'=>'center','size' => 12,'bold' => true,'underline'=> 'single'),'centerTitles');
 
        $newSection->addText("Pour l'acquéreur en jouir,faire et disposer comme bon lui semblera et comme de
        chose lui appartenant en toute propriété-au moyen des présentes et à compter de ce
        jour.
        ",array('name' => 'Times New Roman','align'=>'left','size' => 12,'tabPos' => 720),'Indent');
         
-       $newSection->addText("ORIGINE DE PROPRIETE",array('name' => 'Times New Roman','align'=>'center','size' => 12,'bold' => true,'underline'=> 'single'),'centerTitles');
+       $newSection->addText("ORIGINE DE PROPRIETE",
+       array('name' => 'Times New Roman','align'=>'center','size' => 12,'bold' => true,'underline'=> 'single'),'centerTitles');
 
        $newSection->addText("Déclarent les vendeurs qu'ils sont propriétaires du Bien Vendu au moyen de l'acquisition que l'un d'eux en a faite
        (pendant leur susdit mariage), suivant contrat contenant quittance du prix nominal d'une
@@ -323,6 +331,7 @@ foreach ($sellers as $seller ) {
 
         $newSection->addText(strtoupper("pour expedition"),'rightAlignUnderline');
 
+        //creating footer
         $footer = $newSection->createFooter();
         $footer->addPreserveText(
             'Page {PAGE} de {NUMPAGES}',

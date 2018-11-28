@@ -10,9 +10,10 @@
     <link rel="icon" href="{{asset('images/addUser.png')}}" />
     <script src="{{url('js/bootstrap.min.js')}}"></script>
 
-    <script>
-       
-    </script>
+   
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+
+ 
 </head>
    
 @section('content')
@@ -97,15 +98,31 @@
                         <option>House</option>
                     </select>
                 </div>
-                <div class="form-group col-md-4">
+                {{-- <div class="form-group col-md-4">
                     <label for="inputClientID">Buyer/Seller ID</label>
                     <input type="number" required class="form-control" name="inputClientID" value="{{ old('inputClientID') }}"  autofocus>      
-                </div>
+                </div> --}}
+
+                <div class="form-group col-md-4">
+                        <label for="inputClientID">Buyer/Seller</label>
+                    <select name="inputClientID" id="inputClientID" class="form-control input-lg dynamic" data-dependent="firstname">
+                     <option value="">Select id</option>
+                     @foreach($users as $user)
+                    <option value="{{ $user->id}}">{{$user->id}}<?php echo"-"?>{{$user->firstname}}<?php echo" "?>{{$user->lastname}}</option>
+                     @endforeach
+                    </select>
+                   </div>
 
                 <div class="form-group col-md-4">
                     <label for="inputAddress">Address</label>
                     <textarea rows="1" cols="50" type="text" required  class="form-control" name="inputAddress" value="{{ old('inputAddress') }}"  ></textarea>
                </div>
+
+               {{-- <div class="form-group col-md-4">
+                <select name="firstname" id="firstname" class="form-control input-lg dynamic" >
+                    <option value="">Select name</option>
+                   </select>
+               </div> --}}
                 
              </div>
 
@@ -226,6 +243,38 @@
         </div>
     </fieldset>
 </form>
+
+<script>
+    $(document).ready(function(){
+    
+     $('.dynamic').change(function(){
+      if($(this).val() != '')
+      {
+       var select = $(this).attr("id");
+       var value = $(this).val();
+       var dependent = $(this).data('dependent');
+       var _token = $('input[name="_token"]').val();
+       $.ajax({
+        url:"{{ route('dynamicdependent.fetch') }}",
+        method:"POST",
+        data:{select:select, value:value, _token:_token, dependent:dependent},
+        success:function(result)
+        {
+         $('#'+dependent).html(result);
+        }
+    
+       })
+      }
+     });
+    
+     $('#inputClientID').change(function(){
+      $('#firstname').val('');
+     
+     });
+
+     
+    });
+    </script>
 @endsection
 
 </html>

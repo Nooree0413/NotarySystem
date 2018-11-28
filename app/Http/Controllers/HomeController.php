@@ -46,7 +46,7 @@ class HomeController extends Controller
         return view('auth.registernew');
     }
 
-    public function propertyRegistration(){
+    public function propertyRegistration(){  
         $users = DB::table('users')->get();
         return view('auth.propertyRegistration')->with('users',$users);
     }
@@ -56,6 +56,22 @@ class HomeController extends Controller
         return view('auth.generateContract');
     }
 
+    public function fetch(Request $request)
+    {
+     $select = $request->get('select');
+     $value = $request->get('value');
+     $dependent = $request->get('dependent');
+     $data = DB::table('users')
+       ->where($select, $value)
+       ->groupBy($dependent)
+       ->get();
+     $output = '<option value="">Select '.$dependent.'</option>';
+     foreach($data as $row)
+     {
+      $output .= '<option value="'.$row->$dependent.'">'.$row->$dependent.'</option>';
+     }
+     echo $output;
+    }
     public function newRegisterSpousePage(){
         $users = DB::table('users')->get();
         return view('auth.registrationSpouse')->with('users',$users);

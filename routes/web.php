@@ -35,3 +35,4 @@ Route::post('/registernew','userController@add_user')->name('add_user');
 Route::post('/registerSpouse','userController@add_spouse')->name('add_spouse');
 Route::get('/viewuser','userController@viewUsers')->name('viewUser');
 Route::get('/test','userController@viewUsers')->name('test');
+Route::post('propertyRegistration/fetch', 'HomeController@fetch')->name('dynamicdependent.fetch');

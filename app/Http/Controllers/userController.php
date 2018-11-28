@@ -146,6 +146,8 @@ class userController extends Controller
         );
 
         $clientId=Input::get('inputClientID');
+        // $str = "hello";
+        $clientId = substr($clientId, 1);
         $fname=Input::get('inputSpouseFirstName');
         $lname=Input::get('inputSpouseLastName');
         $title=Input::get('inputSpouseTitle');
