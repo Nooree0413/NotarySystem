@@ -30,15 +30,16 @@ class DatabaseSeeder extends Seeder
                 'marriageStatus' => '1',
                 'roles' => '1',
                 'profession'=>'software tester'
-
-
-            ],
-           
-           
+            ],   
         ]);
 
-       
-        
-        
+        DB::table('staff')->insert([
+            [
+                'firstname' => 'Sarah',
+                'lastname' => 'Muller',  
+                'email' => 'sarah@gmail.com',
+                'password' => Hash::make(123456)
+            ],   
+        ]);
     }
 }

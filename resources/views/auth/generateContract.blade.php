@@ -1,5 +1,5 @@
 @include('flashy::message')
-@extends('layouts.userlayout')
+@extends('layouts.stafflayout')
 <!DOCTYPE html>
 <html>
 <head>
@@ -38,17 +38,32 @@
                 
                 <div class="form-group col-md-4">
                     <label for="inputSellerId">Seller ID</label>
-                    <input type="number" required class="form-control" name="inputSellerId" value="{{ old('inputSellerId') }}"  autofocus>      
-                </div>
+                    <select name="inputSellerId" id="inputSellerId" class="form-control input-lg dynamic" >
+                        <option value="">Select id</option>
+                        @foreach($users as $user)
+                       <option value="{{ $user->id}}">{{$user->id}}<?php echo"-"?>{{$user->firstname}}<?php echo" "?>{{$user->lastname}}</option>
+                        @endforeach
+                       </select>                
+                    </div>
                 <div class="form-group col-md-4">
                         <label for="inputBuyerId">Buyer ID</label>
-                        <input type="number" required class="form-control" name="inputBuyerId" value="{{ old('inputBuyerId') }}"  autofocus>      
-                    </div>
+                        <select name="inputBuyerId" id="inputBuyerId" class="form-control input-lg dynamic" >
+                            <option value="">Select id</option>
+                            @foreach($users as $user)
+                           <option value="{{ $user->id}}">{{$user->id}}<?php echo"-"?>{{$user->firstname}}<?php echo" "?>{{$user->lastname}}</option>
+                            @endforeach
+                           </select>                       
+                        </div>
 
                     <div class="form-group col-md-4">
                             <label for="inputPropertyId">Property ID</label>
-                            <input type="number" required class="form-control" name="inputPropertyId" value="{{ old('inputPropertyId') }}"  autofocus>      
-                        </div>
+                            <select name="inputPropertyId" id="inputPropertyId" class="form-control input-lg dynamic" >
+                                <option value="">Select id</option>
+                                @foreach($properties as $property)
+                               <option value="{{ $property->propertyId}}">{{$property->propertyId}}</option>
+                                @endforeach
+                               </select>                          
+                            </div>
                 
              </div>
 

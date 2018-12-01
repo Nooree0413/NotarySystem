@@ -47,29 +47,29 @@
             <ul class="list-unstyled components">
                 
                 <li>
-                    <a href=""><i class="fas fa-user-circle"></i> My Profile</a></li>
+                    <a href="{{ route('myProfile') }}"><i class="fas fa-user-circle"></i> My Profile</a></li>
             </li>
-                {{-- <li>
+                <li>
                     <a href="{{ route('registernew') }}" ><i class="fas fa-user-plus"></i> Add Client</a>
-                </li> --}}
-                {{-- <li>
+                </li>
+                <li>
                     <a href="{{ route('registerSpouse') }}" ><i class="fas fa-user-plus"></i> Add Spouse</a>
-                </li> --}}
+                </li>
                
-                {{-- <li>
+                <li>
                     <a href="{{ route('propertyRegistration') }}" ><i class="fas fa-key"></i> Property Registration</a>
-                </li> --}}
+                </li>
                 
                 
                 <li class="active">
                     <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
-                        <i class="fas fa-home"></i>
+                        <i class="fas fa-newspaper"></i>
                         Generate Contract
                     </a>
                     <ul class="collapse list-unstyled" id="homeSubmenu">
-                            {{-- <li>
+                            <li>
                                 <a href="{{ route('generateContract') }}" ><i class="fas fa-key"></i> SOIP01</a>
-                            </li> --}}
+                            </li>
                         <li>
                             <a href="#">SOIP02</a>
                         </li>
@@ -134,7 +134,7 @@
                     </a>
                 </li>
                 <li>
-                    <a href="{{ route('logout') }}">
+                    <a href="{{ route('staff.logout') }}">
                         <i class="fa fa-power-off"></i>
                         <b>Log out<b>
                     </a>
@@ -169,7 +169,7 @@
                         <ul class="nav navbar-nav ml-auto">
                             
                             <li class="nav-item">
-                                <a class="nav-link" style="color:aliceblue;" href="{{route('dashboard')}}">Welcome,{{ ucfirst(strtolower(Auth::user()->firstname)) }} </a>
+                                <a class="nav-link" style="color:aliceblue;" href="{{route('staffdashboard')}}">Welcome,{{ ucfirst(strtolower(Auth::user()->firstname)) }} </a>
                             </li>
                         </ul>
                     </div>

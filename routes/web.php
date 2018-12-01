@@ -24,15 +24,34 @@ Route::get('/logout', 'HomeController@logout');
 //Route::get('/generateWord', 'wordTest@redirectToPage');
 
 //Route::get('/generateWord', ['as'=>'createWord','uses'=>'WordTest@createWordDocx']);
-Route::post('/generateWord', 'WordTest@createWordDocx')->name('createWord');
+// Route::post('/generateWord', 'WordTest@createWordDocx')->name('createWord');
 
-Route::get('/registernew', 'HomeController@newRegisterPage')->name('registernew');
-Route::get('/propertyRegistration', 'HomeController@propertyRegistration')->name('propertyRegistration');
-Route::get('/generateContract', 'HomeController@generateContract')->name('generateContract');
-Route::get('/registerSpouse', 'HomeController@newRegisterSpousePage')->name('registerSpouse');
-Route::post('/propertyRegistration', 'userController@add_property')->name('add_property');
-Route::post('/registernew','userController@add_user')->name('add_user');
-Route::post('/registerSpouse','userController@add_spouse')->name('add_spouse');
+// Route::get('/registernew', 'HomeController@newRegisterPage')->name('registernew');
+// Route::get('/propertyRegistration', 'HomeController@propertyRegistration')->name('propertyRegistration');
+// Route::get('/generateContract', 'HomeController@generateContract')->name('generateContract');
+// Route::get('/registerSpouse', 'HomeController@newRegisterSpousePage')->name('registerSpouse');
+// Route::post('/propertyRegistration', 'userController@add_property')->name('add_property');
+// Route::post('/registernew','userController@add_user')->name('add_user');
+// Route::post('/registerSpouse','userController@add_spouse')->name('add_spouse');
 Route::get('/viewuser','userController@viewUsers')->name('viewUser');
 Route::get('/test','userController@viewUsers')->name('test');
 Route::post('propertyRegistration/fetch', 'HomeController@fetch')->name('dynamicdependent.fetch');
+
+//staff only
+Route::prefix('staff')->group(function(){
+    Route::get('/','StaffController@index')->name('staffdashboard');
+    Route::get('/login','Auth\StaffLoginController@showLoginForm')->name('staff.login');
+    Route::post('/login','Auth\StaffLoginController@login')->name('staff.login.submit');
+    Route::get('/logout', 'Auth\StaffLoginController@logout')->name('staff.logout');
+    Route::get('/registernew', 'StaffController@newRegisterPage')->name('registernew');
+    Route::post('/registernew','StaffController@add_user')->name('add_user');
+    Route::get('/registerSpouse', 'StaffController@newRegisterSpousePage')->name('registerSpouse');
+    Route::post('/registerSpouse','StaffController@add_spouse')->name('add_spouse');
+    Route::get('/propertyRegistration', 'StaffController@propertyRegistration')->name('propertyRegistration');
+    Route::post('/propertyRegistration', 'StaffController@add_property')->name('add_property');
+    Route::get('/generateContract', 'StaffController@generateContract')->name('generateContract');
+    Route::post('/generateWord', 'WordTest@createWordDocx')->name('createWord');
+    Route::get('/profile/view', 'StaffController@myProfile')->name('myProfile');
+
+
+});

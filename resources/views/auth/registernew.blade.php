@@ -1,5 +1,5 @@
 @include('flashy::message')
-@extends('layouts.userlayout')
+@extends('layouts.stafflayout')
 <!DOCTYPE html>
 <html>
 <head>

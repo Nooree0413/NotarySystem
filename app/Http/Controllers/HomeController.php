@@ -42,19 +42,19 @@ class HomeController extends Controller
 
    
 
-    public function newRegisterPage(){
-        return view('auth.registernew');
-    }
+    // public function newRegisterPage(){
+    //     return view('auth.registernew');
+    // }
 
-    public function propertyRegistration(){  
-        $users = DB::table('users')->get();
-        return view('auth.propertyRegistration')->with('users',$users);
-    }
+    // public function propertyRegistration(){  
+    //     $users = DB::table('users')->get();
+    //     return view('auth.propertyRegistration')->with('users',$users);
+    // }
 
-    public function generateContract(){
-        // $users = DB::table('users')->get();
-        return view('auth.generateContract');
-    }
+    // public function generateContract(){
+    //     // $users = DB::table('users')->get();
+    //     return view('auth.generateContract');
+    // }
 
     public function fetch(Request $request)
     {
@@ -72,9 +72,9 @@ class HomeController extends Controller
      }
      echo $output;
     }
-    public function newRegisterSpousePage(){
-        $users = DB::table('users')->get();
-        return view('auth.registrationSpouse')->with('users',$users);
+    // public function newRegisterSpousePage(){
+    //     $users = DB::table('users')->get();
+    //     return view('auth.registrationSpouse')->with('users',$users);
         
-    }
+    // }
 }

@@ -198,7 +198,7 @@ a.article:hover {
 
 #content {
     width: 100%;
-    padding: 20px;
+    padding: 23px;
     min-height: 100vh;
     transition: all 0.3s;
 }
@@ -253,5 +253,9 @@ a.article:hover {
     }
     #sidebarCollapse span {
         display: none;
+    }
+
+    .card.card-size{
+        width: 139% !important;
     }
 }

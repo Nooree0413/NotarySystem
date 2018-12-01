@@ -1,5 +1,5 @@
 @include('flashy::message')
-@extends('layouts.userlayout')
+@extends('layouts.stafflayout')
 <link rel="stylesheet" type="text/css" href="{{asset('css/bootstrap.min.css')}}">
 <link rel="stylesheet" type="text/css" href="{{asset('css/footer.css')}}">
 {{-- <link rel="stylesheet" type="text/css" href="{{asset('css/bootstrap.min.css')}}"> --}}
@@ -116,4 +116,4 @@
     <img src="{{ asset('images/certificate.png') }}" class="footerlogo" alt="logo notary">  Copyright &copy; <script type="text/JavaScript"> var theDate=new Date(); document.write(theDate.getFullYear()); </script> NW Mauritius.
  </footer> --}}
 @endsection
-No newline at end of file
+

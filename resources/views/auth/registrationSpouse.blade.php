@@ -1,5 +1,5 @@
 @include('flashy::message')
-@extends('layouts.userlayout')
+@extends('layouts.stafflayout')
 <!DOCTYPE html>
 <html>
 <head>
@@ -13,7 +13,7 @@
     <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/solid.js" integrity="sha384-tzzSw1/Vo+0N5UhStP3bvwWPq+uvzCMfrN1fEFe+xBmv1C/AtVX5K0uZtmcHitFZ" crossorigin="anonymous"></script>
     <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/fontawesome.js" integrity="sha384-6OIrr52G08NpOFSZdxxz1xdNSndlD4vdcf/q2myIUVO0VsqaGHJsB0RaBE01VTOY" crossorigin="anonymous"></script>
     <script src="{{url('js/bootstrap.min.js')}}"></script>
-
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
     <script>
        
     </script>
@@ -23,8 +23,8 @@
     {{-- <div class="registerBox"> --}}
     {{-- <img src="{{ asset('images/avatar.png') }}" class="avatar"> --}}
     {{-- <a class="centerLink" href="{{ route('loginnew') }}">Already have an account?Login here!</a> --}}
-        <h1 class="datatableTitleUsers">Spouse details</h1>
-        <div class="container tableSpacor" style="border: 1mm ridge #212529;">
+        <h1 class="datatableTitleUsers">Spouse Registration</h1>
+        {{-- <div class="container tableSpacor" style="border: 1mm ridge #212529;">
             <table id="tbluser" class="table table-hover " style="width:100%;">
                     <thead>
                         <tr>
@@ -77,11 +77,11 @@
                         @endforeach
                     </tbody>
                 </table>
-            </div>
+            </div> --}}
         <form method="POST" action="{{ route('add_spouse') }}" id="frmAddUser">
             @csrf
             <fieldset class="addUserFieldset">
-                <legend class="addUserLegend">Spouse Registration</legend>
+                <legend class="addUserLegend"> Registration</legend>
                 <div class="container">
                     @if ($errors->any())
                         <div class="alert alert-danger">
@@ -119,11 +119,20 @@
                         <input type="text" required maxlength="14" class="form-control" name="inputSpouseNIC" value="{{ old('inputSpouseNIC') }}"  >
                         
                 </div>
-                <div class="form-group col-md-2">
+                {{-- <div class="form-group col-md-2">
                     <label for="inputClientID">Buyer/Seller ID</label>
                     <input type="number" required class="form-control" name="inputClientID" value="{{ old('inputClientID') }}"  autofocus>
                        
-                </div>
+                </div> --}}
+                <div class="form-group col-md-2">
+                <label for="inputClientID">Buyer/Seller</label>
+                <select name="inputClientID" id="inputClientID" class="form-control input-lg dynamic" data-dependent="firstname">
+                 <option value="">Select id</option>
+                 @foreach($users as $user)
+                <option value="{{ $user->id}}">{{$user->id}}<?php echo"-"?>{{$user->firstname}}<?php echo" "?>{{$user->lastname}}</option>
+                 @endforeach
+                </select>
+               </div>
           </div>
 
             <div class="form-row">

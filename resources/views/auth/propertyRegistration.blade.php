@@ -1,5 +1,5 @@
 @include('flashy::message')
-@extends('layouts.userlayout')
+@extends('layouts.stafflayout')
 <!DOCTYPE html>
 <html>
 <head>
@@ -11,14 +11,14 @@
     <script src="{{url('js/bootstrap.min.js')}}"></script>
 
    
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+  {{-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script> --}}
 
  
 </head>
    
 @section('content')
 <h1 class="datatableTitleUsers"> Registration</h1>
-<div class="container tableSpacor" style="border: 3mm ridge #212529;">
+{{-- <div class="container tableSpacor" style="border: 3mm ridge #212529;">
     <table id="tbluser" class="table table-hover " style="width:100%;">
             <thead>
                 <tr>
@@ -71,11 +71,11 @@
                 @endforeach
             </tbody>
         </table>
-    </div>
+    </div> --}}
 <form method="POST" action="" id="frmAddUser">
     @csrf
     <fieldset class="addUserFieldset">
-        <legend class="addUserLegend">Registration</legend>
+        <legend class="addUserLegend">Property Registration</legend>
         <div class="container">
             @if ($errors->any())
                 <div class="alert alert-danger">
