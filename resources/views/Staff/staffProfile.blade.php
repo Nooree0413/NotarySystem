@@ -155,11 +155,22 @@
                 <option>Female</option>
                 <option>Male</option>
               </select>
-            <input type="submit" value="Save Changes" class="btn btn-info btn-block" style="padding-left:10%;" >
     </div>
 </div>
-    </form>
-    
+</form>
+
+<div class="row">
+    <div class="col-6">
+
+    </div>
+    <div class="col-4">
+        <input type="submit" value="Save Changes" class="btn btn-info btn-block"  >
+
+    </div>
+    <div class="col-2">
+
+    </div>
+</div>
     
 
 @endsection

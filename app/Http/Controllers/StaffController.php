@@ -341,41 +341,6 @@ class StaffController extends Controller
             
             ]);
 
-        // Create Post
-        // $post = new Post;
-        // $post->title = $request->input('title');
-        // $post->body = $request->input('body');
-        // $post->user_id = auth()->user()->id;
-        // $post->cover_image = $fileNameToStore;
-        // $post->save();
-
-        
-        // if(isset($image))
-        // {   
-        //     $img_path = "images/".Auth::user()->img_path;
-        //     if(File::exists($img_path) && $img_path != 'images/profilePic.jpg') 
-        //     {
-        //         File::delete($img_path);
-        //     }
-        //     //Image validation 500KB max
-        //     $this->validate($request,
-        //     [
-        //         'fpropic' => 'mimes:jpeg,jpg,png | max:500'      
-        //     ]       
-        //     );
-
-        //     $image = $request->file('fpropic');
-        //     $path = rand() . '.' . $image->getClientOriginalExtension();
-        //     //Image Resize to 215x215
-        //     $image_resize = Image::make($image->getRealPath());
-        //     $image_resize->resize(250, 250);
-        //     $image_resize->save(public_path('images/User_Profile_Image/'.$path));
-
-        //     DB::table('staff')
-        //     ->where('id', $staff_id)
-        //     ->update(['img_path' => 'User_Profile_Image/'.$path]);
-        // }
-
         DB::table('staff')
            ->where('id', $staff_id)
            ->update([
