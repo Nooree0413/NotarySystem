@@ -77,29 +77,31 @@ class CreateUsersTable extends Migration
             $table->string('previousNotaryLN')->nullable();
             $table->enum('previousNotaryTitle', ['Monsieur','Madame','Mademoiselle'])->default("Monsieur");
             $table->enum('districtSituated', ['Port Louis','Moka','Plaine Wilhems','Pamplemousses','Grand Port','Savanne','Flacq','Rivière du Rempart','Rivière Noire'])->default("Port Louis");
+            $table->string('img_path')->nullable()->default('profilePic.jpg');
             $table->timestamp('created_at')->default(\DB::raw('CURRENT_TIMESTAMP'));
             $table->timestamp('updated_at')->default(\DB::raw('CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP'));
         });
 
         Schema::create('staff', function (Blueprint $table) {
             $table->increments('id');
-            //$table->enum('title', ['Monsieur','Madame','Mademoiselle'])->default("Monsieur");
-           // $table->enum('roles', ['Secretary','Notary','Notary Assistant','Admin','Bank Personnel','Land Surveyor','RGD Personnel'])->default("Notary");
+            $table->enum('title', ['Monsieur','Madame','Mademoiselle'])->default("Monsieur");
+            $table->enum('roles', ['Notary','Notary Assistant'])->default("Notary");
             $table->string('firstname');
             $table->string('lastname');
             $table->string('email')->unique();
             $table->string('password');
-            //$table->date('dob');
-            //$table->string('nic')->unique();
-            //$table->string('contactnum')->unique();
-            //$table->enum('gender', ['Male','Female'])->default("Male");
+            $table->date('dob');
+            $table->string('nic')->unique();
+            $table->string('contactnum')->unique();
+            $table->enum('gender', ['Male','Female'])->default("Male");
+            $table->string('img_path')->nullable()->default('profilePic.jpg');
             $table->rememberToken();
             $table->timestamp('created_at')->default(\DB::raw('CURRENT_TIMESTAMP'));
             $table->timestamp('updated_at')->default(\DB::raw('CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP'));
         });
 
         Schema::create('transaction', function (Blueprint $table) {
-            $table->increments('transactionId');
+            $table->increments('id');
             $table->integer('clientId');
             $table->integer('staffId');
             $table->integer('propertyId');

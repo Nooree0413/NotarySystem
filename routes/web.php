@@ -52,6 +52,6 @@ Route::prefix('staff')->group(function(){
     Route::get('/generateContract', 'StaffController@generateContract')->name('generateContract');
     Route::post('/generateWord', 'WordTest@createWordDocx')->name('createWord');
     Route::get('/profile/view', 'StaffController@myProfile')->name('myProfile');
-
+    Route::post('/profile/view', 'StaffController@profileupdate')->name('profileUpdate');
 
 });

@@ -35,10 +35,16 @@ class DatabaseSeeder extends Seeder
 
         DB::table('staff')->insert([
             [
+                'title' =>'1',
+                'roles' =>'1',
                 'firstname' => 'Sarah',
                 'lastname' => 'Muller',  
                 'email' => 'sarah@gmail.com',
-                'password' => Hash::make(123456)
+                'password' => Hash::make(123456),
+                'dob' => '1997-11-13',
+                'nic'=>'M1122334455667',
+                'contactnum'=>'56780990',
+                'gender'=>'1'
             ],   
         ]);
     }

@@ -16,12 +16,12 @@
 </head>
    
 @section('content')
-<h1 class="datatableTitleUsers"> Title Deed</h1>
+<h1 class="datatableTitleUsers"> Contract Generation</h1>
 
 <form method="POST" action="{{ route('createWord') }}" id="frmAddUser">
     @csrf
     <fieldset class="addUserFieldset">
-        <legend class="addUserLegend">Generate Contract</legend>
+        <legend class="addUserLegend">Contract</legend>
         <div class="container">
             @if ($errors->any())
                 <div class="alert alert-danger">

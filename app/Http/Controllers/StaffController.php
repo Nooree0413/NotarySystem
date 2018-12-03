@@ -13,6 +13,8 @@ use Illuminate\Support\Facades\Validator;
 use App\Mail\sendMail;
 use Mail;
 use Illuminate\Support\Facades\Hash;
+use Intervention\Image\ImageManagerStatic as Image;
+use File;
 
 class StaffController extends Controller
 {
@@ -276,14 +278,123 @@ class StaffController extends Controller
 
     public function myProfile(){
         $staff_id = Auth::user()->id;  
-        $staff_details=DB::table('staff') ->where(['id'=>$staff_id])
+        $staff_get=DB::table('staff') 
+        ->where(['id'=>$staff_id])
         ->get();
 
-        $staff_details =  $staff_details[0];
-        return view('Staff.staffProfile')->with('staff_details',  $staff_details);
-    }
+        $staff_get =  $staff_get[0];
+        return view('Staff.staffProfile')->with('staff_detail',  $staff_get);
+
+    
     }
 
+    public function profileupdate(Request $request)
+    {
+        $staff_id = Auth::user()->id;
+        //$image=$request->file('fpropic');
+
+        $title=Input::get('txtTitle');
+        $fname = Input::get('txtfname');
+        $lname = Input::get('txtlname');
+        $email=Input::get('txtemail');
+        $cnum = Input::get('txtcnum');
+        $dob = Input::get('txtdob');
+        $nic = Input::get('txtnic');
+        $gender=Input::get('txtgender');
+
+        $this->validate($request,
+            [
+                'txtfname' => 'required',
+                'txtlname' => 'required',
+                'txtcnum' => 'required',
+                'txtemail' => 'required',
+                'txtdob' => 'required',
+                'txtnic' => 'required',
+                'txtTitle' => 'required',
+                'txtgender'=>'required'
+            ]);
+
+             // Handle File Upload
+        if($request->hasFile('fpropic')){
+            $this->validate($request,
+           [
+                'fpropic' => 'mimes:jpeg,jpg,png | max:1999'      
+            ]);
+            // Get filename with the extension
+            $filenameWithExt = $request->file('fpropic')->getClientOriginalName();
+            // Get just filename
+            $filename = pathinfo($filenameWithExt, PATHINFO_FILENAME);
+            // Get just ext
+            $extension = $request->file('fpropic')->getClientOriginalExtension();
+            // Filename to store
+            $fileNameToStore= $filename.'_'.time().'.'.$extension;
+            // Upload Image
+            $path = $request->file('fpropic')->storeAs('public/images', $fileNameToStore);
+        } else {
+            $fileNameToStore = 'profilePic.jpg';
+        }
+
+        
+        DB::table('staff')
+            ->where('id', $staff_id)
+            ->update(['img_path' => $fileNameToStore
+            
+            ]);
+
+        // Create Post
+        // $post = new Post;
+        // $post->title = $request->input('title');
+        // $post->body = $request->input('body');
+        // $post->user_id = auth()->user()->id;
+        // $post->cover_image = $fileNameToStore;
+        // $post->save();
+
+        
+        // if(isset($image))
+        // {   
+        //     $img_path = "images/".Auth::user()->img_path;
+        //     if(File::exists($img_path) && $img_path != 'images/profilePic.jpg') 
+        //     {
+        //         File::delete($img_path);
+        //     }
+        //     //Image validation 500KB max
+        //     $this->validate($request,
+        //     [
+        //         'fpropic' => 'mimes:jpeg,jpg,png | max:500'      
+        //     ]       
+        //     );
+
+        //     $image = $request->file('fpropic');
+        //     $path = rand() . '.' . $image->getClientOriginalExtension();
+        //     //Image Resize to 215x215
+        //     $image_resize = Image::make($image->getRealPath());
+        //     $image_resize->resize(250, 250);
+        //     $image_resize->save(public_path('images/User_Profile_Image/'.$path));
+
+        //     DB::table('staff')
+        //     ->where('id', $staff_id)
+        //     ->update(['img_path' => 'User_Profile_Image/'.$path]);
+        // }
+
+        DB::table('staff')
+           ->where('id', $staff_id)
+           ->update([
+                    'title'=>$title,
+                   'firstname' => $fname,
+                   'lastname' => $lname,
+                   'email' => $email,
+                   'dob' =>$dob,
+                   'nic'=>$nic,
+                   'contactnum' => $cnum,
+                   'gender' => $gender
+                   
+        ]);
+
+        return back();
+        
+    }
+
+}
     // public function returnHome()
     // {
     //     return view('home');

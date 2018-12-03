@@ -17,7 +17,7 @@
 </head>
    
 @section('content')
-<h1 class="datatableTitleUsers"> Registration</h1>
+<h1 class="datatableTitleUsers"> Immovable Property Registration</h1>
 {{-- <div class="container tableSpacor" style="border: 3mm ridge #212529;">
     <table id="tbluser" class="table table-hover " style="width:100%;">
             <thead>
@@ -75,7 +75,7 @@
 <form method="POST" action="" id="frmAddUser">
     @csrf
     <fieldset class="addUserFieldset">
-        <legend class="addUserLegend">Property Registration</legend>
+        <legend class="addUserLegend">Registration</legend>
         <div class="container">
             @if ($errors->any())
                 <div class="alert alert-danger">
