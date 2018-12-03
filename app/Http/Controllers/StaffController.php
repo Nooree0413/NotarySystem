@@ -291,7 +291,7 @@ class StaffController extends Controller
     public function profileupdate(Request $request)
     {
         $staff_id = Auth::user()->id;
-        //$image=$request->file('fpropic');
+        $image=$request->file('fpropic');
 
         $title=Input::get('txtTitle');
         $fname = Input::get('txtfname');
@@ -314,7 +314,8 @@ class StaffController extends Controller
                 'txtgender'=>'required'
             ]);
 
-             // Handle File Upload
+             // Handle File Upload{
+        if(isset($image)) {
         if($request->hasFile('fpropic')){
             $this->validate($request,
            [
@@ -330,16 +331,15 @@ class StaffController extends Controller
             $fileNameToStore= $filename.'_'.time().'.'.$extension;
             // Upload Image
             $path = $request->file('fpropic')->storeAs('public/images', $fileNameToStore);
-        } else {
-            $fileNameToStore = 'profilePic.jpg';
-        }
+         }
 
+         DB::table('staff')
+        ->where('id', $staff_id)
+        ->update(['img_path' => $fileNameToStore
         
-        DB::table('staff')
-            ->where('id', $staff_id)
-            ->update(['img_path' => $fileNameToStore
-            
-            ]);
+        ]);
+        }
+        
 
         DB::table('staff')
            ->where('id', $staff_id)
