@@ -2,12 +2,14 @@
 
 namespace App\Http\Controllers;
 use Auth;
+use Illuminate\Support\Facades\Redirect;
 use Illuminate\Http\Request;
 use DB;
 use Datatables;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Storage;
 use App\user;
+use App\Meeting;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Validator;
 use App\Mail\sendMail;
@@ -15,6 +17,7 @@ use Mail;
 use Illuminate\Support\Facades\Hash;
 use Intervention\Image\ImageManagerStatic as Image;
 use File;
+use Calendar;
 
 class StaffController extends Controller
 {
@@ -360,9 +363,41 @@ class StaffController extends Controller
         
     }
 
-
-   
+    public function meeting(){
+    	$meetings = Meeting::get();
+    	$meeting_list = [];
+    	foreach ($meetings as $key => $meeting) {
+    		$meeting_list[] = Calendar::event(
+                $meeting->meetingReason,
+                true,
+                new \DateTime($meeting->startTime),
+                new \DateTime($meeting->endTime.' +1 day')
+            );
+    	}
+    	$calendar_details = Calendar::addEvents($meeting_list); 
  
-
+        return view('meetings', compact('calendar_details') );
 }
-
+public function addMeeting(Request $request)
+    {
+        $validator = Validator::make($request->all(), [
+            'meetingReason' => 'required',
+            'startTime' => 'required',
+            'endTime' => 'required'
+        ]);
+ 
+        if ($validator->fails()) {
+        	\Session::flash('warnning','Please enter the valid details');
+            return Redirect::to('staff/meetings')->withInput()->withErrors($validator);
+        }
+ 
+        $meeting = new Event;
+        $meeting->meetingReason = $request['meetingReason'];
+        $meeting->startTime = $request['startTime'];
+        $meeting->endTime = $request['endTime'];
+        $meeting->save();
+ 
+        \Session::flash('success','Meeting added successfully.');
+        return Redirect::to('staff/meetings');
+    }
+}

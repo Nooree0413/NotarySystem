@@ -130,10 +130,10 @@ class CreateUsersTable extends Migration
             $table->timestamp('updated_at')->default(\DB::raw('CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP'));
         });
        
-        Schema::create('meeting', function (Blueprint $table) {
+        Schema::create('meetings', function (Blueprint $table) {
             $table->increments('meetingId');
-            $table->date('startTime');
-            $table->date('endTime');
+            $table->datetime('startTime');
+            $table->datetime('endTime');
             $table->string('meetingReason');
             $table->timestamp('created_at')->default(\DB::raw('CURRENT_TIMESTAMP'));
             $table->timestamp('updated_at')->default(\DB::raw('CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP'));
