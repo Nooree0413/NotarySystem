@@ -12,6 +12,7 @@
 */
 
 Route::get('/', function () {
+    Flashy::message("Welcome Aboard","http://your-awesome-link.com");
     return view('auth.login');
 });
 
@@ -53,5 +54,5 @@ Route::prefix('staff')->group(function(){
     Route::post('/generateWord', 'WordTest@createWordDocx')->name('createWord');
     Route::get('/profile/view', 'StaffController@myProfile')->name('myProfile');
     Route::post('/profile/view', 'StaffController@profileupdate')->name('profileUpdate');
-
+    
 });

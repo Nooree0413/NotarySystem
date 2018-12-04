@@ -9,6 +9,7 @@
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap4.min.css"> 
     <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/solid.js" integrity="sha384-tzzSw1/Vo+0N5UhStP3bvwWPq+uvzCMfrN1fEFe+xBmv1C/AtVX5K0uZtmcHitFZ" crossorigin="anonymous"></script>
     <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/fontawesome.js" integrity="sha384-6OIrr52G08NpOFSZdxxz1xdNSndlD4vdcf/q2myIUVO0VsqaGHJsB0RaBE01VTOY" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="//code.jquery.com/jquery.min.js"></script>
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <style>
@@ -102,11 +103,11 @@
         <h1 style="text-align:center;">{{Auth::user()->firstname}} <?php echo(strtoupper(Auth::user()->lastname));?>-Profile</h1>
     </div>
 
-    <form action="{{route('profileUpdate')}}" method="POST" enctype="multipart/form-data">
+    <form action="{{route('profileUpdate')}}" method="POST"  enctype="multipart/form-data">
         @csrf
     <div class="row">
         <div class="col-4">
-            <h2 style="text-align:right;">Profile Picture</h2>   
+            <h2 style="text-align:right">Profile Picture</h2>   
             <img src="{{asset('/storage/images/'.$staff_detail->img_path)}}" style="width:250px; height:250px;" class="rounded float-right" alt="...">  
             <br><br><br><br><br>
             <input type="file" id="fpropic" name="fpropic" accept="image/*" style="padding-left: 30%;" ><br><br>
@@ -116,10 +117,10 @@
     <div class="col-4">
       {{-- <h2>Details</h2> --}}
             <label for="staffid">Staff ID</label>
-            <input type="text" id="satffId" name="txtid" value="{{$staff_detail->id}}" disabled><br>
+            <input type="text" id="satffId" name="txtid" value="{{$staff_detail->id}}" class="form-control"disabled><br>
 
             <label for="staffrole">Role</label><br>
-            <input type="text" id="satffRole" name="txtrole" value="{{$staff_detail->roles}}" disabled><br>
+            <input type="text" id="satffRole" name="txtrole" value="{{$staff_detail->roles}}" class="form-control"disabled><br>
 
             <label for="staffTitle">Title</label>
             <select  name="txtTitle" class="form-control">
@@ -130,24 +131,24 @@
              </select>
 
             <label for="fname">First Name</label>
-            <input type="text" id="staffFname" name="txtfname" value="{{$staff_detail->firstname}}">
+            <input type="text" id="staffFname" name="txtfname" value="{{$staff_detail->firstname}}"class="form-control">
         
             <label for="lname">Last Name</label>
-            <input type="text" id="stafflname" name="txtlname" value="{{$staff_detail->lastname}}">
+            <input type="text" id="stafflname" name="txtlname" value="{{$staff_detail->lastname}}"class="form-control">
     </div>
 
     <div class="col-4">
               <label for="country">Email-Address</label>
-              <input type="email" id="staffEmail" name="txtemail" value="{{$staff_detail->email}}">
+              <input type="email" id="staffEmail" name="txtemail"class="form-control" value="{{$staff_detail->email}}">
 
               <label for="contactNum">Contact Number</label>
-              <input type="tel" id="staffContactNum" name="txtcnum" value="{{$staff_detail->contactnum}}">
+              <input type="tel" id="staffContactNum" name="txtcnum" class="form-control"value="{{$staff_detail->contactnum}}">
 
               <label for="dob">Date of Birth</label>
-              <input type="date" id="satffDob" name="txtdob" value="{{$staff_detail->dob}}" >
+              <input type="date" id="satffDob" name="txtdob"class="form-control" value="{{$staff_detail->dob}}" >
 
               <label for="nic">National Identity Card Number</label>
-              <input type="text" maxlength="14" id="satffNic" name="txtnic" value="{{$staff_detail->nic}}" >
+              <input type="text" maxlength="14" id="satffNic" class="form-control"name="txtnic" value="{{$staff_detail->nic}}" >
               
               <label for="staffTitle">Title</label>
               <select  name="txtgender" class="form-control">
@@ -171,7 +172,6 @@
 </div>
     
 </form>
-
 
 
 @endsection

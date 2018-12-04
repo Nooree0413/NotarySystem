@@ -315,32 +315,32 @@ class StaffController extends Controller
             ]);
 
              // Handle File Upload{
-        if(isset($image)) {
-        if($request->hasFile('fpropic')){
-            $this->validate($request,
-           [
-                'fpropic' => 'mimes:jpeg,jpg,png | max:1999'      
-            ]);
-            // Get filename with the extension
-            $filenameWithExt = $request->file('fpropic')->getClientOriginalName();
-            // Get just filename
-            $filename = pathinfo($filenameWithExt, PATHINFO_FILENAME);
-            // Get just ext
-            $extension = $request->file('fpropic')->getClientOriginalExtension();
-            // Filename to store
-            $fileNameToStore= $filename.'_'.time().'.'.$extension;
-            // Upload Image
-            $path = $request->file('fpropic')->storeAs('public/images', $fileNameToStore);
-         }
+    if(isset($image)) {
+            if($request->hasFile('fpropic')){
+
+                $this->validate($request,
+                [
+                    'fpropic' => 'mimes:jpeg,jpg,png | max:1999'      
+                ]);
+                
+                // Get filename with the extension
+                $filenameWithExt = $request->file('fpropic')->getClientOriginalName();
+                // Get just filename
+                $filename = pathinfo($filenameWithExt, PATHINFO_FILENAME);
+                // Get just ext
+                $extension = $request->file('fpropic')->getClientOriginalExtension();
+                // Filename to store
+                $fileNameToStore= $filename.'_'.time().'.'.$extension;
+                // Upload Image
+                $path = $request->file('fpropic')->storeAs('public/images', $fileNameToStore);
+            }
 
          DB::table('staff')
         ->where('id', $staff_id)
         ->update(['img_path' => $fileNameToStore
-        
         ]);
-        }
-        
-
+       
+    }
         DB::table('staff')
            ->where('id', $staff_id)
            ->update([
@@ -354,20 +354,15 @@ class StaffController extends Controller
                    'gender' => $gender
                    
         ]);
+        flashy()->success( ' successfully updated!.');
 
-        return back();
+        return redirect('/staff/profile/view');
         
     }
 
-}
-    // public function returnHome()
-    // {
-    //     return view('home');
-    // }
 
-    // public function logout()
-    // {
-    //     Auth::logout();
-        
-    //     return redirect('/staff/login');
-    // }
+   
+ 
+
+}
+
