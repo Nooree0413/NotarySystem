@@ -23,6 +23,12 @@ class RedirectIfAuthenticated
                 return redirect()->route('staffdashboard');
               }
               break;
+
+              case 'rgd':
+              if (Auth::guard($guard)->check()) {
+                return redirect()->route('rgddashboard');
+              }
+              break;
     
             default:
               if (Auth::guard($guard)->check()) {

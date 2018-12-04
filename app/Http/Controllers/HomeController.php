@@ -15,7 +15,7 @@ class HomeController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth');
+        $this->middleware('auth', ['except' => ['userlogout','rgdlogout','logout']]);
     }
 
     /**
@@ -33,9 +33,9 @@ class HomeController extends Controller
     //     return view('home');
     // }
 
-    public function logout()
+    public function userlogout()
     {
-        Auth::logout();
+        Auth::guard('web')->logout();
         
         return redirect('/login');
     }

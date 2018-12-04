@@ -7,22 +7,23 @@ use App\Http\Controllers\Controller;
 use Auth;
 
 
-class StaffLoginController extends Controller
+class RgdLoginController extends Controller
 {
+    
     /**
      * Where to redirect users after login.
      *
      * @var string
      */
-     protected $redirectTo = '/staff';
+     protected $redirectTo = '/rgd';
     public function __construct(){
-        $this->middleware('guest:staff', ['except' => ['logout','userlogout','rgdlogout']]);
+        $this->middleware('guest:rgd', ['except' => ['logout','userlogout','rgdlogout']]);
     }
 
     
     public function showLoginForm()
     {
-        return view('auth.staff-login');
+        return view('auth.rgd-login');
     }
 
     public function login(Request $request)
@@ -34,19 +35,20 @@ class StaffLoginController extends Controller
       ]);
 
       // Attempt to log the user in
-      if (Auth::guard('staff')->attempt(['email' => $request->email, 'password' => $request->password], $request->remember)) {
+      if (Auth::guard('rgd')->attempt(['email' => $request->email, 'password' => $request->password], $request->remember)) {
         // if successful, then redirect to their intended location
-        return redirect()->intended(route('staffdashboard'));
+        return redirect()->intended(route('rgddashboard'));
       }
 
       // if unsuccessful, then redirect back to the login with the form data
       return redirect()->back()->withInput($request->only('email', 'remember'));
-    //   return redirect()->intended(route('staff.login'))->withInput($request->only('email', 'remember'));
     }
 
-    public function logout()
+    public function rgdlogout()
     {
-        Auth::guard('staff')->logout();
-        return redirect('staff/login');
+        Auth::guard('rgd')->logout();
+        
+    return redirect('rgd/login');
+       // return view('auth.rgd-login');
     }
 }

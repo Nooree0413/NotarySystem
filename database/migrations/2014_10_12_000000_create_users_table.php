@@ -100,6 +100,24 @@ class CreateUsersTable extends Migration
             $table->timestamp('updated_at')->default(\DB::raw('CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP'));
         });
 
+        Schema::create('rgds', function (Blueprint $table) {
+            $table->increments('id');
+           // $table->enum('title', ['Monsieur','Madame','Mademoiselle'])->default("Monsieur");
+            $table->enum('roles', ['RGD'])->default("RGD");
+            $table->string('name');
+            //$table->string('lastname');
+            $table->string('email')->unique();
+            $table->string('password');
+            //$table->date('dob');
+           // $table->string('nic')->unique();
+            $table->string('contactnum')->unique();
+           // $table->enum('gender', ['Male','Female'])->default("Male");
+            $table->string('img_path')->nullable()->default('profilePic.jpg');
+            $table->rememberToken();
+            $table->timestamp('created_at')->default(\DB::raw('CURRENT_TIMESTAMP'));
+            $table->timestamp('updated_at')->default(\DB::raw('CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP'));
+        });
+
         Schema::create('transaction', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('clientId');

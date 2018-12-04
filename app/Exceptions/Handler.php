@@ -52,6 +52,16 @@ class Handler extends ExceptionHandler
                 case 'staff':
                     return redirect(route('staff.login'));
                     break;
+
+                case 'rgd':
+                return redirect(route('rgd.login'));
+                break;
+
+                // case 'web':
+                // return redirect(route('rgd.login'));
+                // break;
+
+
                 default:
                     return redirect(route('login'));
                     break;

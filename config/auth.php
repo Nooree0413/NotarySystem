@@ -46,6 +46,11 @@ return [
             'provider' => 'staff',
         ],
 
+        'rgd' => [
+            'driver' => 'session',
+            'provider' => 'rgd',
+        ],
+
         'api' => [
             'driver' => 'token',
             'provider' => 'users',
@@ -54,6 +59,11 @@ return [
         'staff-api' => [
             'driver' => 'token',
             'provider' => 'staff',
+        ],
+
+        'rgd-api' => [
+            'driver' => 'token',
+            'provider' => 'rgd',
         ],
     ],
 
@@ -83,6 +93,11 @@ return [
         'staff' => [
             'driver' => 'eloquent',
             'model' => App\Staff::class,
+        ],
+
+        'rgd' => [
+            'driver' => 'eloquent',
+            'model' => App\Rgd::class,
         ],
 
         // 'users' => [

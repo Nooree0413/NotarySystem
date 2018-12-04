@@ -21,7 +21,7 @@ Auth::routes();
 Route::get('/dashboard', 'HomeController@index')->name('dashboard');
 //Route::get('/dashboard', 'HomeController@viewDashboard')->name('dashboard');
 
-Route::get('/logout', 'HomeController@logout');
+Route::get('/logout', 'HomeController@userlogout');
 //Route::get('/generateWord', 'wordTest@redirectToPage');
 
 //Route::get('/generateWord', ['as'=>'createWord','uses'=>'WordTest@createWordDocx']);
@@ -55,4 +55,11 @@ Route::prefix('staff')->group(function(){
     Route::get('/profile/view', 'StaffController@myProfile')->name('myProfile');
     Route::post('/profile/view', 'StaffController@profileupdate')->name('profileUpdate');
     
+});
+
+Route::prefix('rgd')->group(function(){
+    Route::get('/','RgdController@index')->name('rgddashboard');
+    Route::get('/login','Auth\RgdLoginController@showLoginForm')->name('rgd.login');
+    Route::post('/login','Auth\RgdLoginController@login')->name('rgd.login.submit');
+    Route::get('/logout', 'Auth\RgdLoginController@rgdlogout')->name('rgd.logout');
 });
