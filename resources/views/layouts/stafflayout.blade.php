@@ -72,13 +72,16 @@
                 </li>
                
                 <li>
-                    <a href="{{ route('propertyRegistration') }}" ><i class="fas fa-key"></i> Property Registration</a>
+                    <a href="{{ route('propertyRegistration') }}" ><i class="fas fa-building"></i> Property Registration</a>
+                </li>
+                <li>
+                    <a href="{{ route('meetings') }}" ><i class="fas fa-calendar-alt"></i> View Meetings</a>
                 </li>
                 
                 
                 <li class="active">
                     <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
-                        <i class="fas fa-newspaper"></i>
+                        <i class="fas fa-file-alt"></i>
                         Generate Contract
                     </a>
                     <ul class="collapse list-unstyled" id="homeSubmenu">

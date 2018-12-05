@@ -152,7 +152,6 @@ class StaffController extends Controller
             'inputSpouseLastName'=> 'required',
             'inputSpouseTitle' =>'required',
             'inputSpouseNIC' => 'required|alpha_num|unique:users,spouseNic',
-           
             'inputSpouseDob' =>'required|date',
             'inputSpouseBcNum' => 'required|numeric',
             'inputSpouseDistrict' =>'required',
@@ -160,7 +159,6 @@ class StaffController extends Controller
             'inputMcNum' => 'required|numeric',
             'inputMcDistrict' =>'required',
             'inputSpouseProfession' =>'required',
-           
             'inputSpouseGender' =>'required',
             'inputSpousePlaceOfBirth' =>'required',
              ]       
@@ -179,13 +177,10 @@ class StaffController extends Controller
         $mcNum=Input::get('inputMcNum');
         $mcDistrict=Input::get('inputMcDistrict');
         $profession=Input::get('inputSpouseProfession');
-     
         $gender=Input::get('inputSpouseGender');
         $placeOfBirth=Input::get('inputSpousePlaceOfBirth');
-
-       
-        
-       $query= DB::table('users')
+    
+        $query= DB::table('users')
                     ->where("id", $clientId)
                     ->update([
                         'spouseTitle' =>$title,
@@ -200,15 +195,10 @@ class StaffController extends Controller
                         'marriageDate' =>$marriageDate,
                         'MCNumber' => $mcNum,
                         'MCdistrictIssued' => $mcDistrict,
-                        'spouseProfession' =>$profession
-                        
+                        'spouseProfession' =>$profession     
                     ]); 
-
-       
-
         flashy()->success($fname.' '.$lname. ' successfully added!.');
             return redirect('staff/registernew');
-
     }
 
     public function propertyRegistration(){  
@@ -262,10 +252,6 @@ class StaffController extends Controller
             'previousNotaryLN'=>$previousNotaryLN,
             'previousNotaryTitle'=>$previousNotaryTitle,
             'districtSituated'=>$districtSituated
-
-
-
-   
         );
 
         DB::table('immovableproperty')->insert($data);
@@ -317,8 +303,8 @@ class StaffController extends Controller
                 'txtgender'=>'required'
             ]);
 
-             // Handle File Upload{
-    if(isset($image)) {
+             // Handle File Upload
+        if(isset($image)) { //to check if user has selected an image
             if($request->hasFile('fpropic')){
 
                 $this->validate($request,
@@ -330,7 +316,7 @@ class StaffController extends Controller
                 $filenameWithExt = $request->file('fpropic')->getClientOriginalName();
                 // Get just filename
                 $filename = pathinfo($filenameWithExt, PATHINFO_FILENAME);
-                // Get just ext
+                // Get just the file extension
                 $extension = $request->file('fpropic')->getClientOriginalExtension();
                 // Filename to store
                 $fileNameToStore= $filename.'_'.time().'.'.$extension;
@@ -363,13 +349,15 @@ class StaffController extends Controller
         
     }
 
+     //function to show the calendar with all meetings
     public function meeting(){
-    	$meetings = Meeting::get();
+       // $meetings = Meeting::get();
+        $meetings=DB::table('meetings')->get();
     	$meeting_list = [];
     	foreach ($meetings as $key => $meeting) {
     		$meeting_list[] = Calendar::event(
                 $meeting->meetingReason,
-                true,
+                false, //to enable the user to view the date and time as well on the calendar
                 new \DateTime($meeting->startTime),
                 new \DateTime($meeting->endTime.' +1 day')
             );
@@ -391,7 +379,7 @@ public function addMeeting(Request $request)
             return Redirect::to('staff/meetings')->withInput()->withErrors($validator);
         }
  
-        $meeting = new Event;
+        $meeting = new Meeting;
         $meeting->meetingReason = $request['meetingReason'];
         $meeting->startTime = $request['startTime'];
         $meeting->endTime = $request['endTime'];

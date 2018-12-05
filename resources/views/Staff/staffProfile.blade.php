@@ -83,9 +83,9 @@
     cursor: pointer;
 } */
 
-/* input[type=submit]:hover {
-    background-color: #45a049;
-} */
+input[type=submit]:hover {
+    background-color:#17a2b887;
+}
 
 /* div {
     border-radius: 5px;
@@ -110,7 +110,7 @@
             <h2 style="text-align:right">Profile Picture</h2>   
             <img src="{{asset('/storage/images/'.$staff_detail->img_path)}}" style="width:250px; height:250px;" class="rounded float-right" alt="...">  
             <br><br><br><br><br>
-            <input type="file" id="fpropic" name="fpropic" accept="image/*" style="padding-left: 30%;" ><br><br>
+            <input type="file" id="fpropic" name="fpropic" accept="image/*" style="padding-left: 24%; margin-top:5%;" ><br><br>
         
         </div>
 
