@@ -55,7 +55,10 @@ Route::prefix('staff')->group(function(){
     Route::get('/profile/view', 'StaffController@myProfile')->name('myProfile');
     Route::post('/profile/view', 'StaffController@profileupdate')->name('profileUpdate');
     Route::get('/meetings', 'StaffController@meeting')->name('meetings');
-Route::post('/meetings', 'StaffController@addMeeting')->name('meetings.add');
+    Route::post('/meetings', 'StaffController@addMeeting')->name('meetings.add');
+    Route::get('/upload/contract', 'StaffController@showUploadForm')->name('upload.contract');
+    Route::post('/upload/contract', 'StaffController@uploadContract')->name('upload.contract.submit');
+    Route::get('/view/contract/{id}','StaffController@viewContract')->name('view.contract');
     
 });
 

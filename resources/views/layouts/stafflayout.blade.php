@@ -77,6 +77,9 @@
                 <li>
                     <a href="{{ route('meetings') }}" ><i class="fas fa-calendar-alt"></i> View Meetings</a>
                 </li>
+                <li>
+                <a href="{{route('upload.contract')}}" ><i class="fas fa-upload"></i> Upload Contract</a>
+                </li>
                 
                 
                 <li class="active">

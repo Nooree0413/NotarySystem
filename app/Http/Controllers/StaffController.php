@@ -388,4 +388,40 @@ public function addMeeting(Request $request)
         \Session::flash('success','Meeting added successfully.');
         return Redirect::to('staff/meetings');
     }
+
+    public function showUploadForm(){
+        $transactions=DB::table('transaction')->get();
+        $users=DB::table('users')->get();
+        return view('Staff.uploadContract')->with('users',$users)->with('transactions',$transactions);
+    }
+
+    public function uploadContract(Request $request){
+        $upload=$request->file('contract');
+        $clientName=Input::get('inputClientName');
+
+        if(isset($upload)){
+            $name = $_FILES['contract']['name'];
+            $mime = $_FILES['contract']['type'];
+            $datas = file_get_contents($_FILES['contract']['tmp_name']);
+            $path = $request->file('contract')->storeAs('public/images', $name);
+            $data = array(
+                'clientId' =>  $clientName, 
+                'name' => $name, 
+                'mime'=>$mime,
+                'generatedContract' =>  $datas 
+                
+            );
+    
+            DB::table('transaction')->insert($data);
+            return "successfull";
+    
+        }
+
+        
+    }
+
+    public function viewContract($id){
+        $transactions=DB::table('transaction')->where('id', $id)->get();
+        return view('Staff.viewContract')->with('transactions',$transactions);
+    }
 }
