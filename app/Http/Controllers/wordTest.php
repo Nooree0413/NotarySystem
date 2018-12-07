@@ -357,6 +357,7 @@ $desc1 = "The Portfolio details is a very useful feature of the web page. You ca
     }
 
     if(isset($_POST['btnSubmit'])){
+        
     return response()->download(storage_path($buyer->firstname.$buyer->lastname.'.docx'));
     }else{
         // return response()->download(storage_path($buyer->firstname.$buyer->lastname.'.docx'));
@@ -369,7 +370,7 @@ $desc1 = "The Portfolio details is a very useful feature of the web page. You ca
     $document = new Dompdf();
     $page = file_get_contents((storage_path($buyer->firstname.$buyer->lastname.'.html')));
     $document->loadHtml($page);
-    $document->setPaper('A4', 'landscape');
+    $document->setPaper('A4', 'portrait');
 
 //Render the HTML as PDF
 
