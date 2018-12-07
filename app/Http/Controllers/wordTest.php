@@ -356,40 +356,35 @@ $desc1 = "The Portfolio details is a very useful feature of the web page. You ca
     } catch (Exception $e) {
     }
 
-    if(isset($_POST['btnSubmit'])){
+    //if 'Download Contract' button is clicked, contract is downloaded in word document with correct formatting
+    if(isset($_POST['btnSubmit'])){   
+        return response()->download(storage_path($buyer->firstname.$buyer->lastname.'.docx'));
+    }
+    //if 'Preview Contract' button is clicked,contract is previewed on browser into pfd format since
+    //word document cannot be previewed directly on browser
+    else{
         
-    return response()->download(storage_path($buyer->firstname.$buyer->lastname.'.docx'));
-    }else{
-        // return response()->download(storage_path($buyer->firstname.$buyer->lastname.'.docx'));
         $objReader=\PhpOffice\PhpWord\IOFactory::createReader('Word2007');
-   
-    $phpWord=$objReader->load((storage_path($buyer->firstname.$buyer->lastname.'.docx')));
-    $objWriter = \PhpOffice\PhpWord\IOFactory::createWriter($phpWord, 'HTML');
-    $objWriter->save(storage_path($buyer->firstname.$buyer->lastname.'.html'));
-    // return response()->download(storage_path($buyer->firstname.$buyer->lastname.'.html'));
-    $document = new Dompdf();
-    $page = file_get_contents((storage_path($buyer->firstname.$buyer->lastname.'.html')));
-    $document->loadHtml($page);
-    $document->setPaper('A4', 'portrait');
+        $phpWord=$objReader->load((storage_path($buyer->firstname.$buyer->lastname.'.docx')));
 
-//Render the HTML as PDF
-
-$document->render();
-
-//Get output of generated pdf in Browser
-
-$document->stream("Webslesson", array("Attachment"=>0));
-//1  = Download
-//0 = Preview
-
+        $objWriter = \PhpOffice\PhpWord\IOFactory::createWriter($phpWord, 'HTML');
+        $objWriter->save(storage_path($buyer->firstname.$buyer->lastname.'.html'));
     
+        $document = new Dompdf();
+        $page = file_get_contents((storage_path($buyer->firstname.$buyer->lastname.'.html')));
+        $document->loadHtml($page);
+        $document->setPaper('A4', 'portrait');
 
-    
+        //Render the HTML as PDF
+
+        $document->render();
+
+        //Get output of generated pdf in Browser
+
+        $document->stream("Webslesson", array("Attachment"=>0));
+        //1  = Download
+        //0 = Preview
     }
 }
-
-    // public function redirectToPage(){
-    //     return view('/generateWord');
-    // }
 
 }
