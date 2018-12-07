@@ -415,13 +415,18 @@ public function addMeeting(Request $request)
             DB::table('transaction')->insert($data);
             return "successfull";
     
-        }
-
-        
+        }   
     }
 
+    //view final contract uploaded by notary/notary assistant directly on browser in PDF Format
     public function viewContract($id){
         $transactions=DB::table('transaction')->where('id', $id)->get();
         return view('Staff.viewContract')->with('transactions',$transactions);
+    }
+
+    //view client profile
+    public function clientDetails($id){
+        $user = user::find($id);
+        return view('Staff.viewClientProfile')->with('users', $user);
     }
 }

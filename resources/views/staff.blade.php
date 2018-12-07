@@ -58,7 +58,7 @@
                 Contact Number
             </th> 
             <th>
-             Role
+                Role
             </th>
             <th>
                 Status
@@ -90,11 +90,11 @@
                 {{$user->roles}}
             </td>
             <td>
-                    {{$user->marriageStatus}}
-                </td>
+                {{$user->marriageStatus}}
+            </td>
             <td>
                 {{-- Show Event Button --}}
-                    {{-- <a href="/usersfound/show/{{$user->id}}"> --}}
+                    <a style="color:black;" href="staff/show/client/{{$user->id}}">
                         <span data-toggle="tooltip" data-placement="top" style="border-bottom:none" title="More details">
                             <i class="fas fa-eye"></i>
                         </span>
@@ -102,7 +102,7 @@
                 {{-- /Show Button --}}
                |
                 {{-- Edit User Button --}}
-                    {{-- <a class="editbtn" data-open="editusermod" data-mycontactnum="{{$user->contactnum}}" data-myfirstname="{{$user->firstname}}" data-mylastname="{{$user->lastname}}" data-myemail="{{$user->email}}" data-userid="{{$user->id}}" data-target="#editusermod"> --}}
+                    <a style="color:black;" class="editbtn" data-open="editusermod" data-mycontactnum="{{$user->contactnum}}" data-myfirstname="{{$user->firstname}}" data-mylastname="{{$user->lastname}}" data-myemail="{{$user->email}}" data-userid="{{$user->id}}" data-target="#editusermod">
                         <span style="border-bottom:none" data-toggle="tooltip" data-placement="top"  title="Edit">
                             <i class="fas fa-pencil-alt font-color"></i> 
                         </span>

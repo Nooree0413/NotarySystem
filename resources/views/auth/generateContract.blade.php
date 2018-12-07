@@ -96,7 +96,17 @@
             </div>
       {{-- <a href="/generateWord" class="btn btn-danger">Genrerate Word Document</a> --}}
 
-            <input type="submit" name="btnSubmit" class="btn btn-success btn-block" value="Generate Contract">
+           <div class="form-row">
+            <div class="col-6">
+            {{-- <a href="/staff/preview/contract/pdf" style="color:antiquewhite;" >Preview </a></li> --}}
+            <input type="submit" name="previewPDF" style="color:antiquewhite;"  class="btn btn-warning btn-block " value="Preview Contract">
+            {{-- <a href="/staff/preview/contract/pdf" style="color:antiquewhite;" class="btn btn-warning btn-block">Preview Contract</a></li> --}}
+
+        </div>
+            <div class="col-6">
+            <input type="submit" name="btnSubmit" class="btn btn-success btn-block " value="Download Contract">
+            </div>
+           </div>
         </div>
     </fieldset>
 </form>

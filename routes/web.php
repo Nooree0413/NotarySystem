@@ -22,18 +22,6 @@ Route::get('/dashboard', 'HomeController@index')->name('dashboard');
 //Route::get('/dashboard', 'HomeController@viewDashboard')->name('dashboard');
 
 Route::get('/logout', 'HomeController@userlogout');
-//Route::get('/generateWord', 'wordTest@redirectToPage');
-
-//Route::get('/generateWord', ['as'=>'createWord','uses'=>'WordTest@createWordDocx']);
-// Route::post('/generateWord', 'WordTest@createWordDocx')->name('createWord');
-
-// Route::get('/registernew', 'HomeController@newRegisterPage')->name('registernew');
-// Route::get('/propertyRegistration', 'HomeController@propertyRegistration')->name('propertyRegistration');
-// Route::get('/generateContract', 'HomeController@generateContract')->name('generateContract');
-// Route::get('/registerSpouse', 'HomeController@newRegisterSpousePage')->name('registerSpouse');
-// Route::post('/propertyRegistration', 'userController@add_property')->name('add_property');
-// Route::post('/registernew','userController@add_user')->name('add_user');
-// Route::post('/registerSpouse','userController@add_spouse')->name('add_spouse');
 Route::get('/viewuser','userController@viewUsers')->name('viewUser');
 Route::get('/test','userController@viewUsers')->name('test');
 Route::post('propertyRegistration/fetch', 'HomeController@fetch')->name('dynamicdependent.fetch');
@@ -59,7 +47,8 @@ Route::prefix('staff')->group(function(){
     Route::get('/upload/contract', 'StaffController@showUploadForm')->name('upload.contract');
     Route::post('/upload/contract', 'StaffController@uploadContract')->name('upload.contract.submit');
     Route::get('/view/contract/{id}','StaffController@viewContract')->name('view.contract');
-    
+    Route::get('/show/client/{id}', 'StaffController@clientDetails')->name('client.profile.show');
+    // Route::post('/preview/contract/pdf', 'previewPDFController@previewContractSOIP')->name('view.pdf');
 });
 
 Route::prefix('rgd')->group(function(){

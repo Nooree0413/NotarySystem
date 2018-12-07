@@ -9,7 +9,8 @@ use Illuminate\Support\Facades\Input;
 use Auth;
 use Datatables;
 use Illuminate\Support\Facades\Validator;
-
+use PDF;
+use Dompdf\Dompdf;
 
 
 class wordTest extends Controller
@@ -355,8 +356,35 @@ $desc1 = "The Portfolio details is a very useful feature of the web page. You ca
     } catch (Exception $e) {
     }
 
+    if(isset($_POST['btnSubmit'])){
     return response()->download(storage_path($buyer->firstname.$buyer->lastname.'.docx'));
+    }else{
+        // return response()->download(storage_path($buyer->firstname.$buyer->lastname.'.docx'));
+        $objReader=\PhpOffice\PhpWord\IOFactory::createReader('Word2007');
+   
+    $phpWord=$objReader->load((storage_path($buyer->firstname.$buyer->lastname.'.docx')));
+    $objWriter = \PhpOffice\PhpWord\IOFactory::createWriter($phpWord, 'HTML');
+    $objWriter->save(storage_path($buyer->firstname.$buyer->lastname.'.html'));
+    // return response()->download(storage_path($buyer->firstname.$buyer->lastname.'.html'));
+    $document = new Dompdf();
+    $page = file_get_contents((storage_path($buyer->firstname.$buyer->lastname.'.html')));
+    $document->loadHtml($page);
+    $document->setPaper('A4', 'landscape');
+
+//Render the HTML as PDF
+
+$document->render();
+
+//Get output of generated pdf in Browser
+
+$document->stream("Webslesson", array("Attachment"=>0));
+//1  = Download
+//0 = Preview
+
     
+
+    
+    }
 }
 
     // public function redirectToPage(){
