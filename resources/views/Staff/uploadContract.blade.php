@@ -71,6 +71,8 @@
     <ol>
         @foreach($transactions as $transaction)
     <li><a href="chrome-extension://oemmndcbldboiebfnladdacbdfmadadm/http://127.0.0.1:8000/staff/view/contract/{{$transaction->id}}" style="color:black;" target='_blank'>{{$transaction->name}}</a></li>
+
+    {{-- <li><a href="http://127.0.0.1:8000/staff/view/contract/{{$transaction->id}}" style="color:black;" target='_blank'>{{$transaction->name}}</a></li> --}}
     {{-- <li><a href="/staff/view/contract".{{}} style="color:black;" target='_blank' class="download">{{$transaction->name}}</a></li> --}}
 
     @endforeach
