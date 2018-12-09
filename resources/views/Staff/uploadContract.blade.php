@@ -27,7 +27,7 @@
 
 @section('content')
 <h1 class="datatableTitleUsers"> Upload Contract</h1>
-<form method="POST" action="{{ route('upload.contract.submit') }}" id="frmAddUser" enctype="multipart/form-data">
+<form method="POST" action="{{ route('upload.contract.submit') }}" id="frmAddUser" files="true" enctype="multipart/form-data">
     @csrf
     <fieldset class="addUserFieldset">
         <legend class="addUserLegend">Contract</legend>
@@ -53,7 +53,7 @@
                     </div>
                     <div class="col-6">
                         <label>Generated Contract</label>
-                        <input type="file" id="contract"  name="contract" class="btn  btn-block"  >
+                        <input type="file" accept=".pdf" id="contract"  name="contract" class="btn  btn-block"  >
                         </div>
                 </div>
                 <br>
@@ -70,7 +70,7 @@
 
     <ol>
         @foreach($transactions as $transaction)
-    <li><a href="/staff/view/contract/{{$transaction->id}}" style="color:black;" target='_blank'>{{$transaction->name}}</a></li>
+    <li><a href="chrome-extension://oemmndcbldboiebfnladdacbdfmadadm/http://127.0.0.1:8000/staff/view/contract/{{$transaction->id}}" style="color:black;" target='_blank'>{{$transaction->name}}</a></li>
     {{-- <li><a href="/staff/view/contract".{{}} style="color:black;" target='_blank' class="download">{{$transaction->name}}</a></li> --}}
 
     @endforeach
