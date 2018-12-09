@@ -258,4 +258,10 @@ a.article:hover {
     .card.card-size{
         width: 139% !important;
     }
+    .not-active-link {
+        pointer-events: none;
+        cursor: default;
+        text-decoration: none;
+        color: black;
+    }
 }

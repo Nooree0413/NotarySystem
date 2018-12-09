@@ -48,6 +48,7 @@ Route::prefix('staff')->group(function(){
     Route::post('/upload/contract', 'StaffController@uploadContract')->name('upload.contract.submit');
     Route::get('/view/contract/{id}','StaffController@viewContract')->name('view.contract');
     Route::get('/show/client/{id}', 'StaffController@clientDetails')->name('client.profile.show');
+    Route::get('/client/delete/{id}', 'StaffController@deleteClient');
     // Route::post('/preview/contract/pdf', 'previewPDFController@previewContractSOIP')->name('view.pdf');
 });
 

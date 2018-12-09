@@ -9,6 +9,7 @@ use Datatables;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Storage;
 use App\user;
+//  use App\User;
 use App\Meeting;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Validator;
@@ -429,4 +430,11 @@ public function addMeeting(Request $request)
         $user = user::find($id);
         return view('Staff.viewClientProfile')->with('users', $user);
     }
+
+    //delete a client
+    public function deleteClient($id){
+        DB::table('users')->where('id', $id)->delete();
+        return "successfully deleted";
+    }
 }
+?>
