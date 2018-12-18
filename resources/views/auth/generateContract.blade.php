@@ -9,14 +9,27 @@
     <link rel="stylesheet" type="text/css" href="{{asset('/css/bootstrap.min.css')}}">
     <link rel="icon" href="{{asset('images/addUser.png')}}" />
     <script src="{{url('js/bootstrap.min.js')}}"></script>
+    <style>
+        .header {
+            width: 97.2%;
+            margin-left:1.5%;
+            background-color: #17a2b8;
+            color: #ffffff;
+            padding: 0px;
+            font-size: 5px !important;
+        }
 
-    <script>
-       
-    </script>
+    </style> 
 </head>
    
 @section('content')
-<h1 class="datatableTitleUsers"> Contract Generation</h1>
+<div class="row">
+    <div class="header">
+        <div class="col-12">
+        <h1 style="text-align:center;  margin-bottom: -1%;">Contract Generation</h1>
+        </div>
+    </div>
+    </div>
 
 <form method="POST" action="{{ route('createWord') }}" id="frmAddUser">
     @csrf
@@ -97,15 +110,16 @@
       {{-- <a href="/generateWord" class="btn btn-danger">Genrerate Word Document</a> --}}
 
            <div class="form-row">
-            <div class="col-6">
+            <div class="col-4">
             {{-- <a href="/staff/preview/contract/pdf" style="color:antiquewhite;" >Preview </a></li> --}}
-            <input type="submit" name="previewPDF" style="color:antiquewhite;"  class="btn btn-warning btn-block " value="Preview Contract">
+            {{-- <input type="submit" name="previewPDF" style="color:antiquewhite;"  class="btn btn-warning btn-block " value="Preview Contract"> --}}
             {{-- <a href="/staff/preview/contract/pdf" style="color:antiquewhite;" class="btn btn-warning btn-block">Preview Contract</a></li> --}}
 
         </div>
-            <div class="col-6">
+            <div class="col-4">
             <input type="submit" name="btnSubmit" class="btn btn-success btn-block " value="Download Contract">
             </div>
+            <div class="col-4"></div>
            </div>
         </div>
     </fieldset>

@@ -49,4 +49,6 @@ class StaffLoginController extends Controller
         Auth::guard('staff')->logout();
         return redirect('staff/login');
     }
+
+    
 }

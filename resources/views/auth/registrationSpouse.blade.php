@@ -14,16 +14,30 @@
     <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/fontawesome.js" integrity="sha384-6OIrr52G08NpOFSZdxxz1xdNSndlD4vdcf/q2myIUVO0VsqaGHJsB0RaBE01VTOY" crossorigin="anonymous"></script>
     <script src="{{url('js/bootstrap.min.js')}}"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
-    <script>
-       
-    </script>
+    <style>
+        .header {
+            width: 97.2%;
+            margin-left:1.5%;
+            background-color: #17a2b8;
+            color: #ffffff;
+            padding: 0px;
+            font-size: 5px !important;
+        }
+
+    </style> 
 </head>
    
 @section('content')
     {{-- <div class="registerBox"> --}}
     {{-- <img src="{{ asset('images/avatar.png') }}" class="avatar"> --}}
     {{-- <a class="centerLink" href="{{ route('loginnew') }}">Already have an account?Login here!</a> --}}
-        <h1 class="datatableTitleUsers">Spouse Registration</h1>
+    <div class="row">
+            <div class="header">
+                <div class="col-12">
+                <h1 style="text-align:center;  margin-bottom: -1%;">Spouse Registration</h1>
+                </div>
+            </div>
+            </div>
         {{-- <div class="container tableSpacor" style="border: 1mm ridge #212529;">
             <table id="tbluser" class="table table-hover " style="width:100%;">
                     <thead>
@@ -242,8 +256,13 @@
       </div>
                     
             
-           
+      <div class="row">
+            <div class="col-4"></div>
+            <div class="col-4">
             <input type="submit" name="btnSubmit" class="btn btn-success btn-block" value="Add Spouse">
+        </div>
+        <div class="col-4"></div>
+    </div>
             {{-- <button class="button">Add User</button>   --}}
             </fieldset>
           </form>

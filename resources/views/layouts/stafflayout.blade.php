@@ -114,7 +114,7 @@
                         </li>
                     </ul>
                 </li>
-                <li>
+                {{-- <li>
                     <a href="#" style="color:aliceblue;">
                         <i class="fas fa-briefcase"></i>
                         About
@@ -135,8 +135,8 @@
                             <a href="#">Page 3</a>
                         </li>
                     </ul>
-                </li>
-                <li>
+                </li> --}}
+                {{-- <li>
                     <a href="#">
                         <i class="fas fa-image"></i>
                         Portfolio
@@ -153,7 +153,7 @@
                         <i class="fas fa-paper-plane"></i>
                         Contact
                     </a>
-                </li>
+                </li> --}}
                 <li>
                     <a href="{{ route('staff.logout') }}">
                         <i class="fa fa-power-off"></i>
@@ -162,14 +162,14 @@
                 </li>
             </ul>
 
-            <ul class="list-unstyled CTAs">
+            {{-- <ul class="list-unstyled CTAs">
                 <li>
                     <a href="https://bootstrapious.com/tutorial/files/sidebar.zip" class="download">Download source</a>
                 </li>
                 <li>
                     <a href="https://bootstrapious.com/p/bootstrap-sidebar" class="article">Back to article</a>
                 </li>
-            </ul>
+            </ul> --}}
         </nav>
 
         <!-- Page Content  -->

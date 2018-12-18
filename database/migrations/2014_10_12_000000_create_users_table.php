@@ -45,6 +45,9 @@ class CreateUsersTable extends Migration
             $table->integer('MCNumber')->unique()->nullable();
             $table->enum('MCdistrictIssued', ['Port Louis','Moka','Plaine Wilhems','Pamplemousses','Grand Port','Savanne','Flacq','Rivière du Rempart','Ri->nullabvière Noire'])->default("Port Louis");
             $table->string('spouseProfession')->nullable();
+            $table->string('img_path')->nullable()->default('profilePic.jpg');
+            $table->integer('noOfChildren')->nullable();
+            $table->integer('parentId')->nullable();
             $table->rememberToken();
             $table->timestamp('created_at')->default(\DB::raw('CURRENT_TIMESTAMP'));
             $table->timestamp('updated_at')->default(\DB::raw('CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP'));
