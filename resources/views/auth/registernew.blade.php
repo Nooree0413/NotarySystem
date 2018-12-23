@@ -10,16 +10,40 @@
     <link rel="icon" href="{{asset('images/addUser.png')}}" />
     <script src="{{url('js/bootstrap.min.js')}}"></script>
 
-    <script>
-       
-    </script>
+    <link rel="stylesheet" type="text/css" href="{{asset('css/bootstrap.min.css')}}">
+<link rel="stylesheet" type="text/css" href="{{asset('css/footer.css')}}">
+<link rel="stylesheet" type="text/css" href="{{asset('css/style4.css')}}">
+{{-- <link rel="stylesheet" type="text/css" href="{{asset('css/bootstrap.min.css')}}"> --}}
+    {{-- <link rel="stylesheet" type="text/css" href="{{asset('css/dataTables.bootstrap4.min.css')}}"> --}}
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.1/css/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap4.min.css"> 
+    <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/solid.js" integrity="sha384-tzzSw1/Vo+0N5UhStP3bvwWPq+uvzCMfrN1fEFe+xBmv1C/AtVX5K0uZtmcHitFZ" crossorigin="anonymous"></script>
+    <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/fontawesome.js" integrity="sha384-6OIrr52G08NpOFSZdxxz1xdNSndlD4vdcf/q2myIUVO0VsqaGHJsB0RaBE01VTOY" crossorigin="anonymous"></script>
+
+    <style>
+            .header {
+             width: 97.2%;
+             margin-left:1.5%;
+             background-color: #17a2b8;
+             color: #ffffff;
+             padding: 0px;
+             font-size: 5px !important;
+         }
+
+            </style> 
 </head>
    
 @section('content')
     {{-- <div class="registerBox"> --}}
     {{-- <img src="{{ asset('images/avatar.png') }}" class="avatar"> --}}
     {{-- <a class="centerLink" href="{{ route('loginnew') }}">Already have an account?Login here!</a> --}}
-        <h1 class="datatableTitleUsers">Client Registration</h1>
+    <div class="row">
+            <div class="header">
+                <div class="col-12">
+                <h1 style="text-align:center;  margin-bottom: -1%;">Client Registration</h1>
+                </div>
+            </div>
+            </div>
 
         <form method="POST" action="{{ route('add_user') }}" id="frmAddUser">
             @csrf
@@ -158,27 +182,35 @@
                 <select  name="inputRoles" class="form-control">
                     <option >Buyer</option>
                     <option>Seller</option>
+                    <option>Partegeant</option>
+                    <option>co-partegeant</option>
                 </select>
             </div>
             
             <div class="form-group col-md-4">
                 <label for="inputMarriageStatus">Marriage Status</label>
                 <select  name="inputMarriageStatus" class="form-control">
-                <option selected>Married</option>
-                <option>Single</option>
-                <option >Divorced</option>
-                <option>Widowed</option>
+                <option selected>Célibataire</option>
+                <option>Mariés</option>
+                <option >Divorcés</option>
+                <option>Veuve</option>
+                <option>Veuf</option>
                 </select>
             </div>
       </div>
             
-           
+           <div class="row">
+               <div class="col-4"></div>
+               <div class="col-4">
             <input type="submit" name="btnSubmit" class="btn btn-success btn-block" value="Register">
+               </div>
+               <div class="col-4"></div>
+           </div>
             {{-- <button class="button">Add User</button>   --}}
             </fieldset>
           </form>
           {{-- <a class="nav-link" href="{{ route('login') }}">{{ __('Already have an account?Login here!') }}</a></a>|  <a class="centerLink" href="">Your password will be automatically generated and send to you by mail</a> --}}
-    
+        </div>
 
 @endsection
 

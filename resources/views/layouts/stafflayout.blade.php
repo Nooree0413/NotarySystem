@@ -70,7 +70,13 @@
                 <li>
                     <a href="{{ route('registerSpouse') }}" ><i class="fas fa-user-plus"></i> Add Spouse</a>
                 </li>
-               
+                <li>
+                    <a href="{{ route('confirm.children') }}" ><i class="fas fa-user-plus"></i> Num of Children</a>
+                </li>
+                <li>
+                    <a href="{{ route('show.children.form') }}" ><i class="fas fa-user-plus"></i>Add Children</a>
+                </li>
+
                 <li>
                     <a href="{{ route('propertyRegistration') }}" ><i class="fas fa-building"></i> Property Registration</a>
                 </li>
@@ -91,9 +97,9 @@
                             <li>
                                 <a href="{{ route('generateContract') }}" ><i class="fas fa-key"></i> SOIP01</a>
                             </li>
-                        <li>
-                            <a href="#">SOIP02</a>
-                        </li>
+                            <li>
+                                <a href="{{ route('show.partage') }}" ><i class="fas fa-user-plus"></i>ALOT02</a>
+                            </li>
                         <li>
                             <a href="#">SOIP03 </a>
                         </li>
@@ -114,7 +120,7 @@
                         </li>
                     </ul>
                 </li>
-                <li>
+                {{-- <li>
                     <a href="#" style="color:aliceblue;">
                         <i class="fas fa-briefcase"></i>
                         About
@@ -135,8 +141,8 @@
                             <a href="#">Page 3</a>
                         </li>
                     </ul>
-                </li>
-                <li>
+                </li> --}}
+                {{-- <li>
                     <a href="#">
                         <i class="fas fa-image"></i>
                         Portfolio
@@ -153,7 +159,7 @@
                         <i class="fas fa-paper-plane"></i>
                         Contact
                     </a>
-                </li>
+                </li> --}}
                 <li>
                     <a href="{{ route('staff.logout') }}">
                         <i class="fa fa-power-off"></i>
@@ -162,14 +168,14 @@
                 </li>
             </ul>
 
-            <ul class="list-unstyled CTAs">
+            {{-- <ul class="list-unstyled CTAs">
                 <li>
                     <a href="https://bootstrapious.com/tutorial/files/sidebar.zip" class="download">Download source</a>
                 </li>
                 <li>
                     <a href="https://bootstrapious.com/p/bootstrap-sidebar" class="article">Back to article</a>
                 </li>
-            </ul>
+            </ul> --}}
         </nav>
 
         <!-- Page Content  -->

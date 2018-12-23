@@ -29,8 +29,8 @@ class CreateUsersTable extends Migration
             $table->enum('gender', ['Male','Female'])->default("Male");
             $table->string('address');
             $table->string('nic')->unique();
-            $table->enum('marriageStatus', ['Single','Married','Divorced','Widowed'])->default("Single");
-            $table->enum('roles', ['Buyer','Seller','Buyer_Spouse','Seller_Spouse'])->default("Buyer");
+            $table->enum('marriageStatus', ['Célibataire','Mariés','Divorcés','Veuve','Veuf'])->default("Célibataire");
+            $table->enum('roles', ['acquéreur','vendeurs','Buyer_Spouse','Seller_Spouse','Children','Partegeant','co-partageants'])->default("acquéreur");
             $table->string('profession');
             $table->enum('spouseTitle', ['Monsieur','Madame'])->nullable()->default("Madame");
             $table->string('spouseFirstname')->nullable();
@@ -45,6 +45,11 @@ class CreateUsersTable extends Migration
             $table->integer('MCNumber')->unique()->nullable();
             $table->enum('MCdistrictIssued', ['Port Louis','Moka','Plaine Wilhems','Pamplemousses','Grand Port','Savanne','Flacq','Rivière du Rempart','Ri->nullabvière Noire'])->default("Port Louis");
             $table->string('spouseProfession')->nullable();
+            $table->string('img_path')->nullable()->default('profilePic.jpg');
+            $table->integer('noOfChildren')->nullable();
+            $table->integer('parentId')->nullable();
+            $table->integer('spouseDCNum')->unique()->nullable();
+            $table->date('DeathDate')->nullable();
             $table->rememberToken();
             $table->timestamp('created_at')->default(\DB::raw('CURRENT_TIMESTAMP'));
             $table->timestamp('updated_at')->default(\DB::raw('CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP'));
@@ -126,7 +131,7 @@ class CreateUsersTable extends Migration
             // $table->integer('staffId');
             // $table->integer('propertyId');
             // $table->integer('fees');
-            // $table->enum('transactionType', ['SOIP1','SOIP2'])->default("SOIP1");
+            // $table->enum('transactionType', ['SOIP1','SOIP2','ALOTO2'])->default("SOIP1");
             $table->binary('generatedContract');
             $table->timestamp('created_at')->default(\DB::raw('CURRENT_TIMESTAMP'));
             $table->timestamp('updated_at')->default(\DB::raw('CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP'));

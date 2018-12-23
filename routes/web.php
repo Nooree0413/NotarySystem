@@ -48,7 +48,14 @@ Route::prefix('staff')->group(function(){
     Route::post('/upload/contract', 'StaffController@uploadContract')->name('upload.contract.submit');
     Route::get('/view/contract/{id}','StaffController@viewContract')->name('view.contract');
     Route::get('/show/client/{id}', 'StaffController@clientDetails')->name('client.profile.show');
-    Route::get('/client/delete/{id}', 'StaffController@deleteClient');
+    Route::get('/client/delete/{id}', 'StaffController@deleteClient')->name('staff.client.delete');
+    Route::get('/client/transaction/{id}', 'StaffController@getListTransactions')->name('transaction.list');
+    Route::get('/add/client/children', 'StaffController@showChildrenForm')->name('show.children.form');
+    Route::post('/add/client/children', 'StaffController@addChildren')->name('add.children');
+    Route::get('/confirm/number/children', 'StaffController@showChildrenConfirmation')->name('confirm.children');
+    Route::post('/confirm/number/children', 'StaffController@addNumberChildren')->name('add.num.children');
+    Route::get('/generate/contract/partage', 'StaffController@partageGeneration')->name('show.partage');
+    Route::post('/generate/contract/partage' ,'partageController@generatePartage')->name('generate.partage');
     // Route::post('/preview/contract/pdf', 'previewPDFController@previewContractSOIP')->name('view.pdf');
 });
 
@@ -58,3 +65,4 @@ Route::prefix('rgd')->group(function(){
     Route::post('/login','Auth\RgdLoginController@login')->name('rgd.login.submit');
     Route::get('/logout', 'Auth\RgdLoginController@rgdlogout')->name('rgd.logout');
 });
+
