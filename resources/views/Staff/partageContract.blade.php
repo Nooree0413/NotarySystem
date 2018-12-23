@@ -86,23 +86,25 @@
                 </div>
                 <br>
                 <div class="row">
-                    <div class="form-group col-md-2">
+                    <div class="form-group col-md-4">
                         <label for="inputSpouseFirstName">First Name</label>
                         <input type="text" required class="form-control" name="inputSpouseFirstName" value="{{ old('inputSpouseFirstName') }}"  autofocus  placeholder="First Name">
                        
                       </div>
-                      <div class="form-group col-md-2">
+                      <div class="form-group col-md-4">
                         <label for="inputSpouseLastName">Last Name</label>
                         <input type="text" required class="form-control" name="inputSpouseLastName" value="{{ old('inputSpouseLastName') }}"  autofocus  placeholder="First Name">
                        
                       </div>
-                      <div class="form-group col-md-2">
+                      <div class="form-group col-md-4">
                         <label for="inputSpouseTitle">Title</label>
                         <select  name="inputSpouseTitle" class="form-control">
                         <option selected>Madame</option>
                         <option>Monsieur</option>
                         </select>
                     </div>  
+                </div>
+                <div class="row">
                     <div class="form-group col-md-3">
                         <label for="inputSpouseDob">Date of Birth</label>
                         <input type="date"  required class="form-control " name="inputSpouseDob" value="{{ old('inputSpouseDob') }}"  autofocus  placeholder="Date of Birth"> 
@@ -111,11 +113,76 @@
                         <label for="inputSpouseBcNum">Birth Certificate Number</label>
                         <input type="number"  required class="form-control " name="inputSpouseBcNum" value="{{ old('inputSpouseBcNum') }}"  autofocus  placeholder=""> 
                       </div>
-               
+                      <div class="form-group col-md-3">
+                        <label for="inputDistrict">District Issued</label>
+                        <select  name="inputSpouseDistrict" class="form-control">
+                        <option selected>Port Louis</option>
+                        <option>Moka</option>
+                        <option>Flacq</option>
+                        <option>Grand Port</option>
+                        <option>Pamplemousses</option>
+                        <option>Plaine Wilhems</option>
+                        <option>Rivière du Rempart</option>
+                        <option>Rivière Noire</option>
+                        <option>Savanne</option>
+                        </select>
+                    </div>
+                    <div class="form-group col-md-3">
+                        <label for="inputSpouseProfession">Profession</label>
+                        <input type="text" required  class="form-control" name="inputSpouseProfession" value="{{ old('inputSpouseProfession') }}"  >
+                </div>
                 </div>
                 <br>
                 <div class="row">
                     <div class="col-12" style="text-align:center;">WITNESS 2</div>                    
+                </div>
+                <br>
+                <div class="row">
+                    <div class="form-group col-md-4">
+                        <label for="inputSpouseFirstName">First Name</label>
+                        <input type="text" required class="form-control" name="inputSpouseFirstName" value="{{ old('inputSpouseFirstName') }}"  autofocus  placeholder="First Name">
+                       
+                      </div>
+                      <div class="form-group col-md-4">
+                        <label for="inputSpouseLastName">Last Name</label>
+                        <input type="text" required class="form-control" name="inputSpouseLastName" value="{{ old('inputSpouseLastName') }}"  autofocus  placeholder="First Name">
+                       
+                      </div>
+                      <div class="form-group col-md-4">
+                        <label for="inputSpouseTitle">Title</label>
+                        <select  name="inputSpouseTitle" class="form-control">
+                        <option selected>Madame</option>
+                        <option>Monsieur</option>
+                        </select>
+                    </div>  
+                </div>
+                <div class="row">
+                    <div class="form-group col-md-3">
+                        <label for="inputSpouseDob">Date of Birth</label>
+                        <input type="date"  required class="form-control " name="inputSpouseDob" value="{{ old('inputSpouseDob') }}"  autofocus  placeholder="Date of Birth"> 
+                      </div>
+                      <div class="form-group col-md-3">
+                        <label for="inputSpouseBcNum">Birth Certificate Number</label>
+                        <input type="number"  required class="form-control " name="inputSpouseBcNum" value="{{ old('inputSpouseBcNum') }}"  autofocus  placeholder=""> 
+                      </div>
+                      <div class="form-group col-md-3">
+                        <label for="inputDistrict">District Issued</label>
+                        <select  name="inputSpouseDistrict" class="form-control">
+                        <option selected>Port Louis</option>
+                        <option>Moka</option>
+                        <option>Flacq</option>
+                        <option>Grand Port</option>
+                        <option>Pamplemousses</option>
+                        <option>Plaine Wilhems</option>
+                        <option>Rivière du Rempart</option>
+                        <option>Rivière Noire</option>
+                        <option>Savanne</option>
+                        </select>
+                    </div>
+                    <div class="form-group col-md-3">
+                        <label for="inputSpouseProfession">Profession</label>
+                        <input type="text" required  class="form-control" name="inputSpouseProfession" value="{{ old('inputSpouseProfession') }}"  >
+                </div>
                 </div>
                 <br>
                 <div class="row">
