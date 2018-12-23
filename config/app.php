@@ -149,6 +149,7 @@ return [
         Yajra\DataTables\DataTablesServiceProvider::class,
         MaddHatter\LaravelFullcalendar\ServiceProvider::class,
         Elibyy\TCPDF\ServiceProvider::class,
+        Ken\FlashMe\FlashMeServiceProvider::class,
         
 
         /*
@@ -216,7 +217,8 @@ return [
         'DataTables' => Yajra\DataTables\Facades\DataTables::class,
         'Flashy' => MercurySeries\Flashy\Flashy::class,
         'Calendar' => MaddHatter\LaravelFullcalendar\Facades\Calendar::class,
-        'PDF' => Elibyy\TCPDF\Facades\TCPDF::class
+        'PDF' => Elibyy\TCPDF\Facades\TCPDF::class,
+       
     ],
 
 ];

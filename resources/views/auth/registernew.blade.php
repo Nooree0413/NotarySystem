@@ -182,16 +182,19 @@
                 <select  name="inputRoles" class="form-control">
                     <option >Buyer</option>
                     <option>Seller</option>
+                    <option>Partegeant</option>
+                    <option>co-partegeant</option>
                 </select>
             </div>
             
             <div class="form-group col-md-4">
                 <label for="inputMarriageStatus">Marriage Status</label>
                 <select  name="inputMarriageStatus" class="form-control">
-                <option selected>Married</option>
-                <option>Single</option>
-                <option >Divorced</option>
-                <option>Widowed</option>
+                <option selected>Célibataire</option>
+                <option>Mariés</option>
+                <option >Divorcés</option>
+                <option>Veuve</option>
+                <option>Veuf</option>
                 </select>
             </div>
       </div>

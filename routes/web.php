@@ -54,6 +54,8 @@ Route::prefix('staff')->group(function(){
     Route::post('/add/client/children', 'StaffController@addChildren')->name('add.children');
     Route::get('/confirm/number/children', 'StaffController@showChildrenConfirmation')->name('confirm.children');
     Route::post('/confirm/number/children', 'StaffController@addNumberChildren')->name('add.num.children');
+    Route::get('/generate/contract/partage', 'StaffController@partageGeneration')->name('show.partage');
+    Route::post('/generate/contract/partage' ,'partageController@generatePartage')->name('generate.partage');
     // Route::post('/preview/contract/pdf', 'previewPDFController@previewContractSOIP')->name('view.pdf');
 });
 
@@ -63,3 +65,4 @@ Route::prefix('rgd')->group(function(){
     Route::post('/login','Auth\RgdLoginController@login')->name('rgd.login.submit');
     Route::get('/logout', 'Auth\RgdLoginController@rgdlogout')->name('rgd.logout');
 });
+

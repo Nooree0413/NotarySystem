@@ -1,5 +1,6 @@
 @include('flashy::message')
 @extends('layouts.stafflayout')
+@extends('layouts.global')
 <head>
 <link rel="stylesheet" type="text/css" href="{{asset('css/bootstrap.min.css')}}">
 <link rel="stylesheet" type="text/css" href="{{asset('css/footer.css')}}">
@@ -51,7 +52,7 @@
             <div class="row">
                 <div class="col-6">
                     <label>Client Name</label>
-                    <select name="inputClientName" id="inputClientName" class="form-control " >
+                    <select name="inputParentId" id="inputParentId" class="form-control " >
                         <option value="">Select name</option>
                         @foreach($users as $user)
                        <option value="{{ $user->id}}">{{$user->id}}<?php echo"-"?>{{$user->firstname}}<?php echo" "?>{{$user->lastname}}<?php echo"-"?>{{$user->roles}}</option>

@@ -9,7 +9,6 @@ use Datatables;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Storage;
 use App\user;
-//  use App\User;
 use App\Meeting;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Validator;
@@ -460,34 +459,34 @@ public function addMeeting(Request $request)
     }
 
     //add children into db
-    public function addChildren(){
+    public function addChildren(Request $request){
         $users=DB::table('users')->get();
-        $this->validate($request,
-        [
-            'inputChildrenFirstName' => 'required|alpha|max:255',
-            'inputChildrenLastName' => 'required|alpha|max:255',
-            'inputChildrenContactNum' => 'required|regex:/^[5][0-9]{7}+$/u|integer|unique:users,contactnum',
-            'inputChildrenEmail' => 'required|string|email|max:255|unique:users,email',
-            'inputChildrenDob' => 'required|date',
-            'inputChildrenGender' => 'required|alpha|max:255',
-            'inputChildrenAddress' => 'required',
-            'inputChildrenMarriageStatus' => 'required',
-            'inputChildrenRoles' =>'required',
-            'inputChildrenNIC1' => 'required|alpha_num|unique:users,nic',
-            'inputChildrenBcNum' => 'required|numeric',
-            'inputChildrenDistrict' =>'required',
-            'inputChildrenPlaceOfBirth' =>'required',
-            'inputChildrenProfession' =>'required',
-            'inputChildrenTitle' =>'required',
-             ]       
-        );
+        // $this->validate($request,
+        // [
+        //     'inputChildrenFirstName' => 'required|alpha|max:255',
+        //     'inputChildrenLastName' => 'required|alpha|max:255',
+        //     'inputChildrenContactNum' => 'required|regex:/^[5][0-9]{7}+$/u|integer|unique:users,contactnum',
+        //     'inputChildrenEmail' => 'required|string|email|max:255|unique:users,email',
+        //     'inputChildrenDob' => 'required|date',
+        //     'inputChildrenGender' => 'required|alpha|max:255',
+        //     'inputChildrenAddress' => 'required',
+        //     'inputChildrenMarriageStatus' => 'required',
+        //     'inputChildrenRoles' =>'required',
+        //     'inputChildrenNIC1' => 'required|alpha_num|unique:users,nic',
+        //     'inputChildrenBcNum' => 'required|numeric',
+        //     'inputChildrenDistrict' =>'required',
+        //     'inputChildrenPlaceOfBirth' =>'required',
+        //     'inputChildrenProfession' =>'required',
+        //     'inputChildrenTitle' =>'required',
+        //      ]       
+        // );
 
         
-
+        $parentId=Input::get('inputParentId');
         $fname = Input::get('inputChildrenFirstName');
         $lname = Input::get('inputChildrenLastName');
         $email = Input::get('inputChildrenEmail');
-        $dob = Input::get('inputChildrentDob');
+        $dob = Input::get('inputChildrenDob');
         $contactnum = Input::get('inputChildrenContactNum');
         $gender = Input::get('inputChildrenGender');
         $address= Input::get('inputChildrenAddress');
@@ -501,9 +500,6 @@ public function addMeeting(Request $request)
         $placeOfBirth=Input::get('inputChildrenPlaceOfBirth');
 
         $generatedPassword=str_random(8);
-        //self::sendEmail($generatedPassword,$email,$fname,$lname);
-
-        
         $data = array(
             'firstname' => $fname, 
             'lastname' => $lname, 
@@ -520,39 +516,18 @@ public function addMeeting(Request $request)
             'districtIssued' => $districtIssued,
             'placeOfBirth' =>$placeOfBirth,
             'profession'=>$profession,
-            'title'=> $title
+            'title'=> $title,
+            'parentId'=>$parentId
 
             
         );
 
          DB::table('users')->insert($data);
-
-        // return "successfull";
-        //  $user_id = DB::table('users')->insertGetId($data);
-        // $user=(DB::table('users')->where('id',$user_id)->get())[0];
-        //Mail::send('emails.email_invitation', $data, function($m) use ($user){
-        // $m->to($user->email, 'Notary System')->from('hi@example.com', 'Notary System')->subject('Login Credentials');
-        // });
-
-        
-        // return redirect('/dashboard');
-
-        // if($marriageStatus=="Married"){
-        //     flashy()->success($fname.' '.$lname. ' successfully added!.');
-        //     return redirect('staff/registerSpouse');
-        // }
-        // else{
-        //     flashy()->success($fname.' '.$lname. ' successfully added!.');
-        //      return redirect('staff/registernew');
-
-        // }  
-       
-    
     }
 
     // add number of children in database
     public function addNumberChildren(){
-        $parentId=Input::get('inputClientName');
+        $parentId=Input::get('inputParentId');
         $numberOfChildren=Input::get('numOfChildren');
 
         $query= DB::table('users')
@@ -564,13 +539,17 @@ public function addMeeting(Request $request)
             return "successfull";
         
     }
-
-
-
     //get number of children
     public function showChildrenConfirmation(){
         $users=DB::table('users')->get();
         return view('Staff.numOfChildren')->with('users',$users);
+    }
+
+    //get the partage title deed generation form
+    public function partageGeneration(){
+        $users=DB::table('users')->where("roles", 'Partegeant')->get();
+        $coPartageants=DB::table('users')->where("roles", 'Children')->get();
+        return view('Staff.partageContract')->with('users',$users)->with('children',$coPartageants);
     }
 }
 ?>

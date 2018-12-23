@@ -70,7 +70,13 @@
                 <li>
                     <a href="{{ route('registerSpouse') }}" ><i class="fas fa-user-plus"></i> Add Spouse</a>
                 </li>
-               
+                <li>
+                    <a href="{{ route('confirm.children') }}" ><i class="fas fa-user-plus"></i> Num of Children</a>
+                </li>
+                <li>
+                    <a href="{{ route('show.children.form') }}" ><i class="fas fa-user-plus"></i>Add Children</a>
+                </li>
+
                 <li>
                     <a href="{{ route('propertyRegistration') }}" ><i class="fas fa-building"></i> Property Registration</a>
                 </li>
@@ -91,9 +97,9 @@
                             <li>
                                 <a href="{{ route('generateContract') }}" ><i class="fas fa-key"></i> SOIP01</a>
                             </li>
-                        <li>
-                            <a href="#">SOIP02</a>
-                        </li>
+                            <li>
+                                <a href="{{ route('show.partage') }}" ><i class="fas fa-user-plus"></i>ALOT02</a>
+                            </li>
                         <li>
                             <a href="#">SOIP03 </a>
                         </li>

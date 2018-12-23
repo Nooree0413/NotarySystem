@@ -1,4 +1,5 @@
 @include('flashy::message')
+@extends('layouts.global')
 @extends('layouts.stafflayout')
 <head>
 <link rel="stylesheet" type="text/css" href="{{asset('css/bootstrap.min.css')}}">
@@ -34,7 +35,7 @@
         </div>
     </div>
 </div>
-<form method="POST" action="{{ route('add_user') }}" id="frmAddUser">
+<form method="POST" action="{{ route('add.children') }}" id="frmAddUser">
     @csrf
     <fieldset class="addUserFieldset">
         <legend class="addUserLegend">Registration</legend>
@@ -169,18 +170,19 @@
     <div class="form-group col-md-3">
         <label for="inputChildrenRoles">Roles</label>
         <select  name="inputChildrenRoles" class="form-control">
-            <option >Buyer</option>
-            <option>Seller</option>
+            <option>Children</option>
+            
         </select>
     </div>
     
     <div class="form-group col-md-3">
         <label for="inputChildrenMarriageStatus">Marriage Status</label>
         <select  name="inputChildrenMarriageStatus" class="form-control">
-        <option selected>Married</option>
-        <option>Single</option>
-        <option >Divorced</option>
-        <option>Widowed</option>
+            <option selected>Célibataire</option>
+            <option>Mariés</option>
+            <option >Divorcés</option>
+            <option>Veuve</option>
+            <option>Veuf</option>
         </select>
     </div>
 
