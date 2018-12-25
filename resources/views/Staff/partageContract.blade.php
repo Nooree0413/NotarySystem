@@ -60,7 +60,7 @@
                        </select>                
                 </div>
                 <div class="col-4">
-                    <label>Main Partageant</label>
+                    <label>Main Co-Partageant</label>
                     <select name="inputMPartegeantId" id="inputMPartegeantId" class="form-control "  >
                         <option value="">Select co-partegeants</option>
                         @foreach($children as $child)

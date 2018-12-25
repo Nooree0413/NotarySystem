@@ -418,7 +418,7 @@ public function addMeeting(Request $request)
             );
     
             DB::table('transaction')->insert($data);
-            flashy()->success($fname.' '.$lname. ' successfully added!.');
+            // flashy()->success($fname.' '.$lname. ' successfully added!.');
             return redirect('staff/registernew');
     
         }   

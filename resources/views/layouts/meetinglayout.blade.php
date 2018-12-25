@@ -23,6 +23,9 @@
     {{-- <link rel="stylesheet" type="text/css" href="{{asset('css/bootstrap.min.css')}}">  --}}
     <link rel="icon" href="{{asset('images/certificate.png')}}" />
     <link rel="stylesheet" type="text/css" href="{{asset('/css/footer.css')}}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/2.2.7/fullcalendar.min.css"/>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/2.2.7/fullcalendar.min.js"></script>
+
     {{-- <script src="{{url('js/bootstrap.min.js')}}"></script> --}}
     {{-- <script src="https://code.jquery.com/jquery-3.3.1.min.js"integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script> --}}
     <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
