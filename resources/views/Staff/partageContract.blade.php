@@ -81,41 +81,46 @@
                 </div>
                 <br>
                 <div class="row">
-                    <div class="col-12" style="text-align:center;">WITNESS 1</div>
+                    <div class="col-12" style="text-align:center; text-decoration: underline;">WITNESS 1</div>
                     
                 </div>
                 <br>
                 <div class="row">
-                    <div class="form-group col-md-4">
-                        <label for="inputSpouseFirstName">First Name</label>
-                        <input type="text" required class="form-control" name="inputSpouseFirstName" value="{{ old('inputSpouseFirstName') }}"  autofocus  placeholder="First Name">
+                    <div class="form-group col-md-3">
+                        <label for="inputWitness1FirstName">First Name</label>
+                        <input type="text"  class="form-control" name="inputWitness1FirstName" value="{{ old('inputWitness1FirstName') }}"  autofocus  placeholder="First Name">
                        
                       </div>
-                      <div class="form-group col-md-4">
-                        <label for="inputSpouseLastName">Last Name</label>
-                        <input type="text" required class="form-control" name="inputSpouseLastName" value="{{ old('inputSpouseLastName') }}"  autofocus  placeholder="First Name">
+                      <div class="form-group col-md-3">
+                        <label for="inputWitness1LastName">Last Name</label>
+                        <input type="text"  class="form-control" name="inputWitness1LastName" value="{{ old('inputWitness1LastName') }}"  autofocus  placeholder="First Name">
                        
                       </div>
-                      <div class="form-group col-md-4">
-                        <label for="inputSpouseTitle">Title</label>
-                        <select  name="inputSpouseTitle" class="form-control">
+                      <div class="form-group col-md-3">
+                        <label for="inputWitness1Title">Title</label>
+                        <select  name="inputWitness1Title" class="form-control">
                         <option selected>Madame</option>
                         <option>Monsieur</option>
                         </select>
-                    </div>  
+                    </div>
+                    <div class="form-group col-md-3">
+                        <label for="inputWitness1Address">Address</label>
+                        <textarea rows="1" cols="50" type="text"   class="form-control" name="inputAddress" value="{{ old('inputAddress') }}"  ></textarea>
+                       
+                      </div>  
                 </div>
                 <div class="row">
                     <div class="form-group col-md-3">
-                        <label for="inputSpouseDob">Date of Birth</label>
-                        <input type="date"  required class="form-control " name="inputSpouseDob" value="{{ old('inputSpouseDob') }}"  autofocus  placeholder="Date of Birth"> 
+                        <label for="inputWitness1Dob">Date of Birth</label>
+                        <input type="date"   class="form-control " name="inputWitness1Dob" value="{{ old('inputWitness1Dob') }}"  autofocus  placeholder="Date of Birth"> 
                       </div>
                       <div class="form-group col-md-3">
-                        <label for="inputSpouseBcNum">Birth Certificate Number</label>
-                        <input type="number"  required class="form-control " name="inputSpouseBcNum" value="{{ old('inputSpouseBcNum') }}"  autofocus  placeholder=""> 
+                        <label for="inputWitness1BcNum">Birth Certificate Number</label>
+                        <input type="number"   class="form-control " name="inputWitness1BcNum" value="{{ old('inputWitness1BcNum') }}"  autofocus  placeholder=""> 
                       </div>
                       <div class="form-group col-md-3">
                         <label for="inputDistrict">District Issued</label>
-                        <select  name="inputSpouseDistrict" class="form-control">
+                        <select  name="inputWitness1District" class="form-control">
                         <option selected>Port Louis</option>
                         <option>Moka</option>
                         <option>Flacq</option>
@@ -128,46 +133,51 @@
                         </select>
                     </div>
                     <div class="form-group col-md-3">
-                        <label for="inputSpouseProfession">Profession</label>
-                        <input type="text" required  class="form-control" name="inputSpouseProfession" value="{{ old('inputSpouseProfession') }}"  >
+                        <label for="inputWitness1Profession">Profession</label>
+                        <input type="text"   class="form-control" name="inputWitness1Profession" value="{{ old('inputWitness1Profession') }}"  >
                 </div>
                 </div>
                 <br>
                 <div class="row">
-                    <div class="col-12" style="text-align:center;">WITNESS 2</div>                    
+                    <div class="col-12" style="text-align:center; text-decoration: underline;">WITNESS 2</div>                    
                 </div>
                 <br>
                 <div class="row">
-                    <div class="form-group col-md-4">
-                        <label for="inputSpouseFirstName">First Name</label>
-                        <input type="text" required class="form-control" name="inputSpouseFirstName" value="{{ old('inputSpouseFirstName') }}"  autofocus  placeholder="First Name">
+                    <div class="form-group col-md-3">
+                        <label for="inputWitness2FirstName">First Name</label>
+                        <input type="text"  class="form-control" name="inputWitness2FirstName" value="{{ old('inputWitness2FirstName') }}"  autofocus  placeholder="First Name">
                        
                       </div>
-                      <div class="form-group col-md-4">
-                        <label for="inputSpouseLastName">Last Name</label>
-                        <input type="text" required class="form-control" name="inputSpouseLastName" value="{{ old('inputSpouseLastName') }}"  autofocus  placeholder="First Name">
+                      <div class="form-group col-md-3">
+                        <label for="inputWitness2LastName">Last Name</label>
+                        <input type="text"  class="form-control" name="inputWitness2LastName" value="{{ old('inputWitness2LastName') }}"  autofocus  placeholder="First Name">
                        
                       </div>
-                      <div class="form-group col-md-4">
-                        <label for="inputSpouseTitle">Title</label>
-                        <select  name="inputSpouseTitle" class="form-control">
+                      <div class="form-group col-md-3">
+                        <label for="inputWitness2Title">Title</label>
+                        <select  name="inputWitness2Title" class="form-control">
                         <option selected>Madame</option>
                         <option>Monsieur</option>
                         </select>
                     </div>  
+                    <div class="form-group col-md-3">
+                        <label for="inputWitness2Address">Address</label>
+                        <textarea rows="1" cols="50" type="text"   class="form-control" name="inputAddress" value="{{ old('inputAddress') }}"  ></textarea>
+                       
+                      </div>
                 </div>
                 <div class="row">
                     <div class="form-group col-md-3">
-                        <label for="inputSpouseDob">Date of Birth</label>
-                        <input type="date"  required class="form-control " name="inputSpouseDob" value="{{ old('inputSpouseDob') }}"  autofocus  placeholder="Date of Birth"> 
+                        <label for="inputWitness2Dob">Date of Birth</label>
+                        <input type="date"   class="form-control " name="inputWitness2Dob" value="{{ old('inputWitness2Dob') }}"  autofocus  placeholder="Date of Birth"> 
                       </div>
                       <div class="form-group col-md-3">
-                        <label for="inputSpouseBcNum">Birth Certificate Number</label>
-                        <input type="number"  required class="form-control " name="inputSpouseBcNum" value="{{ old('inputSpouseBcNum') }}"  autofocus  placeholder=""> 
+                        <label for="inputWitness2BcNum">Birth Certificate Number</label>
+                        <input type="number"   class="form-control " name="inputWitness2BcNum" value="{{ old('inputWitness2BcNum') }}"  autofocus  placeholder=""> 
                       </div>
                       <div class="form-group col-md-3">
                         <label for="inputDistrict">District Issued</label>
-                        <select  name="inputSpouseDistrict" class="form-control">
+                        <select  name="inputWitness2District" class="form-control">
                         <option selected>Port Louis</option>
                         <option>Moka</option>
                         <option>Flacq</option>
@@ -180,9 +190,10 @@
                         </select>
                     </div>
                     <div class="form-group col-md-3">
-                        <label for="inputSpouseProfession">Profession</label>
-                        <input type="text" required  class="form-control" name="inputSpouseProfession" value="{{ old('inputSpouseProfession') }}"  >
+                        <label for="inputWitness2Profession">Profession</label>
+                        <input type="text"   class="form-control" name="inputWitness1Profession" value="{{ old('inputWitness1Profession') }}"  >
                 </div>
+
                 </div>
                 <br>
                 <div class="row">
