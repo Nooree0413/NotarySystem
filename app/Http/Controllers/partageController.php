@@ -16,7 +16,7 @@ class partageController extends Controller
         $partageantId=Input::get('inputPartegeantId');
         $noOfCPartageants=Input::get('numOfCPartageants');
     
-        $numOfLots=Input::get('numOfLots');
+        $mainPartageant=Input::get('inputMPartegeantId');
         $witness1FN=Input::get('inputWitness1FirstName');
         $witness1LN=Input::get('inputWitness1LastName');
         $witness1Title=Input::get('inputWitness1Title');
@@ -34,6 +34,7 @@ class partageController extends Controller
         $witness2District=Input::get('inputWitness2District');
         $witness2Profession=Input::get('inputWitness2Profession');
 
+        $mPartageant= (DB::table('users')->where('id',$mainPartageant)->get());
         $buyers=(DB::table('users')->where('id',$partageantId)->get());
         $propertyDetails=(DB::table('immovableproperty')->where('propertyId',1)->get());
 
@@ -104,7 +105,17 @@ class partageController extends Controller
                 $newSection->addText($currentMonth,array('name' => 'Times New Roman','align'=>'center','size' => 12,'bold' => true,'underline'=> 'single'),'centerTitles');
                 $newSection->addText("PARTAGE EN NATURE",array('name' => 'Times New Roman','align'=>'center','size' => 12,'bold' => true,'underline'=> 'single'),'centerTitles');
                 $newSection->addText("ENTRE",array('name' => 'Times New Roman','align'=>'center','size' => 12,'bold' => true,'underline'=> 'single'),'centerTitles');
-                $newSection->addText($buyer->title." ".$buyer->firstname." ".strtoupper($buyer->lastname)." "."et autres",array('name' => 'Times New Roman','align'=>'center','size' => 12,'bold' => true,'underline'=> 'single'),'centerTitles');
+                
+                foreach ( $mPartageant as  $mPartageants ) {
+                    if( $mPartageants->spouseFirstname ==null){
+                    $newSection->addText($mPartageants->title." ".$mPartageants->firstname." ".strtoupper($mPartageants->lastname)." "."et autres",array('name' => 'Times New Roman','align'=>'center','size' => 12,'bold' => true,'underline'=> 'single'),'centerTitles');
+                    }
+                    else{
+                        $newSection->addText( $mPartageants->title." et ". $mPartageants->spouseTitle." ". $mPartageants->firstname." "
+                        .strtoupper( $mPartageants->lastname)." "."et autres",array('name' => 'Times New Roman','align'=>'center','size' => 12,'bold' => true,'underline'=> 'single'),'centerTitles');
+
+                    }
+                } 
                 $newSection->addText("---",array('name' => 'Times New Roman','align'=>'center','size' => 12),'centerTitles');
                 $newSection->addText("  Pardevant Mons. Jean Baptise , notaire à Port Louis, 14, Rue Sir Virgile Naz, République de Maurice, soussignée.",array('name' => 'Times New Roman','align'=>'center','size' => 12));
                 $newSection->addText("ONT COMPARU",array('name' => 'Times New Roman','align'=>'center','size' => 12,'bold' => true,'underline'=> 'single'),'centerTitles');

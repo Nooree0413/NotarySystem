@@ -50,7 +50,7 @@
                 </div>
             @endif
             <div class="row">
-                <div class="col-3">
+                <div class="col-4">
                     <label>Partageant</label>
                     <select name="inputPartegeantId" id="inputPartegeantId" class="form-control " >
                         <option value="">Select name</option>
@@ -59,10 +59,14 @@
                         @endforeach
                        </select>                
                 </div>
-                <div class="col-3">
-                    <label>N0. of co-partageants</label>
-                    <input type="number"  id="numOfCPartageants"  name="numOfCPartageants" class="form-control" >
-                </div>
+                <div class="col-4">
+                    <label>Main Partageant</label>
+                    <select name="inputMPartegeantId" id="inputMPartegeantId" class="form-control "  >
+                        <option value="">Select co-partegeants</option>
+                        @foreach($children as $child)
+                       <option value="{{ $child->id}}">{{$child->id}}<?php echo"-"?>{{$child->firstname}}<?php echo" "?>{{$child->lastname}}<?php echo"-"?>{{$child->roles}}</option>
+                        @endforeach
+                       </select>                  </div>
                 <div class="col-4">
                     <label>Co-partegeants</label>
                     <select name="inputCPartegeantId[]" id="inputCPartegeantId" class="form-control "  multiple="multiple" >
@@ -73,10 +77,7 @@
                        </select>                
                 </div>
 
-                <div class="col-2">
-                    <label>Number of lots</label>
-                    <input type="number"  id="numOfLots"  name="numOfLots" class="form-control" >
-                </div>
+               
                 
                 </div>
                 <br>
