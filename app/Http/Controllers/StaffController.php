@@ -418,7 +418,7 @@ public function addMeeting(Request $request)
             );
     
             DB::table('transaction')->insert($data);
-            flashy()->success($fname.' '.$lname. ' successfully added!.');
+            // flashy()->success($fname.' '.$lname. ' successfully added!.');
             return redirect('staff/registernew');
     
         }   
@@ -548,7 +548,7 @@ public function addMeeting(Request $request)
     //get the partage title deed generation form
     public function partageGeneration(){
         $users=DB::table('users')->where("roles", 'Partegeant')->get();
-        $coPartageants=DB::table('users')->where("roles", 'Children')->get();
+        $coPartageants=DB::table('users')->where("roles", 'co-partageants')->get();
         return view('Staff.partageContract')->with('users',$users)->with('children',$coPartageants);
     }
 }

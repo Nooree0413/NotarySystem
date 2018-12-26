@@ -32,6 +32,8 @@
         );
     } );
     </script>
+
+    
 </head>
 
 
@@ -49,9 +51,9 @@
                 <li>
                     <a href=""><i class="fas fa-user-circle"></i> My Profile</a></li>
             </li>
-                {{-- <li>
-                    <a href="{{ route('registernew') }}" ><i class="fas fa-user-plus"></i> Add Client</a>
-                </li> --}}
+                <li>
+                    <a href="{{ route('view.transaction') }}" ><i class="fas fa-user-plus"></i> View Transactions</a>
+                </li>
                 {{-- <li>
                     <a href="{{ route('registerSpouse') }}" ><i class="fas fa-user-plus"></i> Add Spouse</a>
                 </li> --}}
@@ -193,7 +195,7 @@
         });
     </script>
 </body>
-<footer>
+{{-- <footer>
     <img src="{{ asset('images/certificate.png') }}" class="footerlogo" alt="logo notary">  Copyright &copy; <script type="text/JavaScript"> var theDate=new Date(); document.write(theDate.getFullYear()); </script> NW Mauritius.
- </footer>
+ </footer> --}}
 </html>

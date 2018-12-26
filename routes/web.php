@@ -23,6 +23,7 @@ Route::get('/dashboard', 'HomeController@index')->name('dashboard');
 
 Route::get('/logout', 'HomeController@userlogout');
 Route::get('/viewuser','userController@viewUsers')->name('viewUser');
+Route::get('/view/user/transaction','userController@getTransactions')->name('view.transaction');
 Route::get('/test','userController@viewUsers')->name('test');
 Route::post('propertyRegistration/fetch', 'HomeController@fetch')->name('dynamicdependent.fetch');
 
