@@ -49,6 +49,14 @@
        a{
            color:white;
        }
+
+       #content {
+    width: 100%;
+    padding: 23px;
+    min-height: 100vh;
+    transition: all 0.3s;
+    overflow: hidden;
+}
    </style>
  
 </head>
@@ -173,7 +181,7 @@
         <!-- Page Content  -->
         <div id="content">
 
-            <nav class="navbar navbar-expand-lg navbar-light ">
+            <nav class="navbar navbar-expand-lg navbar-light " style="width: 93% !important;">
                 <div class="container-fluid">
 
                     <button type="button" id="sidebarCollapse" class="btn btn-info">
@@ -188,7 +196,7 @@
                         <ul class="nav navbar-nav ml-auto">
                             
                             <li class="nav-item">
-                                <a class="nav-link" style="color:aliceblue; margin-left:565%;" href="{{route('staffdashboard')}}">Welcome,{{ ucfirst(strtolower(Auth::user()->firstname)) }} </a>
+                                <a class="nav-link" style="color:aliceblue; " href="{{route('staffdashboard')}}">Welcome,{{ ucfirst(strtolower(Auth::user()->firstname)) }} </a>
                             </li>
                         </ul>
                     </div>

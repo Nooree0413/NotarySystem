@@ -44,46 +44,47 @@ class partageController extends Controller
 
         //retrieving current year
         $currentYear = date('Y');
+       
         $currentMonth = date('F');
 
         switch ($currentMonth) {
             case "January":
-            $currentMonth="janvier";
+                $currentMonth="janvier";
                 break;
             case "February":
-            $currentMonth="février";
+                $currentMonth="février";
                 break;
             case "March":
-            $currentMonth="mars";
+                $currentMonth="mars";
                 break;
                
             case "April":
-            $currentMonth="avril";
+                $currentMonth="avril";
                 break;
             case "May":
-            $currentMonth="mai";
+                $currentMonth="mai";
                 break;
-                case "June":
-            $currentMonth="juin";
+            case "June":
+                $currentMonth="juin";
                 break;
             case "July":
-            $currentMonth="juillet";
+                 $currentMonth="juillet";
                 break;
             case "August":
-            $currentMonth="aout ";
+                 $currentMonth="aout ";
                 break;
-                case "September":
-            $currentMonth="septembre";
+            case "September":
+                 $currentMonth="septembre";
                 break;
             case "October":
-            $currentMonth="octobre ";
+                $currentMonth="octobre ";
                 break;
             case "November":
-            $currentMonth="novembre";
+                $currentMonth="novembre";
                 break;
-                case "December":
+            case "December":
                 $currentMonth="décembre ";
-                    break;
+                break;
             
         }
         $currentDay = date('d');

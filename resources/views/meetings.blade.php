@@ -13,7 +13,7 @@
     <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/fontawesome.js" integrity="sha384-6OIrr52G08NpOFSZdxxz1xdNSndlD4vdcf/q2myIUVO0VsqaGHJsB0RaBE01VTOY" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/2.2.7/fullcalendar.min.css"/>
  
- 
+    <link rel="stylesheet" type="text/css" href="{{asset('/css/register.css')}}"> 
     <!-- Scripts -->
     {{-- <script src="http://code.jquery.com/jquery.js"></script> --}}
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.9.0/moment.min.js"></script>
@@ -34,26 +34,51 @@
       font-size: 5px !important;
       }
     </style> 
+  <script>
+    $(document).ready(function(){
+     $("#demo1").hide();
+      $("#demo2").hide();
+       $("#demo3").hide();
+     
+      $("#addMeeting").click(function(){
+        $("#demo1").show();
+         $("#demo2").hide();
+       $("#demo3").hide();
+        
+      });
+      
+      $("#updateMeeting").click(function(){
+        $("#demo2").show();
+         $("#demo1").hide();
+       $("#demo3").hide();
+        
+      });
+      $("#delMeeting").click(function(){
+        $("#demo3").show();
+         $("#demo1").hide();
+       $("#demo2").hide();
+        
+      });
+    });
+    </script>
 </head>
 
 @section('content')
 
-<div class="row">
+<div class="row" style="width:93% !important;">
     <div class="col-3">
-      <div class="container">
-          <a href="#demo" class="btn btn-success btn-lg" data-toggle="collapse">Add Meeting</a>
-          <div id="demo" class="collapse">
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit,
-            sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-            quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-          </div>
+      <div class="container" style="width:93% !important;">
+        <button class="btn btn-primary" id="addMeeting">Add Meeting</button>
+        <div id="demo1" class="collapse">
+      
+        </div>
         </div>
     </div>
   
     <div class="col-3">
-      <div class="container">
-        <a href="#demo1" class="btn btn-warning btn-lg" data-toggle="collapse">Edit Meeting</a>
-        <div id="demo1" class="collapse">
+      <div class="container" style="width:93% !important;">
+        <button class="btn btn-primary" id="updateMeeting">Update Meeting</button>
+        <div id="demo2" class="collapse">
           Lorem ipsum dolor sit amet, consectetur adipisicing elit,
           sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
           quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
@@ -61,9 +86,9 @@
       </div>
     </div>
     <div class="col-3">
-      <div class="container">
-        <a href="#demo2" class="btn btn-danger btn-lg" data-toggle="collapse">Cancel Meeting</a>
-        <div id="demo2" class="collapse">
+      <div class="container" style="width:93% !important;">
+        <button class="btn btn-primary" id="delMeeting">Delete Meeting</button>
+        <div id="demo3" class="collapse">
           Lorem ipsum dolor sit amet, consectetur adipisicing elit,
           sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
           quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
@@ -79,6 +104,13 @@
     </div>
     </div>
   <br><br>
+  <div class="row" >
+    <div class="col-12">
+      
+      
+    
+    </div>
+  </div>
     {{-- <div class="panel panel-primary" >
 
      <div class="panel-heading"style="background-color:#17a2b8; border-color:#17a2b8;">Add Meeting</div>
@@ -152,7 +184,7 @@
 
     </div>  --}}
 
-    <div class="panel panel-primary">
+    <div class="panel panel-primary" style="width: 93%;">
       <div class="panel-heading"style="background-color:#17a2b8; border-color:#17a2b8;">Meeting Details</div>
       <div class="panel-body" >
           {!! $calendar_details->calendar() !!}
