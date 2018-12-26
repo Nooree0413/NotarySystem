@@ -14,7 +14,7 @@ class partageController extends Controller
 {
     public function generatePartage(Request $request){
         $partageantId=Input::get('inputPartegeantId');
-        $noOfCPartageants=Input::get('numOfCPartageants');
+        $noOfCPartageants=Input::get('currentYearOfCPartageants');
     
         $mainPartageant=Input::get('inputMPartegeantId');
         $witness1FN=Input::get('inputWitness1FirstName');
@@ -22,7 +22,7 @@ class partageController extends Controller
         $witness1Title=Input::get('inputWitness1Title');
         $witness1Address=Input::get('inputWitness1Address');
         $witness1Dob=Input::get('inputWitness1Dob');
-        $witness1BCnum=Input::get('inputWitness1BcNum');
+        $witness1BCcurrentYear=Input::get('inputWitness1BccurrentYear');
         $witness1District=Input::get('inputWitness1District');
         $witness1Profession=Input::get('inputWitness1Profession');
         $witness2FN=Input::get('inputWitness2FirstName');
@@ -30,7 +30,7 @@ class partageController extends Controller
         $witness2Title  =Input::get('inputWitness2Title');
         $witness2Address=Input::get('inputWitness2Address');
         $witness2Dob =Input::get('inputWitness2Dob');
-        $witness2BCnum=Input::get('inputWitness2BcNum');
+        $witness2BCcurrentYear=Input::get('inputWitness2BccurrentYear');
         $witness2District=Input::get('inputWitness2District');
         $witness2Profession=Input::get('inputWitness2Profession');
 
@@ -43,8 +43,54 @@ class partageController extends Controller
         $alignment= new \PhpOffice\PhpWord\SimpleType\Jc();
 
         //retrieving current year
-        $currentYear = date('Y');
+        $currentYear = (int)(date('Y'));
         $currentMonth = date('F');
+
+        function convertcurrentYearberToWord($currentYear = false)
+{
+    $currentYear = str_replace(array(',', ' '), '' , trim($currentYear));
+    if(! $currentYear) {
+        return false;
+    }
+    $currentYear = (int) $currentYear;
+    $words = array();
+    $list1 = array('', 'one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine', 'ten', 'eleven',
+        'twelve', 'thirteen', 'fourteen', 'fifteen', 'sixteen', 'seventeen', 'eighteen', 'nineteen'
+    );
+    $list2 = array('', 'ten', 'twenty', 'thirty', 'forty', 'fifty', 'sixty', 'seventy', 'eighty', 'ninety', 'hundred');
+    $list3 = array('', 'thousand', 'million', 'billion', 'trillion', 'quadrillion', 'quintillion', 'sextillion', 'septillion',
+        'octillion', 'nonillion', 'decillion', 'undecillion', 'duodecillion', 'tredecillion', 'quattuordecillion',
+        'quindecillion', 'sexdecillion', 'septendecillion', 'octodecillion', 'novemdecillion', 'vigintillion'
+    );
+    $currentYear_length = strlen($currentYear);
+    $levels = (int) (($currentYear_length + 2) / 3);
+    $max_length = $levels * 3;
+    $currentYear = substr('00' . $currentYear, -$max_length);
+    $currentYear_levels = str_split($currentYear, 3);
+    for ($i = 0; $i < count($currentYear_levels); $i++) {
+        $levels--;
+        $hundreds = (int) ($currentYear_levels[$i] / 100);
+        $hundreds = ($hundreds ? ' ' . $list1[$hundreds] . ' hundred' . ' ' : '');
+        $tens = (int) ($currentYear_levels[$i] % 100);
+        $singles = '';
+        if ( $tens < 20 ) {
+            $tens = ($tens ? ' ' . $list1[$tens] . ' ' : '' );
+        } else {
+            $tens = (int)($tens / 10);
+            $tens = ' ' . $list2[$tens] . ' ';
+            $singles = (int) ($currentYear_levels[$i] % 10);
+            $singles = ' ' . $list1[$singles] . ' ';
+        }
+        $words[] = $hundreds . $tens . $singles . ( ( $levels && ( int ) ( $currentYear_levels[$i] ) ) ? ' ' . $list3[$levels] . ' ' : '' );
+    } //end for loop
+    $commas = count($words);
+    if ($commas > 1) {
+        $commas = $commas - 1;
+    }
+    return implode(' ', $words);
+}
+        //$f = new currentYearberFormatter("en", currentYearberFormatter::SPELLOUT);
+        //echo $f->format($currentYear);
 
         switch ($currentMonth) {
             case "January":
@@ -55,8 +101,7 @@ class partageController extends Controller
                 break;
             case "March":
             $currentMonth="mars";
-                break;
-               
+                break;              
             case "April":
             $currentMonth="avril";
                 break;
@@ -101,7 +146,7 @@ class partageController extends Controller
         $I="II";
             foreach ($buyers as $buyer ) {
                 $newSection->addText("TRANSCRIPTION",array('name' => 'Times New Roman','align'=>'center','size' => 12,'bold' => true,'underline'=> 'single'),'centerTitles');
-                $newSection->addText($currentYear,array('name' => 'Times New Roman','align'=>'center','size' => 12,'bold' => true,'underline'=> 'single'),'centerTitles');
+                $newSection->addText(convertcurrentYearberToWord($currentYear),array('name' => 'Times New Roman','align'=>'center','size' => 12,'bold' => true,'underline'=> 'single'),'centerTitles');
                 $newSection->addText($currentMonth,array('name' => 'Times New Roman','align'=>'center','size' => 12,'bold' => true,'underline'=> 'single'),'centerTitles');
                 $newSection->addText("PARTAGE EN NATURE",array('name' => 'Times New Roman','align'=>'center','size' => 12,'bold' => true,'underline'=> 'single'),'centerTitles');
                 $newSection->addText("ENTRE",array('name' => 'Times New Roman','align'=>'center','size' => 12,'bold' => true,'underline'=> 'single'),'centerTitles');
@@ -146,14 +191,14 @@ class partageController extends Controller
 
                             if($partageant->spouseFirstname !==null){
                             $newSection->addText("Et ".$partageant->spouseTitle." ".$partageant->spouseFirstname." ".$partageant->spouseLastname."  né/e à ".$partageant->spousePlaceOfBirth.
-                            " le ".$partageant->spouseDob.", (Acte de Naissance portant le No. ".$partageant->spouseBCNum."),".$partageant->spouseProfession.", épouse commune en biens de ".
+                            " le ".$partageant->spouseDob.", (Acte de Naissance portant le No. ".$partageant->spouseBCcurrentYear."),".$partageant->spouseProfession.", épouse commune en biens de ".
                             $partageant->title." ".$partageant->firstname." ".strtoupper($partageant->lastname).", surnomme, avec lequel elle demeure. ",
                             array('name' => 'Times New Roman','align'=>'left','size' => 12));
 
                             $newSection->addText("Déclarant les dits Époux ".$partageant->title." et ".$partageant->spouseTitle." ".$partageant->firstname." "
                             .strtoupper($partageant->lastname).
                             ", qu’ils sont mariés en uniques noces sous le régime légal de communauté leur union ayant été célébrée par l’Officier de l'État Civil de ".$partageant->MCdistrictIssued." le ".
-                            $partageant->marriageDate.", (acte de mariage portant le No. ".$partageant->MCNumber.").",
+                            $partageant->marriageDate.", (acte de mariage portant le No. ".$partageant->MCcurrentYearber.").",
                             array('name' => 'Times New Roman','align'=>'left','size' => 12));
                             }
 
@@ -175,7 +220,7 @@ class partageController extends Controller
             $newSection->addText("EXPOSE",array('name' => 'Times New Roman','align'=>'center','size' => 12,'bold' => true,'underline'=> 'single'),'centerTitles');
 
             foreach ( $propertyDetails as $propertyDetail ) {
-                $newSection->addText("Suivant contrat dressé par ".$propertyDetail->previousNotaryTitle." ".$propertyDetail->previousNotaryFN." ".$propertyDetail->previousNotaryLN." ancien Notaire a Port Louis, le ".$propertyDetail->firstDeedRegistration." , enregistrés au Reg: ".$propertyDetail->regNumLSReport." et transcrit au volume ".$propertyDetail->transcriptionVol.",..",array('name' => 'Times New Roman','align'=>'left','size' => 12));
+                $newSection->addText("Suivant contrat dressé par ".$propertyDetail->previousNotaryTitle." ".$propertyDetail->previousNotaryFN." ".$propertyDetail->previousNotaryLN." ancien Notaire a Port Louis, le ".$propertyDetail->firstDeedRegistration." , enregistrés au Reg: ".$propertyDetail->regcurrentYearLSReport." et transcrit au volume ".$propertyDetail->transcriptionVol.",..",array('name' => 'Times New Roman','align'=>'left','size' => 12));
                 
                 $newSection->addText("CES FAITS EXPOSES",array('name' => 'Times New Roman','align'=>'center','size' => 12,'bold' => true,'underline'=> 'single'),'centerTitles');
 
@@ -220,9 +265,9 @@ class partageController extends Controller
 
         $newSection->addText($currentYear  ,array('name' => 'Times New Roman','align'=>'left','size' => 12,'bold' => true));
         $newSection->addText("Le".$currentDay." ".$currentMonth  ,array('name' => 'Times New Roman','align'=>'left','size' => 12,'bold' => true));
-        $newSection->addText("Et après lecture des présentes faites par le notaire soussigné aux parties, en présences de ".$witness1Title." ".$witness1FN." ".strtoupper($witness1LN)." né le ". $witness1Dob.", acte de naissance portant le No. ".$witness1BCnum."-". $witness1District.","
+        $newSection->addText("Et après lecture des présentes faites par le notaire soussigné aux parties, en présences de ".$witness1Title." ".$witness1FN." ".strtoupper($witness1LN)." né le ". $witness1Dob.", acte de naissance portant le No. ".$witness1BCcurrentYear."-". $witness1District.","
          .$witness1Profession." demeurant à ".$witness1Address.", et ".$witness2Title." ".$witness2FN." ".strtoupper($witness2LN)." né le". $witness2Dob.", 
-         acte de naissance portant le No. ".$witness2BCnum.", témoins instrumentaires requis conformément à la loi, et sur la réquisition de signer que leur a faite le Notaire soussigné en présence des témoins susnommés, les parties ont signé, quant à".
+         acte de naissance portant le No. ".$witness2BCcurrentYear.", témoins instrumentaires requis conformément à la loi, et sur la réquisition de signer que leur a faite le Notaire soussigné en présence des témoins susnommés, les parties ont signé, quant à".
           $buyer->title." ".$buyer->firstname." ".strtoupper($buyer->lastname).", veuve de ".$buyer->spouseTitle." ".$buyer->spouseFirstname." ".strtoupper($buyer->spouseLastname)."requise de signer par le dit notaire en présence desdits témoins, elle a déclaré ne savoir écrire ni signer, mais a apposé aux présentes l’empreinte du pouce de sa main droite 
           en présences des dits témoins et notaire qui la certifie véritables et les susdits témoins requis de signer par le dit notaire ont signé le présent contrat.
         ",array('name' => 'Times New Roman','align'=>'left','size' => 12));
