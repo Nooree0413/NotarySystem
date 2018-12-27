@@ -180,7 +180,7 @@
             <div class="form-group col-md-4">
                 <label for="inputRoles">Roles</label>
                 <select  name="inputRoles" class="form-control">
-                    <option >Buyer</option>
+                    <option >acquéreur</option>
                     <option>Seller</option>
                     <option>Partegeant</option>
                     <option>co-partegeant</option>
