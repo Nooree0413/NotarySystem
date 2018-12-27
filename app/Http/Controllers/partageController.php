@@ -43,12 +43,7 @@ class partageController extends Controller
         $alignment= new \PhpOffice\PhpWord\SimpleType\Jc();
 
         //retrieving current year
-<<<<<<< HEAD
-        $currentYear = date('Y');
-       
-=======
         $currentYear = (int)(date('Y'));
->>>>>>> 46a3319d407b92d62b2a425281d2b65af0b0ee11
         $currentMonth = date('F');
 
         function convertcurrentYearberToWord($currentYear = false)
@@ -105,14 +100,8 @@ class partageController extends Controller
                 $currentMonth="février";
                 break;
             case "March":
-<<<<<<< HEAD
-                $currentMonth="mars";
-                break;
-               
-=======
             $currentMonth="mars";
                 break;              
->>>>>>> 46a3319d407b92d62b2a425281d2b65af0b0ee11
             case "April":
                 $currentMonth="avril";
                 break;
