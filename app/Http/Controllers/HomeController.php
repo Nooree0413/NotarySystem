@@ -77,4 +77,28 @@ class HomeController extends Controller
     //     return view('auth.registrationSpouse')->with('users',$users);
         
     // }
+    public function confirmMeeting($pid,$mid,Request $request)
+    {
+        //check which link was clicked (going or not going) in mail
+        if ($request->has('status')) {
+            $status = $request->input('status');
+        }
+
+        $party = $pid;
+        $meeting_id = $mid;
+        
+        DB::table('meetings')
+        ->where('partyId', $party)
+        ->where('id', $meeting_id)
+        ->update([
+                'meetingStatus' => $status
+            ]);
+
+        // DB::table('user_event')->insert($data);
+        
+        return redirect('/login');
+            
+        // }
+        
+    }
 }

@@ -30,7 +30,7 @@ class CreateUsersTable extends Migration
             $table->string('address');
             $table->string('nic')->unique();
             $table->enum('marriageStatus', ['Célibataire','Mariés','Divorcés','Veuve','Veuf'])->default("Célibataire");
-            $table->enum('roles', ['acquéreur','vendeurs','Buyer_Spouse','Seller_Spouse','Children','Partegeant','co-partageants'])->default("acquéreur");
+            $table->enum('roles', ['acquéreur','vendeurs','Buyer_Spouse','Seller_Spouse','Children','Partegeant','co_partageants'])->default("acquéreur");
             $table->string('profession');
             $table->enum('spouseTitle', ['Monsieur','Madame'])->nullable()->default("Madame");
             $table->string('spouseFirstname')->nullable();
@@ -139,10 +139,11 @@ class CreateUsersTable extends Migration
        
         Schema::create('meetings', function (Blueprint $table) {
             $table->increments('id');
+            $table->integer('partyId');
             $table->string('meetingReason');
             $table->datetime('startTime');
             $table->datetime('endTime');
-           
+            $table->string('meetingStatus');
             $table->timestamp('created_at')->default(\DB::raw('CURRENT_TIMESTAMP'));
             $table->timestamp('updated_at')->default(\DB::raw('CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP'));
         });

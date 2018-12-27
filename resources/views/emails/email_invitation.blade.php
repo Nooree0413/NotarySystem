@@ -33,13 +33,21 @@
             <div class="mainUserInvEmail">
                 <strong>Hello {!!$firstname!!} {!!$lastname!!}, </strong> <br><br>
 
+                We are sending you this email to confirm your presence for the following meeting.
+                  <br><br>
+
+                <u>Meeting Details:</u><br><br>
+
+                Meeting Reason: {!!$meetingReason!!} <br> 
+                Starting time: {!!$startTime!!} <br> 
+                Ending time: {!!$endTime!!} <br> 
+                
+                <br> 
                
 
-                <u>Your Password is:{{!!$password!!}}</u><br><br>
-
-
-                Thank you for choosing us.<br><br>
-                
+                Click on either link below whether you are coming  or not.<br><br>
+                <a href="http://127.0.0.1:8000/confirm/meeting/{!!$pid!!}{!!$mid!!}/?status=confirmed">Coming</a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="http://127.0.0.1:8000/confirm/meeting/{!!$pid!!}{!!$mid!!}/?status=not_going">Not coming</a>
+                <br><br>
             </div>
             {{-- <img class="userInvImgEmail" src="{{ $message->embed(('images/'.$image_path)) }}">       --}}
         </div>

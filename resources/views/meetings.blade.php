@@ -33,6 +33,18 @@
       padding: 5px;
       font-size: 5px !important;
       }
+
+      fieldset
+{
+  background-color:#CCC;
+  max-width:93%;
+  padding:16px;	
+}
+.legend1
+{
+  margin-bottom:0px;
+  margin-left:16px;
+}
     </style> 
   <script>
     $(document).ready(function(){
@@ -59,6 +71,13 @@
        $("#demo2").hide();
         
       });
+
+      $("#cancel").click(function(){
+       
+         $("#demo1").hide();
+       
+        
+      });
     });
     </script>
 </head>
@@ -67,38 +86,29 @@
 
 <div class="row" style="width:93% !important;">
     <div class="col-3">
-      <div class="container" style="width:93% !important;">
-        <button class="btn btn-primary" id="addMeeting">Add Meeting</button>
-        <div id="demo1" class="collapse">
+      <div class="container" >
+        <a href="/staff/meeting/add/del/up" class="btn btn-success btn-lg" id="addMeeting"  >Add Meeting</a><br>
+            </div>
+          </div>
       
-        </div>
-        </div>
-    </div>
+  
   
     <div class="col-3">
       <div class="container" style="width:93% !important;">
-        <button class="btn btn-primary" id="updateMeeting">Update Meeting</button>
-        <div id="demo2" class="collapse">
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit,
-          sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-          quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-        </div>
+        <button class="btn btn-primary btn-lg" id="updateMeeting">Update Meeting</button>
+        
       </div>
     </div>
     <div class="col-3">
       <div class="container" style="width:93% !important;">
-        <button class="btn btn-primary" id="delMeeting">Delete Meeting</button>
-        <div id="demo3" class="collapse">
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit,
-          sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-          quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-        </div>
+        <button class="btn btn-danger btn-lg" id="delMeeting">Delete Meeting</button>
+       
       </div>
     </div>
 
       <div class="col-3">
           <div class="container">
-            <a class=" btn-info btn-lg" href="/staff"><i class="fa fa-home hvr-icon"></i> Back</a>
+            <a class="btn btn-info btn-lg" href="/staff"><i class="fa fa-home hvr-icon"></i> Back</a>
             
           </div>
     </div>
@@ -111,81 +121,10 @@
     
     </div>
   </div>
-    {{-- <div class="panel panel-primary" >
-
-     <div class="panel-heading"style="background-color:#17a2b8; border-color:#17a2b8;">Add Meeting</div>
-
-      <div class="panel-body">    
-
-            {!! Form::open(array('route' => 'meetings.add','method'=>'POST','files'=>'true')) !!} 
-      <form action="{{route('meetings.add')}}" method="POST" files="true">
-        @csrf
-           <div class="row">
-               <div class="col-12">
-                  @if (Session::has('success'))
-                     <div class="alert alert-success">{{ Session::get('success') }}</div>
-                  @elseif (Session::has('warnning'))
-                      <div class="alert alert-danger">{{ Session::get('warnning') }}</div>
-                  @endif
-
-              </div>
-
-              <div class="col-xs-4 col-sm-4 col-md-4">
-                <div class="form-group">
-                    {{-- {!! Form::label('event_name','Event Name:') !!} --}}
-                    {{-- <label>Meeting Reason</label>
-                    <div class=""> --}}
-                     {{-- {!! Form::text('event_name', null, ['class' => 'form-control']) !!}  --}}
-                    {{-- <input type="text" name=="meetingReason" required class="form-control" >
-                    {!! $errors->first('meetingReason', '<p class="alert alert-danger">:message</p>') !!}
-                    </div>
-                </div>
-              </div>
-
-              <div class="col-xs-3 col-sm-3 col-md-3">
-                <div class="form-group">
-                  {{-- {!! Form::label('start_date','Start Date:') !!} --}}
-                  {{-- <label>Start Time</label> --}}
-                  {{-- <div class=""> --}}
-                  {{-- {!! Form::date('start_date', null, ['class' => 'form-control']) !!} --}}
-                  {{-- <input type="datetime-local" name=="startTime" required class="form-control"> --}}
-
-                  {{-- {!! $errors->first('startTime', '<p class="alert alert-danger">:message</p>') !!}
-                  </div>
-                </div>
-              </div> --}} 
-
-              {{-- <div class="col-xs-3 col-sm-3 col-md-3">
-                <div class="form-group">
-                  {{-- {!! Form::label('end_date','End Date:') !!} --}}
-                  {{-- <label>End Time</label> --}}
-                  {{-- <div class=""> --}}
-                  {{-- {!! Form::date('end_date', null, ['class' => 'form-control']) !!} --}}
-                  {{-- <input type="datetime-local" name=="endTime" required class="form-control" > --}}
-
-                  {{-- {!! $errors->first('endTime', '<p class="alert alert-danger">:message</p>') !!} --}}
-                  {{-- </div>
-                </div>
-              </div>  --}}
-
-              {{-- <div class="col-xs-2 col-sm-2 col-md-2 text-center"> &nbsp;<br/>
-                <div class="form-group">
-                  <div class=""> --}}
-              {{-- {!! Form::submit('Add Event',['class'=>'btn btn-primary']) !!} --}}
-              {{-- <label></label>
-              <input type="submit" name="submitMeeting" class="btn btn-info  btn-block ">
-                  </div>
-                </div>
-              </div>
-            </div>
-      </form> --}}
-
-     {{-- </div>
-
-    </div>  --}}
+   
 
     <div class="panel panel-primary" style="width: 93%;">
-      <div class="panel-heading"style="background-color:#17a2b8; border-color:#17a2b8;">Meeting Details</div>
+      <div class="panel-heading"style="background-color:#17a2b8; border-color:#17a2b8; text-align:center; font-size: 34px;">Meeting Details</div>
       <div class="panel-body" >
           {!! $calendar_details->calendar() !!}
       </div>

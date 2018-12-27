@@ -42,56 +42,57 @@ class partageController extends Controller
         $wordTest = new \PhpOffice\PhpWord\PhpWord();
         $alignment= new \PhpOffice\PhpWord\SimpleType\Jc();
 
-        //retrieving current year
+        //retrieving current year and converting it to integer
         $currentYear = (int)(date('Y'));
+
+        //retrieving the current month.
         $currentMonth = date('F');
 
-        function convertcurrentYearberToWord($currentYear = false)
-{
-    $currentYear = str_replace(array(',', ' '), '' , trim($currentYear));
-    if(! $currentYear) {
-        return false;
-    }
-    $currentYear = (int) $currentYear;
-    $words = array();
-    $list1 = array('', 'one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine', 'ten', 'eleven',
-        'twelve', 'thirteen', 'fourteen', 'fifteen', 'sixteen', 'seventeen', 'eighteen', 'nineteen'
-    );
-    $list2 = array('', 'ten', 'twenty', 'thirty', 'forty', 'fifty', 'sixty', 'seventy', 'eighty', 'ninety', 'hundred');
-    $list3 = array('', 'thousand', 'million', 'billion', 'trillion', 'quadrillion', 'quintillion', 'sextillion', 'septillion',
-        'octillion', 'nonillion', 'decillion', 'undecillion', 'duodecillion', 'tredecillion', 'quattuordecillion',
-        'quindecillion', 'sexdecillion', 'septendecillion', 'octodecillion', 'novemdecillion', 'vigintillion'
-    );
-    $currentYear_length = strlen($currentYear);
-    $levels = (int) (($currentYear_length + 2) / 3);
-    $max_length = $levels * 3;
-    $currentYear = substr('00' . $currentYear, -$max_length);
-    $currentYear_levels = str_split($currentYear, 3);
-    for ($i = 0; $i < count($currentYear_levels); $i++) {
-        $levels--;
-        $hundreds = (int) ($currentYear_levels[$i] / 100);
-        $hundreds = ($hundreds ? ' ' . $list1[$hundreds] . ' hundred' . ' ' : '');
-        $tens = (int) ($currentYear_levels[$i] % 100);
-        $singles = '';
-        if ( $tens < 20 ) {
-            $tens = ($tens ? ' ' . $list1[$tens] . ' ' : '' );
-        } else {
-            $tens = (int)($tens / 10);
-            $tens = ' ' . $list2[$tens] . ' ';
-            $singles = (int) ($currentYear_levels[$i] % 10);
-            $singles = ' ' . $list1[$singles] . ' ';
+        //function to convert year/price to words in french
+        function convertcurrentYearberToWord($currentYear = false){
+            $currentYear = str_replace(array(',', ' '), '' , trim($currentYear));
+            if(! $currentYear) {
+                return false;
+            }
+            $currentYear = (int) $currentYear;
+            $words = array();
+            $list1 = array('', 'one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine', 'ten', 'eleven',
+                'twelve', 'thirteen', 'fourteen', 'fifteen', 'sixteen', 'seventeen', 'eighteen', 'nineteen'
+            );
+            $list2 = array('', 'ten', 'twenty', 'thirty', 'forty', 'fifty', 'sixty', 'seventy', 'eighty', 'ninety', 'hundred');
+            $list3 = array('', 'thousand', 'million', 'billion', 'trillion', 'quadrillion', 'quintillion', 'sextillion', 'septillion',
+                'octillion', 'nonillion', 'decillion', 'undecillion', 'duodecillion', 'tredecillion', 'quattuordecillion',
+                'quindecillion', 'sexdecillion', 'septendecillion', 'octodecillion', 'novemdecillion', 'vigintillion'
+            );
+            $currentYear_length = strlen($currentYear);
+            $levels = (int) (($currentYear_length + 2) / 3);
+            $max_length = $levels * 3;
+            $currentYear = substr('00' . $currentYear, -$max_length);
+            $currentYear_levels = str_split($currentYear, 3);
+            for ($i = 0; $i < count($currentYear_levels); $i++) {
+                $levels--;
+                $hundreds = (int) ($currentYear_levels[$i] / 100);
+                $hundreds = ($hundreds ? ' ' . $list1[$hundreds] . ' hundred' . ' ' : '');
+                $tens = (int) ($currentYear_levels[$i] % 100);
+                $singles = '';
+                if ( $tens < 20 ) {
+                    $tens = ($tens ? ' ' . $list1[$tens] . ' ' : '' );
+                } else {
+                    $tens = (int)($tens / 10);
+                    $tens = ' ' . $list2[$tens] . ' ';
+                    $singles = (int) ($currentYear_levels[$i] % 10);
+                    $singles = ' ' . $list1[$singles] . ' ';
+                }
+                $words[] = $hundreds . $tens . $singles . ( ( $levels && ( int ) ( $currentYear_levels[$i] ) ) ? ' ' . $list3[$levels] . ' ' : '' );
+            } //end for loop
+            $commas = count($words);
+            if ($commas > 1) {
+                $commas = $commas - 1;
+            }
+            return implode(' ', $words);
         }
-        $words[] = $hundreds . $tens . $singles . ( ( $levels && ( int ) ( $currentYear_levels[$i] ) ) ? ' ' . $list3[$levels] . ' ' : '' );
-    } //end for loop
-    $commas = count($words);
-    if ($commas > 1) {
-        $commas = $commas - 1;
-    }
-    return implode(' ', $words);
-}
-        //$f = new currentYearberFormatter("en", currentYearberFormatter::SPELLOUT);
-        //echo $f->format($currentYear);
-
+        
+        //converting month in french
         switch ($currentMonth) {
             case "January":
                 $currentMonth="janvier";
@@ -131,6 +132,8 @@ class partageController extends Controller
                 break;
             
         }
+
+        //retrieving the current day
         $currentDay = date('d');
         $newSection = $wordTest->addSection();
 
@@ -153,7 +156,7 @@ class partageController extends Controller
                 
                 foreach ( $mPartageant as  $mPartageants ) {
                     if( $mPartageants->spouseFirstname ==null){
-                    $newSection->addText($mPartageants->title." ".$mPartageants->firstname." ".strtoupper($mPartageants->lastname)." "."et autres",array('name' => 'Times New Roman','align'=>'center','size' => 12,'bold' => true,'underline'=> 'single'),'centerTitles');
+                        $newSection->addText($mPartageants->title." ".$mPartageants->firstname." ".strtoupper($mPartageants->lastname)." "."et autres",array('name' => 'Times New Roman','align'=>'center','size' => 12,'bold' => true,'underline'=> 'single'),'centerTitles');
                     }
                     else{
                         $newSection->addText( $mPartageants->title." et ". $mPartageants->spouseTitle." ". $mPartageants->firstname." "
@@ -161,6 +164,7 @@ class partageController extends Controller
 
                     }
                 } 
+
                 $newSection->addText("---",array('name' => 'Times New Roman','align'=>'center','size' => 12),'centerTitles');
                 $newSection->addText("  Pardevant Mons. Jean Baptise , notaire à Port Louis, 14, Rue Sir Virgile Naz, République de Maurice, soussignée.",array('name' => 'Times New Roman','align'=>'center','size' => 12));
                 $newSection->addText("ONT COMPARU",array('name' => 'Times New Roman','align'=>'center','size' => 12,'bold' => true,'underline'=> 'single'),'centerTitles');
@@ -176,10 +180,10 @@ class partageController extends Controller
             
                 foreach ($getInput as $option => $value) {
             
-                $selectedOption = $value.','; 
-                $var="$"."person";               
-                $variable=$var.(string)($x);              
-                $variable=DB::table('users')->where('id',$value)->get();
+                    $selectedOption = $value.','; 
+                    $var="$"."person";               
+                    $variable=$var.(string)($x);              
+                    $variable=DB::table('users')->where('id',$value)->get();
                         
                     foreach ( $variable as $partageant ) {
                         if($x== $n){

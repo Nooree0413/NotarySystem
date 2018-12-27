@@ -112,12 +112,12 @@ class StaffController extends Controller
             
         );
 
-        //  DB::table('users')->insert($data);
-         $user_id = DB::table('users')->insertGetId($data);
-         $user=(DB::table('users')->where('id',$user_id)->get())[0];
-         Mail::send('emails.email_invitation', $data, function($m) use ($user){
-            $m->to($user->email, 'Notary System')->from('hi@example.com', 'Notary System')->subject('Login Credentials');
-            });
+         DB::table('users')->insert($data);
+        //  $user_id = DB::table('users')->insertGetId($data);
+        //  $user=(DB::table('users')->where('id',$user_id)->get())[0];
+        //  Mail::send('emails.email_invitation', $data, function($m) use ($user){
+        //     $m->to($user->email, 'Notary System')->from('hi@example.com', 'Notary System')->subject('Login Credentials');
+        //     });
 
         
         // return redirect('/dashboard');
@@ -366,32 +366,69 @@ class StaffController extends Controller
                 new \DateTime($meeting->startTime),
                 new \DateTime($meeting->endTime.' +1 day')
             );
-    	}
+        }
+        $users=DB::table('users')->get();
     	$calendar_details = Calendar::addEvents($meeting_list); 
  
-        return view('meetings', compact('calendar_details') );
+        return view('meetings', compact('calendar_details','users') );
 }
 public function addMeeting(Request $request)
     {
-        $validator = Validator::make($request->all(), [
-            'meetingReason' => 'required',
-            'startTime' => 'required',
-            'endTime' => 'required'
-        ]);
- 
-        if ($validator->fails()) {
-        	\Session::flash('warnning','Please enter the valid details');
-            return Redirect::to('staff/meetings')->withInput()->withErrors($validator);
+        $status="Pending";
+        $party=Input::get('party');
+        $id=Input::get('partyId');
+        $reason=Input::get('meetingReason');
+        $start=Input::get('startTime');
+        $end=Input::get('endTime');
+
+        $data = array(
+            'partyId' =>  $id, 
+            'meetingReason' => $reason, 
+            'startTime'=>$start,
+            'endTime' =>  $end ,
+            'meetingStatus' =>$status
+            
+        );
+
+        // DB::table('meetings')->insert($data);
+        
+        $meeting_id = DB::table('meetings')->insertGetId($data);
+        $meet=(DB::table('meetings')->where('id',$meeting_id)->get())[0];
+
+        if($party=="Client"){
+            $user=DB::table('users')
+            ->where('id', $id)
+            ->get();
+            
+            foreach ($user as $users) {
+               
+                    $data = [
+                        'firstname'      => $users->firstname,
+                        'lastname'       => $users->lastname,
+                        'meetingReason' =>$reason,
+                        'startTime'     =>$start,
+                        'endTime'       =>$end,
+                        'pid'           =>$users->id,
+                        'mid'           =>$meeting_id
+                        
+                    ];
+    
+                    Mail::send('emails.email_invitation', $data, function($m) use ($users){
+                    $m->to($users->email, 'Alt Team')->from('hi@example.com', 'Notary Team')->subject('Meeting');
+                    });
+    
+                    return "successfully sent";
+                
+            }
         }
- 
-        $meeting = new Meeting;
-        $meeting->meetingReason = $request['meetingReason'];
-        $meeting->startTime = $request['startTime'];
-        $meeting->endTime = $request['endTime'];
-        $meeting->save();
- 
-        \Session::flash('success','Meeting added successfully.');
-        return Redirect::to('staff/meetings');
+
+        // return "success";
+        
+    }
+
+    public function meetingForm(){
+        $users=DB::table('users')->get();
+        return view('meetingsConfig')->with('users',$users);
     }
 
     public function showUploadForm(){

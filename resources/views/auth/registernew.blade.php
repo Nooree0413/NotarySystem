@@ -181,9 +181,12 @@
                 <label for="inputRoles">Roles</label>
                 <select  name="inputRoles" class="form-control">
                     <option >acquéreur</option>
-                    <option>Seller</option>
+                    <option>vendeurs</option>
+                    <option >Buyer_Spouse</option>
+                    <option>Seller_Spouse</option>
+                    <option >Children</option>
                     <option>Partegeant</option>
-                    <option>co-partegeant</option>
+                    <option>co_partageants</option>
                 </select>
             </div>
             

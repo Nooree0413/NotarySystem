@@ -26,6 +26,7 @@ Route::get('/viewuser','userController@viewUsers')->name('viewUser');
 Route::get('/view/user/transaction','userController@getTransactions')->name('view.transaction');
 Route::get('/test','userController@viewUsers')->name('test');
 Route::post('propertyRegistration/fetch', 'HomeController@fetch')->name('dynamicdependent.fetch');
+Route::get('/confirm/meeting/{pid}{mid}', 'HomeController@confirmMeeting');
 
 //staff only
 Route::prefix('staff')->group(function(){
@@ -44,7 +45,7 @@ Route::prefix('staff')->group(function(){
     Route::get('/profile/view', 'StaffController@myProfile')->name('myProfile');
     Route::post('/profile/view', 'StaffController@profileupdate')->name('profileUpdate');
     Route::get('/meetings', 'StaffController@meeting')->name('meetings');
-    Route::post('/meetings', 'StaffController@addMeeting')->name('meetings.add');
+    Route::post('/meeting/add/del/up', 'StaffController@addMeeting')->name('meetings.add');
     Route::get('/upload/contract', 'StaffController@showUploadForm')->name('upload.contract');
     Route::post('/upload/contract', 'StaffController@uploadContract')->name('upload.contract.submit');
     Route::get('/view/contract/{id}','StaffController@viewContract')->name('view.contract');
@@ -57,6 +58,7 @@ Route::prefix('staff')->group(function(){
     Route::post('/confirm/number/children', 'StaffController@addNumberChildren')->name('add.num.children');
     Route::get('/generate/contract/partage', 'StaffController@partageGeneration')->name('show.partage');
     Route::post('/generate/contract/partage' ,'partageController@generatePartage')->name('generate.partage');
+    Route::get('/meeting/add/del/up', 'StaffController@meetingForm')->name('show.meetingsForms');
     // Route::post('/preview/contract/pdf', 'previewPDFController@previewContractSOIP')->name('view.pdf');
 });
 
