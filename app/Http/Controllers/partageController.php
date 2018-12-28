@@ -157,13 +157,13 @@ class partageController extends Controller
               return asLetters((int)($currentYear/1000)).' '.asLetters(1000).($currentYear%1000 > 0 ? ' '.asLetters($currentYear%1000): '');
             }
             elseif ($currentYear == 1000000) {
-              return 'millions';
+              return 'un million';
             }
             elseif ($currentYear < 2000000) {
-              return asLetters(1000000).' '.asLetters($currentYear%1000000);
+              return 'un million'.' '.asLetters($currentYear%1000000);
             }
             elseif ($currentYear < 1000000000) {
-              return asLetters((int)($currentYear/1000000)).' '.asLetters(1000000).($currentYear%1000000 > 0 ? ' '.asLetters($currentYear%1000000): '');
+              return asLetters((int)($currentYear/1000000)).' '.'millions'.($currentYear%1000000 > 0 ? ' '.asLetters($currentYear%1000000): '');
             }
           }
         
