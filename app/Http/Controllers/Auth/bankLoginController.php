@@ -16,13 +16,13 @@ class bankLoginController extends Controller
      */
      protected $redirectTo = '/staff';
     public function __construct(){
-        $this->middleware('guest:staff', ['except' => ['logout','userlogout','rgdlogout','banklogout','landSurveyorlogout']]);
+        $this->middleware('guest:bank', ['except' => ['logout','userlogout','rgdlogout','banklogout','landSurveyorlogout']]);
     }
 
     
     public function showLoginForm()
     {
-        return view('auth.staff-login');
+        return view('auth.bankLogin');
     }
 
     public function login(Request $request)
@@ -34,9 +34,9 @@ class bankLoginController extends Controller
       ]);
 
       // Attempt to log the user in
-      if (Auth::guard('staff')->attempt(['email' => $request->email, 'password' => $request->password], $request->remember)) {
+      if (Auth::guard('bank')->attempt(['email' => $request->email, 'password' => $request->password], $request->remember)) {
         // if successful, then redirect to their intended location
-        return redirect()->intended(route('staffdashboard'));
+        return redirect()->intended(route('bankdashboard'));
       }
 
       // if unsuccessful, then redirect back to the login with the form data
@@ -44,10 +44,10 @@ class bankLoginController extends Controller
     //   return redirect()->intended(route('staff.login'))->withInput($request->only('email', 'remember'));
     }
 
-    public function logout()
+    public function banklogout()
     {
-        Auth::guard('staff')->logout();
-        return redirect('staff/login');
+        Auth::guard('bank')->logout();
+        return redirect('bank/login');
     }
 
     

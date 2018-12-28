@@ -16,13 +16,13 @@ class landSurveyorLoginController extends Controller
      */
      protected $redirectTo = '/staff';
     public function __construct(){
-        $this->middleware('guest:staff', ['except' => ['logout','userlogout','rgdlogout']]);
+        $this->middleware('guest:landSurveyor', ['except' => ['logout','userlogout','rgdlogout','banklogout','landSurveyorlogout']]);
     }
 
     
     public function showLoginForm()
     {
-        return view('auth.staff-login');
+        return view('auth.landSurveyorLogin');
     }
 
     public function login(Request $request)
@@ -34,9 +34,9 @@ class landSurveyorLoginController extends Controller
       ]);
 
       // Attempt to log the user in
-      if (Auth::guard('staff')->attempt(['email' => $request->email, 'password' => $request->password], $request->remember)) {
+      if (Auth::guard('landSurveyor')->attempt(['email' => $request->email, 'password' => $request->password], $request->remember)) {
         // if successful, then redirect to their intended location
-        return redirect()->intended(route('staffdashboard'));
+        return redirect()->intended(route('landSurveyordashboard'));
       }
 
       // if unsuccessful, then redirect back to the login with the form data
@@ -46,8 +46,8 @@ class landSurveyorLoginController extends Controller
 
     public function logout()
     {
-        Auth::guard('staff')->logout();
-        return redirect('staff/login');
+        Auth::guard('landSurveyor')->logout();
+        return redirect('landSurveyor/login');
     }
 
     
