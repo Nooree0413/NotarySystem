@@ -51,6 +51,16 @@ return [
             'provider' => 'rgd',
         ],
 
+        'bank' => [
+            'driver' => 'session',
+            'provider' => 'bank',
+        ],
+
+        'landSurveyor' => [
+            'driver' => 'session',
+            'provider' => 'landSurveyor',
+        ],
+
         'api' => [
             'driver' => 'token',
             'provider' => 'users',
@@ -64,6 +74,16 @@ return [
         'rgd-api' => [
             'driver' => 'token',
             'provider' => 'rgd',
+        ],
+
+        'bank-api' => [
+            'driver' => 'token',
+            'provider' => 'bank',
+        ],
+
+        'landSurveyor-api' => [
+            'driver' => 'token',
+            'provider' => 'landSurveyor',
         ],
     ],
 
@@ -98,6 +118,16 @@ return [
         'rgd' => [
             'driver' => 'eloquent',
             'model' => App\Rgd::class,
+        ],
+
+        'bank' => [
+            'driver' => 'eloquent',
+            'model' => App\bank::class,
+        ],
+
+        'landSurveyor' => [
+            'driver' => 'eloquent',
+            'model' => App\landSurveyor::class,
         ],
 
         // 'users' => [

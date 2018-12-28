@@ -69,3 +69,16 @@ Route::prefix('rgd')->group(function(){
     Route::get('/logout', 'Auth\RgdLoginController@rgdlogout')->name('rgd.logout');
 });
 
+Route::prefix('bank')->group(function(){
+    Route::get('/','bankController@index')->name('bankdashboard');
+    Route::get('/login','Auth\bankLoginController@showLoginForm')->name('bank.login');
+    Route::post('/login','Auth\bankLoginController@login')->name('bank.login.submit');
+    Route::get('/logout', 'Auth\bankLoginController@banklogout')->name('bank.logout');
+});
+
+Route::prefix('landSurveyor')->group(function(){
+    Route::get('/','landSurveyorController@index')->name('landSurveyordashboard');
+    Route::get('/login','Auth\landSurveyorLoginController@showLoginForm')->name('landSurveyor.login');
+    Route::post('/login','Auth\landSurveyorLoginController@login')->name('landSurveyor.login.submit');
+    Route::get('/logout', 'Auth\landSurveyorLoginController@landSurveyorlogout')->name('landSurveyor.logout');
+});

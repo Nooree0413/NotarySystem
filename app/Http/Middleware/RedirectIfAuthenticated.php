@@ -29,6 +29,18 @@ class RedirectIfAuthenticated
                 return redirect()->route('rgddashboard');
               }
               break;
+
+              case 'bank':
+              if (Auth::guard($guard)->check()) {
+                return redirect()->route('bankdashboard');
+              }
+              break;
+
+              case 'landSurveyor':
+              if (Auth::guard($guard)->check()) {
+                return redirect()->route('landSurveyordashboard');
+              }
+              break;
     
             default:
               if (Auth::guard($guard)->check()) {
