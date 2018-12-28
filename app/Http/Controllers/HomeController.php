@@ -79,7 +79,7 @@ class HomeController extends Controller
     // }
     public function confirmMeeting($pid,$mid,Request $request)
     {
-        //check which link was clicked (going or not going) in mail
+        //check which link was clicked (coming or not coming) in mail
         if ($request->has('status')) {
             $status = $request->input('status');
         }
@@ -94,7 +94,7 @@ class HomeController extends Controller
                 'meetingStatus' => $status
             ]);
 
-        // DB::table('user_event')->insert($data);
+        
         
         return redirect('/login');
             
