@@ -58,15 +58,13 @@
                 <h3> Notary System</h3>
                 <strong>NS</strong>
             </div>
-
+            
             <ul class="list-unstyled components">
                 
                 <li>
                     <a href="{{ route('myProfile') }}"><i class="fas fa-user-circle"></i> My Profile</a></li>
             </li>
-            <li>
-                <a href="{{ route('show.mailCompose') }}" ><i class="fas fa-share-square"></i> Compose Mail</a>
-            </li>
+            
                 <li>
                     <a href="{{ route('registernew') }}" ><i class="fas fa-user-plus"></i> Add Client</a>
                 </li>
@@ -123,6 +121,24 @@
                         </li>
                     </ul>
                 </li>
+                <li >
+                        <a href="#mailSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+                                <i class="fas fa-envelope"></i>
+                            Mails
+                        </a>
+                        <ul class="collapse list-unstyled" id="mailSubmenu">
+                                <li>
+                                    <a href="{{ route('show.mailCompose') }}" ><i class="fas fa-edit"></i> Compose Mail</a>
+                                </li>
+                                <li>
+                                    <a href="" ><i class="fas fa-at"></i>Inbox</a>
+                                </li>
+                                <li>
+                                     <a href="" ><i class="fas fa-share-square"></i></i>Sent Items</a>
+                                </li>
+                            
+                        </ul>
+                    </li>
                 {{-- <li>
                     <a href="#" style="color:aliceblue;">
                         <i class="fas fa-briefcase"></i>

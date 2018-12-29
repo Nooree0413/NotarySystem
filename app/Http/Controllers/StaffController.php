@@ -14,6 +14,7 @@ use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Validator;
 use App\Mail\sendMail;
 use Mail;
+use Session;
 use Illuminate\Support\Facades\Hash;
 use Intervention\Image\ImageManagerStatic as Image;
 use File;
@@ -635,9 +636,10 @@ public function addMeeting(Request $request)
               
                 });
 
-                // Get filename with the extension
+                Session::flash('message', 'Mail successfully sent!'); 
+                 return Redirect::to('staff/compose/email');
                 
-                return "successfully sent";
+               
             
                 }
 

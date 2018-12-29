@@ -33,6 +33,10 @@
         </div>
     </div>
 </div>
+<br>
+@if (Session::has('message'))
+	<div class="alert alert-success">{{ Session::get('message') }}</div>
+@endif
 <form method="POST" action="{{ route('send.party.mail') }}" id="frmAddUser"  files="true" enctype="multipart/form-data">
         @csrf
         <fieldset class="addUserFieldset">
@@ -88,13 +92,13 @@
                 
     
                 <div class="row">
-                        <div class="col-4">
+                        <div class="col-5">
                         </div>
                         <div class="col-4">
                         <label for="inputFiles" style="text-align:center !important;">Attach File</label>
                         <input type="file" name="inputAttachment" >
                         </div>
-                        <div class="col-4"></div>
+                        <div class="col-3"></div>
                        </div>
           {{-- <a href="/generateWord" class="btn btn-danger">Genrerate Word Document</a> --}}
     <br>
