@@ -31,7 +31,7 @@
     <div class="userInvEmailContainer">
         <div class="userInvEmail">
             <div class="mainUserInvEmail">
-                <strong>Hello {!!$firstname!!} {!!$lastname!!}, </strong> <br><br>
+                <strong>Dear {!!$firstname!!} {!!$lastname!!}, </strong> <br><br>
 
                 {!!$body!!}
                   <br><br>

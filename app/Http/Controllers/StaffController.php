@@ -606,6 +606,7 @@ public function addMeeting(Request $request)
         $attachment = $request->file('inputAttachment')->getClientOriginalName();
         $extension= $request->file('inputAttachment')->getClientOriginalExtension();
         $attachmentPath = $request->file('inputAttachment')->getRealPath();
+     
         $mime= $request->file('inputAttachment')->getMimeType();
                 // Get just filename
                 $filename = pathinfo($attachment, PATHINFO_FILENAME);
@@ -627,9 +628,9 @@ public function addMeeting(Request $request)
                    
                 ];
 
-                Mail::send('emails.email_party', $data, function($m) use ($users,$mime,$path,$extension,$request, $attachmentPath){
+                Mail::send('emails.email_party', $data, function($m) use ($users,$mime,$path,$extension,$request,$filename, $attachmentPath){
                 $m->to($users->email, 'Notary Team')->from('hi@example.com', 'Notary Team')->subject(Input::get('inputSubject'))
-                ->attach( $attachmentPath,array('as'=>'inputAttachment.'.$extension,
+                ->attach( $attachmentPath,array('as'=>$filename.$extension,
                                                 'mime'=>$mime));
               
                 });
