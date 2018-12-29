@@ -414,7 +414,7 @@ public function addMeeting(Request $request)
                     ];
     
                     Mail::send('emails.email_invitation', $data, function($m) use ($users){
-                    $m->to($users->email, 'Alt Team')->from('hi@example.com', 'Notary Team')->subject('Meeting');
+                    $m->to($users->email, 'Notary Team')->from('hi@example.com', 'Notary Team')->subject('Meeting');
                     });
     
                     return "successfully sent";
@@ -587,6 +587,60 @@ public function addMeeting(Request $request)
         $users=DB::table('users')->where("roles", 'Partegeant')->get();
         $coPartageants=DB::table('users')->where("roles", 'co_partageants')->get();
         return view('Staff.partageContract')->with('users',$users)->with('children',$coPartageants);
+    }
+
+    public function showMailCompose(){
+        $rgds=DB::table('rgds')->get();
+        $users=DB::table('users')->get();
+        return view('Staff.composeEmail')->with('users',$users)->with('rgds',$rgds);
+    }
+
+    public function sendMailToParty(Request $request){
+        $sender=Input::get('inputSender');
+        $recipient=Input::get('inputRecipient');
+        $subjectInfo=Input::get('inputSubject');
+        $body=Input::get('inputBody');
+        
+        
+
+        $attachment = $request->file('inputAttachment')->getClientOriginalName();
+        $extension= $request->file('inputAttachment')->getClientOriginalExtension();
+        $attachmentPath = $request->file('inputAttachment')->getRealPath();
+        $mime= $request->file('inputAttachment')->getMimeType();
+                // Get just filename
+                $filename = pathinfo($attachment, PATHINFO_FILENAME);
+                // Get just the file extension
+                $extension = $request->file('inputAttachment')->getClientOriginalExtension();
+                // Filename to store
+                $fileNameToStore= $filename.'_'.time().'.'.$extension;
+                // Upload Image
+                $path = $request->file('inputAttachment')->storeAs('public/images', $fileNameToStore);
+       
+        $user=DB::table('users')->where('id',$recipient)->get();
+
+        foreach ($user as $users) {
+            
+                $data = [
+                    'firstname'      => $users->firstname,
+                    'lastname'       => $users->lastname,
+                    'body'          =>$body
+                   
+                ];
+
+                Mail::send('emails.email_party', $data, function($m) use ($users,$mime,$path,$extension,$request, $attachmentPath){
+                $m->to($users->email, 'Notary Team')->from('hi@example.com', 'Notary Team')->subject(Input::get('inputSubject'))
+                ->attach( $attachmentPath,array('as'=>'inputAttachment.'.$extension,
+                                                'mime'=>$mime));
+              
+                });
+
+                // Get filename with the extension
+                
+                return "successfully sent";
+            
+                }
+
+        
     }
 }
 ?>

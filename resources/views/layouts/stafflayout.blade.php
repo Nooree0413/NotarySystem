@@ -64,6 +64,9 @@
                 <li>
                     <a href="{{ route('myProfile') }}"><i class="fas fa-user-circle"></i> My Profile</a></li>
             </li>
+            <li>
+                <a href="{{ route('show.mailCompose') }}" ><i class="fas fa-share-square"></i> Compose Mail</a>
+            </li>
                 <li>
                     <a href="{{ route('registernew') }}" ><i class="fas fa-user-plus"></i> Add Client</a>
                 </li>

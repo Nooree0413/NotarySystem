@@ -59,6 +59,8 @@ Route::prefix('staff')->group(function(){
     Route::get('/generate/contract/partage', 'StaffController@partageGeneration')->name('show.partage');
     Route::post('/generate/contract/partage' ,'partageController@generatePartage')->name('generate.partage');
     Route::get('/meeting/add/del/up', 'StaffController@meetingForm')->name('show.meetingsForms');
+    Route::get('/compose/email', 'StaffController@showMailCompose')->name('show.mailCompose');
+    Route::post('/compose/email', 'StaffController@sendMailToParty')->name('send.party.mail');
     // Route::post('/preview/contract/pdf', 'previewPDFController@previewContractSOIP')->name('view.pdf');
 });
 
