@@ -418,7 +418,8 @@ public function addMeeting(Request $request)
                     $m->to($users->email, 'Notary Team')->from('hi@example.com', 'Notary Team')->subject('Meeting');
                     });
     
-                    return "successfully sent";
+                    Session::flash('message', 'Meeting successfully added and mail successfully sent!'); 
+                 return Redirect::to('staff/meeting/add/del/up');
                 
             }
         }

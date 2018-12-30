@@ -22,6 +22,8 @@
         font-size: 5px !important;
     }
 
+    
+
        </style> 
 
 </head>
@@ -57,7 +59,7 @@
                     
                     <div class="form-group col-md-4">
                         <label for="inputSender">From</label>
-                            <input type="email" required class="form-control" name="inputSender" value="ptnk123456@gmail.com"  autofocus>                         
+                            <input type="email" required class="form-control" disabled name="inputSender" value="ptnk123456@gmail.com"  autofocus>                         
                         </div>
                     <div class="form-group col-md-4">
                             <label for="inputRecipient">To</label>
@@ -95,7 +97,7 @@
                         <div class="col-5">
                         </div>
                         <div class="col-4">
-                        <label for="inputFiles" style="text-align:center !important;">Attach File</label>
+                        <label for="inputFiles" style="text-align:center !important;"><i class="fas fa-paperclip"></i> Attach File</label>
                         <input type="file" name="inputAttachment" >
                         </div>
                         <div class="col-3"></div>

@@ -1,5 +1,5 @@
 footer {
-    margin-top: 20%;
+    margin-top: 5%;
     float: left;
     width: 100%;
     background-color: #242836;
@@ -7,6 +7,7 @@ footer {
     text-align: center;
     font-size: 14px;
     padding: 10px;
+    margin-bottom: 1%;
 
 }
 .footerlogo{

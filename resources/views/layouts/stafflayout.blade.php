@@ -101,24 +101,8 @@
                             <li>
                                 <a href="{{ route('show.partage') }}" ><i class="fas fa-user-plus"></i>ALOT02</a>
                             </li>
-                        <li>
-                            <a href="#">SOIP03 </a>
-                        </li>
-                        <li>
-                             <a href="#">SOIP04 </a>
-                        </li>
-                         <li>
-                             <a href="#">SOIP05 </a>
-                        </li>
-                        <li>
-                            <a href="#">SOIP06 </a>
-                        </li>
-                        <li>
-                            <a href="#">SOIP07 </a>
-                        </li>
-                        <li>
-                            <a href="#">SOIP08 </a>
-                        </li>
+                        
+                        
                     </ul>
                 </li>
                 <li >
@@ -131,54 +115,15 @@
                                     <a href="{{ route('show.mailCompose') }}" ><i class="fas fa-edit"></i> Compose Mail</a>
                                 </li>
                                 <li>
-                                    <a href="" ><i class="fas fa-at"></i>Inbox</a>
+                                    <a href="https://mail.google.com/mail/u/2/#inbox" target='_blank'><i class="fas fa-inbox"></i> Inbox</a>
                                 </li>
                                 <li>
-                                     <a href="" ><i class="fas fa-share-square"></i></i>Sent Items</a>
+                                     <a href="https://mail.google.com/mail/u/2/#sent" target='_blank'><i class="fas fa-share-square"></i> Sent Items</a>
                                 </li>
                             
                         </ul>
                     </li>
-                {{-- <li>
-                    <a href="#" style="color:aliceblue;">
-                        <i class="fas fa-briefcase"></i>
-                        About
-                    </a>
-                    <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
-                        <i class="fas fa-copy"></i>
-                        Pages
-                    </a>
-                    <ul class="collapse list-unstyled" id="pageSubmenu">
-                        
-                        <li>
-                            <a href="#">Page 1</a>
-                        </li>
-                        <li>
-                            <a href="#">Page 2</a>
-                        </li>
-                        <li>
-                            <a href="#">Page 3</a>
-                        </li>
-                    </ul>
-                </li> --}}
-                {{-- <li>
-                    <a href="#">
-                        <i class="fas fa-image"></i>
-                        Portfolio
-                    </a>
-                </li>
-                <li>
-                    <a href="#">
-                        <i class="fas fa-question"></i>
-                        FAQ
-                    </a>
-                </li>
-                <li>
-                    <a href="#">
-                        <i class="fas fa-paper-plane"></i>
-                        Contact
-                    </a>
-                </li> --}}
+              
                 <li>
                     <a href="{{ route('staff.logout') }}">
                         <i class="fa fa-power-off"></i>
@@ -187,14 +132,7 @@
                 </li>
             </ul>
 
-            {{-- <ul class="list-unstyled CTAs">
-                <li>
-                    <a href="https://bootstrapious.com/tutorial/files/sidebar.zip" class="download">Download source</a>
-                </li>
-                <li>
-                    <a href="https://bootstrapious.com/p/bootstrap-sidebar" class="article">Back to article</a>
-                </li>
-            </ul> --}}
+            
         </nav>
 
         <!-- Page Content  -->
