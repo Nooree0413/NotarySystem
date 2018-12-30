@@ -382,6 +382,9 @@ public function addMeeting(Request $request)
         $start=Input::get('startTime');
         $end=Input::get('endTime');
 
+        $date1=date_create($start);
+        $date2=date_create($end);
+
         $data = array(
             'partyId' =>  $id, 
             'meetingReason' => $reason, 
@@ -409,6 +412,7 @@ public function addMeeting(Request $request)
                         'meetingReason' =>$reason,
                         'startTime'     =>$start,
                         'endTime'       =>$end,
+                        'duration'      =>date_diff($date1,$date2)->format("%dd %hh %im"),
                         'pid'           =>$users->id,
                         'mid'           =>$meeting_id
                         
@@ -430,9 +434,10 @@ public function addMeeting(Request $request)
 
     public function meetingForm(){
         $users=DB::table('users')->get();
-        return view('meetingsConfig')->with('users',$users);
+        $meetings=DB::table('meetings')->get();
+        return view('meetingsConfig')->with('users',$users)->with('meetings',$meetings);
     }
-
+    
     public function showUploadForm(){
         $transactions=DB::table('transaction')->get();
         $users=DB::table('users')->get();
