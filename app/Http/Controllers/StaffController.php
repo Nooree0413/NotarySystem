@@ -387,6 +387,7 @@ public function addMeeting(Request $request)
 
         $data = array(
             'partyId' =>  $id, 
+            'partyRole' =>  $party,
             'meetingReason' => $reason, 
             'startTime'=>$start,
             'endTime' =>  $end ,
@@ -437,7 +438,7 @@ public function addMeeting(Request $request)
         $meetings=DB::table('meetings')->get();
         return view('meetingsConfig')->with('users',$users)->with('meetings',$meetings);
     }
-    
+
     public function showUploadForm(){
         $transactions=DB::table('transaction')->get();
         $users=DB::table('users')->get();
@@ -634,14 +635,18 @@ public function addMeeting(Request $request)
                     'body'          =>$body
                    
                 ];
-
+                if(isset('inputAttachment')){
                 Mail::send('emails.email_party', $data, function($m) use ($users,$mime,$path,$extension,$request,$filename, $attachmentPath){
                 $m->to($users->email, 'Notary Team')->from('hi@example.com', 'Notary Team')->subject(Input::get('inputSubject'))
                 ->attach( $attachmentPath,array('as'=>$filename.$extension,
                                                 'mime'=>$mime));
               
                 });
-
+                }
+                else{
+                    Mail::send('emails.email_party', $data, function($m) use ($users){
+                    $m->to($users->email, 'Notary Team')->from('hi@example.com', 'Notary Team')->subject(Input::get('inputSubject'));
+                }
                 Session::flash('message', 'Mail successfully sent!'); 
                  return Redirect::to('staff/compose/email');
                 

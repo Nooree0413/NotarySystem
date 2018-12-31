@@ -46,8 +46,6 @@ class CreateUsersTable extends Migration
             $table->enum('MCdistrictIssued', ['Port Louis','Moka','Plaine Wilhems','Pamplemousses','Grand Port','Savanne','Flacq','Rivière du Rempart','Ri->nullabvière Noire'])->default("Port Louis");
             $table->string('spouseProfession')->nullable();
             $table->string('img_path')->nullable()->default('profilePic.jpg');
-            $table->integer('noOfChildren')->nullable();
-            $table->integer('parentId')->nullable();
             $table->integer('spouseDCNum')->unique()->nullable();
             $table->date('DeathDate')->nullable();
             $table->rememberToken();
@@ -63,8 +61,7 @@ class CreateUsersTable extends Migration
             $table->string('priceInWords');
             $table->enum('propertyType', ['Land','Company','Hotel','House'])->default("Land");
             $table->integer('sizeInMSFigures');
-            $table->string('sizeInMSWords');
-            $table->string('sizeInPerchWords');
+            $table->integer('sizeInPerchFigures');
             $table->integer('taxDuty')->nullable();
             $table->string('transcriptionVol')->nullable();
             $table->string('secTranscriptionVol')->nullable();
@@ -82,7 +79,7 @@ class CreateUsersTable extends Migration
             $table->string('previousNotaryLN')->nullable();
             $table->enum('previousNotaryTitle', ['Monsieur','Madame','Mademoiselle'])->default("Monsieur");
             $table->enum('districtSituated', ['Port Louis','Moka','Plaine Wilhems','Pamplemousses','Grand Port','Savanne','Flacq','Rivière du Rempart','Rivière Noire'])->default("Port Louis");
-            $table->string('img_path')->nullable()->default('profilePic.jpg');
+           
             $table->timestamp('created_at')->default(\DB::raw('CURRENT_TIMESTAMP'));
             $table->timestamp('updated_at')->default(\DB::raw('CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP'));
         });
@@ -140,6 +137,7 @@ class CreateUsersTable extends Migration
         Schema::create('meetings', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('partyId');
+            $table->string('partyRole');
             $table->string('meetingReason');
             $table->datetime('startTime');
             $table->datetime('endTime');
