@@ -373,8 +373,7 @@ class StaffController extends Controller
  
         return view('meetings', compact('calendar_details','users') );
 }
-public function addMeeting(Request $request)
-    {
+public function addMeeting(Request $request){
         $status="Pending";
         $party=Input::get('party');
         $id=Input::get('partyId');
@@ -617,17 +616,18 @@ public function addMeeting(Request $request)
 
         foreach ($user as $users) {
             
-                $data = [
-                    'firstname'      => $users->firstname,
-                    'lastname'       => $users->lastname,
-                    'body'          =>$body
-                   
-                ];
+            $data = [
+                'firstname'      => $users->firstname,
+                'lastname'       => $users->lastname,
+                'body'          =>$body
+                
+            ];
 
-                if(isset($upload)){
-                    $attachment = $request->file('inputAttachment')->getClientOriginalName();
-                    $extension= $request->file('inputAttachment')->getClientOriginalExtension();
-                    $attachmentPath = $request->file('inputAttachment')->getRealPath();
+            if(isset($upload)){
+
+                $attachment = $request->file('inputAttachment')->getClientOriginalName();
+                $extension= $request->file('inputAttachment')->getClientOriginalExtension();
+                $attachmentPath = $request->file('inputAttachment')->getRealPath();
      
                 $mime= $request->file('inputAttachment')->getMimeType();
                 // Get just filename
@@ -638,7 +638,7 @@ public function addMeeting(Request $request)
                 $fileNameToStore= $filename.'_'.time().'.'.$extension;
                 // Upload Image
                 $path = $request->file('inputAttachment')->storeAs('public/images', $fileNameToStore);
-                
+
                 Mail::send('emails.email_party', $data, function($m) use ($users,$mime,$path,$extension,$request,$filename, $attachmentPath){
                 $m->to($users->email, 'Notary Team')->from('hi@example.com', 'Notary Team')->subject(Input::get('inputSubject'))
                 ->attach( $attachmentPath,array('as'=>$filename.$extension,
@@ -646,19 +646,16 @@ public function addMeeting(Request $request)
               
                 });
             }
-                else{
-                Mail::send('emails.email_party', $data, function($m) use ($users){
-                    $m->to($users->email, 'Notary Team')->from('hi@example.com', 'Notary Team')->subject(Input::get('inputSubject'));
-                    });
-                }
-                Session::flash('message', 'Mail successfully sent!'); 
-                 return Redirect::to('staff/compose/email');
-                
-               
-            
-                }
 
-        
+            else{
+                Mail::send('emails.email_party', $data, function($m) use ($users){
+                $m->to($users->email, 'Notary Team')->from('hi@example.com', 'Notary Team')->subject(Input::get('inputSubject'));
+                });
+            }
+
+            Session::flash('message', 'Mail successfully sent!'); 
+            return Redirect::to('staff/compose/email');
+        }    
     }
 }
 ?>
