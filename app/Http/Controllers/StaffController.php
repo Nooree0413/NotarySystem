@@ -610,20 +610,8 @@ public function addMeeting(Request $request)
         $body=Input::get('inputBody');
         
         
-
-        $attachment = $request->file('inputAttachment')->getClientOriginalName();
-        $extension= $request->file('inputAttachment')->getClientOriginalExtension();
-        $attachmentPath = $request->file('inputAttachment')->getRealPath();
-     
-        $mime= $request->file('inputAttachment')->getMimeType();
-                // Get just filename
-                $filename = pathinfo($attachment, PATHINFO_FILENAME);
-                // Get just the file extension
-                $extension = $request->file('inputAttachment')->getClientOriginalExtension();
-                // Filename to store
-                $fileNameToStore= $filename.'_'.time().'.'.$extension;
-                // Upload Image
-                $path = $request->file('inputAttachment')->storeAs('public/images', $fileNameToStore);
+        $upload=$request->file('inputAttachment');
+        
        
         $user=DB::table('users')->where('id',$recipient)->get();
 
@@ -635,17 +623,33 @@ public function addMeeting(Request $request)
                     'body'          =>$body
                    
                 ];
-                if(isset('inputAttachment')){
+
+                if(isset($upload)){
+                    $attachment = $request->file('inputAttachment')->getClientOriginalName();
+                    $extension= $request->file('inputAttachment')->getClientOriginalExtension();
+                    $attachmentPath = $request->file('inputAttachment')->getRealPath();
+     
+                $mime= $request->file('inputAttachment')->getMimeType();
+                // Get just filename
+                $filename = pathinfo($attachment, PATHINFO_FILENAME);
+                // Get just the file extension
+                $extension = $request->file('inputAttachment')->getClientOriginalExtension();
+                // Filename to store
+                $fileNameToStore= $filename.'_'.time().'.'.$extension;
+                // Upload Image
+                $path = $request->file('inputAttachment')->storeAs('public/images', $fileNameToStore);
+                
                 Mail::send('emails.email_party', $data, function($m) use ($users,$mime,$path,$extension,$request,$filename, $attachmentPath){
                 $m->to($users->email, 'Notary Team')->from('hi@example.com', 'Notary Team')->subject(Input::get('inputSubject'))
                 ->attach( $attachmentPath,array('as'=>$filename.$extension,
                                                 'mime'=>$mime));
               
                 });
-                }
+            }
                 else{
-                    Mail::send('emails.email_party', $data, function($m) use ($users){
+                Mail::send('emails.email_party', $data, function($m) use ($users){
                     $m->to($users->email, 'Notary Team')->from('hi@example.com', 'Notary Team')->subject(Input::get('inputSubject'));
+                    });
                 }
                 Session::flash('message', 'Mail successfully sent!'); 
                  return Redirect::to('staff/compose/email');
